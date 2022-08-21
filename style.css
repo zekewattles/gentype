@@ -1,0 +1,14 @@
+:root {
+  --dark-bg: black;
+  --dark-text: white;
+  --light-bg: white;
+  --light-text: black;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  /* background-color: var(--light-bg);
+  color: var(--light-text); */
+  font-family: "IBM Plex Mono", monospace;
+}
