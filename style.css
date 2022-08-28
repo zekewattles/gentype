@@ -1,14 +1,21 @@
-:root {
-  --dark-bg: black;
-  --dark-text: white;
-  --light-bg: white;
-  --light-text: black;
+html {
+  --bg-color: black;
+  --text-color: white;
+}
+
+html.light {
+  --bg-color: white;
+  --text-color: black;
 }
 
 body {
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
-  /* background-color: var(--light-bg);
-  color: var(--light-text); */
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: "IBM Plex Mono", monospace;
+}
+
+#theme-toggle {
+  border: 0;
+  padding: 0;
+  background: none;
 }
