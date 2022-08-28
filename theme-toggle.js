@@ -3,27 +3,36 @@ const moonEmoji = "🌚";
 const htmlElement = document.getElementsByTagName("html")[0];
 const button = document.getElementById("theme-toggle");
 
-const setButtonText = () => {
-  if (htmlElement.classList.contains("light")) {
-    button.innerHTML = moonEmoji;
-  } else {
-    button.innerHTML = sunEmoji;
-  }
+const setDarkTheme = () => {
+  htmlElement.classList.add("dark");
+  htmlElement.classList.remove("light");
+  button.innerHTML = sunEmoji;
+};
+
+const setLightTheme = () => {
+  htmlElement.classList.add("light");
+  htmlElement.classList.remove("dark");
+  button.innerHTML = moonEmoji;
 };
 
 const setInitialTheme = () => {
-  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    htmlElement.classList.remove("light");
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    setDarkTheme();
   } else {
-    htmlElement.classList.add("light");
+    setLightTheme();
   }
 };
 
 const toggleTheme = () => {
-  htmlElement.classList.toggle("light");
-  setButtonText();
+  if (htmlElement.classList.contains("dark")) {
+    setLightTheme();
+  } else {
+    setDarkTheme();
+  }
 };
 
 button.addEventListener("click", toggleTheme);
 setInitialTheme();
-setButtonText();
