@@ -1,3 +1,15 @@
+@font-face {
+  font-family: Fragment Mono;
+  src: url(./fonts/FragmentMono-Regular.woff2);
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Fragment Mono;
+  src: url(./fonts/FragmentMono-Italic.woff2);
+  font-style: italic;
+}
+
 html {
   --bg-color: black;
   --text-color: white;
@@ -11,7 +23,7 @@ html.light {
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "Fragment Mono", "IBM Plex Mono", monospace;
 }
 
 #theme-toggle {
