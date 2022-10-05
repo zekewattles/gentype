@@ -11,13 +11,13 @@
 }
 
 html {
-  --bg-color: black;
-  --text-color: white;
+  --bg-color: #0d0d0d;
+  --text-color: #f4f4f4;
 }
 
 html.light {
-  --bg-color: white;
-  --text-color: black;
+  --bg-color: #f4f4f4;
+  --text-color: #0d0d0d;
 }
 
 body {
