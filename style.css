@@ -1,15 +1,3 @@
-/* @font-face {
-  font-family: Fragment Mono;
-  src: url(./fonts/FragmentMono-Regular.woff2);
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Fragment Mono;
-  src: url(./fonts/FragmentMono-Italic.woff2);
-  font-style: italic;
-} */
-
 html {
   --bg-color: #0d0d0d;
   --text-color: #f4f4f4;
@@ -37,22 +25,4 @@ hr {
   border: 0;
   padding: 0;
   background: none;
-  /* top: 1rem;
-  right: 1rem;
-  position: absolute; */
 }
-
-/* :root {
-  --colour-canvas: 255 255 255;
-  --colour-canvas-90: 244 244 244;
-  --colour-canvas-80: 204 204 204;
-  --colour-canvas-70: 169 169 169;
-  --colour-canvas-60: 144 144 144;
-  --colour-canvas-50: 128 128 128;
-  --colour-main: 13 13 13;
-  --colour-main-90: 22 22 22;
-  --colour-main-80: 44 44 44;
-  --colour-main-70: 86 86 86;
-  --colour-main-60: 106 106 106;
-  --colour-main-50: 128 128 128;
-} */
