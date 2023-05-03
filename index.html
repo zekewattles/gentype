@@ -2,324 +2,361 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- meta tags -->
-    <title>Generative Typography</title>
-    <meta name="description" content="A space to showcase student work." />
-    <meta name="author" content="Zeke Wattles" />
-    <meta property="og:title" content="Generative Typography" />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:description"
-      content="A space to showcase student work."
-    />
-    <meta property="og:image" content="assets/veronica-tsai.jpg" />
-    <meta property="og:url" content="https://zeke.studio/gentype/" />
-    <meta property="og:site_name" content="zeke.studio" />
-    <meta name="twitter:card" content="summary_large_image" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-      crossorigin="anonymous"
-    />
+  <!-- meta tags -->
+  <title>Generative Typography</title>
+  <meta name="description" content="A space to showcase student work." />
+  <meta name="author" content="Zeke Wattles" />
+  <meta property="og:title" content="Generative Typography" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="A space to showcase student work." />
+  <meta property="og:image" content="assets/su22/veronica-tsai.jpg" />
+  <meta property="og:url" content="https://zeke.studio/gentype/" />
+  <meta property="og:site_name" content="zeke.studio" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- style -->
-    <link href="style.css" rel="stylesheet" />
-  </head>
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap" rel="stylesheet">
 
-  <body>
-    <!-- theme button -->
-    <button id="theme-toggle" class="h4"></button>
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
 
-    <!-- page content -->
-    <div class="container">
-      <div class="row">
-        <!-- class description -->
-        <div class="col-md-4">
-          <div class="sticky-md-top pt-3">
+  <!-- style -->
+  <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- page content -->
+  <div class="container">
+    <div class="row">
+      <!-- class description -->
+      <div class="col-md-4">
+        <div class="sticky-md-top pt-3">
+          <div class="pb-2">
             <div class="pb-2">
-              <div class="pb-2">
-                <h2>Generative<br />Typography</h2>
-                <div class="small">
-                  A space to showcase student work.<br />
-                  Term: Summer 2022<br />
-                  Instructor: Zeke Wattles<br />
-                  TA: Shine Chang
-                </div>
-              </div>
+              <hr>
+              <h2>Generative<br />Typography</h2>
+              <p>
+                Generative Typography is an introductory creative coding class for designers, working primarily in
+                p5.js. I’ve been teaching it at ArtCenter College of Design since Summer 2022, building largely off the
+                <a href="http://www.transmedia.graphics/gentype/index.html" target="_blank">work</a> of Roy Tatum and
+                Brad Bartlett. This microsite functions as an archival space to showcase student work.
+              </p>
+              <p>
+                TERMS:<br>
+                <a href="#sp23">SP23</a><br>
+                <a href="#fa22">FA22</a><br>
+                <a href="#su22">SU22</a>
+              </p>
+              <p>
+                INSTRUCTOR:<br>
+                Zeke Wattles
+              </p>
+              <p>
+                DEMOS:<br>
+                <a href="https://editor.p5js.org/zekewattles/sketches" target="_blank">p5.js archive</a>
+              </p>
+              <!-- theme button -->
+              <button id="theme-toggle" class="h4"></button>
             </div>
           </div>
-        </div>
-
-        <!-- class projects -->
-        <div class="col-md-8 pt-4">
-          <!-- veronica tsai -->
-          <div class="pb-5">
-            <div
-              id="trailer"
-              class="embed-responsive embed-responsive-16by9 pb-3"
-            >
-              <video
-                class="embed-responsive-item"
-                controls
-                loop
-                playsinline
-                width="100%"
-                poster="assets/veronica-tsai.jpg"
-              >
-                <source src="assets/veronica-tsai.mp4" type="video/mp4" />
-                Sorry, your browser doesn't support embedded videos.
-              </video>
-            </div>
-            <div class="pb-2">
-              <h5>Veronica Tsai &mdash; Bloom</h5>
-            </div>
-            <div>
-              <p>
-                Bloom is an infographic, interactive experience for The
-                Huntington. It showcases its gardens and unique plants in a
-                playful, typographic way.
-              </p>
-              <p>
-                Analog making has always been a significant part of my creative
-                process. I am interested in combinging analog and generative
-                design methods, challenging myself to design a digital interface
-                with an organic aesthetic.
-              </p>
-              <p>
-                Bloom uses hand drawn illustrations of plants from The
-                Huntington's different gardens as units that formulate the names
-                of the gardens. Users can use the arrow keys to visit different
-                virtual gardens.
-              </p>
-              <p>
-                The sketch mainly uses the Geomerative and peasycam libraries.
-                The Geomerative library turns the outlines of the letters into
-                points. The points are replaced by the illustration PNGs.
-                Peasycam allows users to rotate and zoom in and out of the
-                gardens to observe the sketch from different angles.
-              </p>
-            </div>
-          </div>
-
-          <!-- chloe zhang -->
-          <div class="pb-5">
-            <div
-              id="trailer"
-              class="embed-responsive embed-responsive-16by9 pb-3"
-            >
-              <video
-                class="embed-responsive-item"
-                controls
-                loop
-                playsinline
-                width="100%"
-                poster="assets/chloe-zhang.jpg"
-              >
-                <source src="assets/chloe-zhang.mp4" type="video/mp4" />
-                Sorry, your browser doesn't support embedded videos.
-              </video>
-            </div>
-            <div class="pb-2">
-              <h5>Chloe Zhang &mdash; FLEE</h5>
-            </div>
-            <div>
-              <p>
-                FLEE is a brand identity generator designed to give flea market
-                vendors the freedom to create their own visual identities and
-                collateral.
-              </p>
-              <p>
-                The name "FLEE" is inspired by the timelessness of flea markets,
-                encouraging shoppers to escape from the present and travel to
-                different eras.
-              </p>
-              <p>
-                FLEE's vintage funky colors and random variations provide a
-                unique playfulness that current flea market identities usually
-                lack. The generator contains six different types of brushes, a
-                clear canvas function, and a save image function. The user can
-                also create with a scatter brush, a sticker brush, and a typing
-                brush in the generator.
-              </p>
-            </div>
-          </div>
-
-          <!-- jiayi hu -->
-          <div class="pb-5">
-            <div
-              id="trailer"
-              class="embed-responsive embed-responsive-16by9 pb-3"
-            >
-              <video
-                class="embed-responsive-item"
-                controls
-                loop
-                playsinline
-                width="100%"
-                poster="assets/jiayi-hu.jpg"
-              >
-                <source src="assets/jiayi-hu.mp4" type="video/mp4" />
-                Sorry, your browser doesn't support embedded videos.
-              </video>
-            </div>
-            <div class="pb-2">
-              <h5>Jiayi Hu &mdash; >X</h5>
-            </div>
-            <div>
-              <p>
-                >X is an experimental typeface design project. Through
-                processing, this project built a physical font system using
-                Geomerative and Fisica. Just like the skeleton binding of the
-                animation, the anchor points on the outer outline of the font
-                are bound by joints, giving the dynamic font more variability
-                and organic feel. This visual system discusses the possibility
-                of giving type and graphics a spontaneous and flexible
-                characteristic.
-              </p>
-            </div>
-          </div>
-
-          <!-- sydney lee -->
-          <div class="pb-5">
-            <div
-              id="trailer"
-              class="embed-responsive embed-responsive-16by9 pb-3"
-            >
-              <video
-                class="embed-responsive-item"
-                controls
-                loop
-                playsinline
-                width="100%"
-                poster="assets/sydney-lee.jpg"
-              >
-                <source src="assets/sydney-lee.mp4" type="video/mp4" />
-                Sorry, your browser doesn't support embedded videos.
-              </video>
-            </div>
-            <div class="pb-2">
-              <h5>Sydney Lee &mdash; Storm King Art Center</h5>
-            </div>
-            <div>
-              <p>
-                Storm King Art Center is dedicated to exhibiting, acquiring,
-                borrowing, and conserving modern art and contemporary art. The
-                focus on large-scale sculptures in an expansive landscape, to
-                create a dynamic and unique place for you to explore art and
-                nature.
-              </p>
-              <p>
-                The phrase "connect to art, connect to nature" is a brand
-                narrative. Storm King Art Center nurtures a vibrant bond between
-                art, nature, and people, creating a place where discovery is
-                limitless. Each small particles used in the design represents
-                art, nature, and people, vibrantly bonding to connect to each
-                other to form the phrase "connect to art, connect to nature".
-              </p>
-              <p>
-                The custom typeface has been designed to be responsive and
-                activated by motion. To achieve this, the typeface was put into
-                code and synced with the movement so that the particles
-                responded to the movement.
-              </p>
-            </div>
-          </div>
-
-          <!-- ruopei xiao -->
-          <div class="pb-5">
-            <div
-              id="trailer"
-              class="embed-responsive embed-responsive-16by9 pb-3"
-            >
-              <video
-                class="embed-responsive-item"
-                controls
-                loop
-                playsinline
-                width="100%"
-                poster="assets/ruopei-xiao.jpg"
-              >
-                <source src="assets/ruopei-xiao.mp4" type="video/mp4" />
-                Sorry, your browser doesn't support embedded videos.
-              </video>
-            </div>
-            <div class="pb-2">
-              <h5>Ruopei Xiao &mdash; FLOC|&lt;</h5>
-            </div>
-            <div>
-              <p>
-                FLOC|&lt; explores whether linkages exist between variation in
-                migration timing and subsequent changes in population size.
-              </p>
-              <p>
-                FLOC|&lt; is a data visualization of birding activities to
-                present the knowledge of migratory behavior to inspire birders
-                and scientists as well as to support decisions about
-                conservation actions on the ground.
-              </p>
-            </div>
-          </div>
-          <!-- gloria zhang -->
-          <div class="pb-5">
-            <div
-              id="trailer"
-              class="embed-responsive embed-responsive-16by9 pb-3"
-            >
-              <video
-                class="embed-responsive-item"
-                controls
-                loop
-                playsinline
-                width="100%"
-                poster="assets/gloria-zhang.jpg"
-              >
-                <source src="assets/gloria-zhang.mp4" type="video/mp4" />
-                Sorry, your browser doesn't support embedded videos.
-              </video>
-            </div>
-            <div class="pb-2">
-              <h5>Gloria Zhang &mdash; 88rising</h5>
-            </div>
-            <div>
-              <p>
-                88rising is a company that has gained popularity as a musical
-                platform and record label primarily for Asian American and Asian
-                artists who release music in the United States. The founder of
-                88rising hopes the music it produced can bridge the gap between
-                Asian and American music. Keeping producing experimental music
-                going viral among young generations, 88rising gathers talented
-                music artists to create new trends in pop culture.
-              </p>
-              <p>
-                This project is an exploration of music visualization inspired
-                by the 88rising brand along with Head in the Clouds the music
-                event curated by it. All the music-reacting animations were made
-                on Processing. The music is from Blank&Jones, named Winelight.
-                All the background images and footage were materials found on
-                the Internet.
-              </p>
-            </div>
-          </div>
-
-          <!-- end of class projects -->
         </div>
       </div>
-    </div>
-    <!-- bootstrap script -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-      crossorigin="anonymous"
-    ></script>
 
-    <!-- theme script -->
-    <script src="theme-toggle.js"></script>
-  </body>
+      <!-- class projects -->
+      <div class="col-md-8 pb-5">
+
+        <!-- spring 2023 -->
+        <div class="pb-2 pt-3" id="sp23">
+          <hr>
+          <h2>Spring 2023</h2>
+          <div class="row">
+            <div class="col">
+              <p>
+                STUDENTS:<br>
+                <a href="#">Emma Shipley</a><br>
+                <a href="#">Jeffrey Xiang Su</a><br>
+                <a href="#">Nancy Gao</a><br>
+                <a href="#">Daisy Ding</a><br>
+                <a href="#">Mikayla Gao</a><br>
+                <a href="#">Ning Hong</a><br>
+                <a href="#">Terry Liu</a><br>
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                TA:<br>
+                Chloe Zhang
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- fall 2022 -->
+        <div class="pb-2 pt-3" id="fa22">
+          <hr>
+          <h2>Fall 2022</h2>
+          <div class="row">
+            <div class="col">
+              <p>
+                STUDENTS:<br>
+                <a href="#">Kenny Zhang</a><br>
+                <a href="#">Faris Khedro</a><br>
+                <a href="#">Grace Kim</a><br>
+                <a href="#">Shaw Xiao</a><br>
+                <a href="#">Sahar Habashi</a><br>
+                <a href="#">Ashley Aceves</a><br>
+                <a href="#">Chera Park</a><br>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- summer 2022 -->
+        <div class="pb-2 pt-3" id="su22">
+          <hr>
+          <h2>Summer 2022</h2>
+          <div class="row">
+            <div class="col">
+              <p>
+                STUDENTS:<br>
+                <a href="#veronica-tsai">Veronica Tsai</a><br>
+                <a href="#chloe-zhang">Chloe Zhang</a><br>
+                <a href="#jiayi-hu">Jiayi Hu</a><br>
+                <a href="#ruopei-xiao">Ruopei Xiao</a><br>
+                <a href="#sydney-lee">Sydney Lee</a><br>
+                <a href="#gloria-zhang">Gloria Zhang</a>
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                TA:<br>
+                Shine Chang
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- veronica tsai -->
+        <div class="pb-2 pt-3" id="veronica-tsai">
+          <hr>
+          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
+            <video class="embed-responsive-item" controls loop playsinline width="100%"
+              poster="assets/su22/veronica-tsai.jpg">
+              <source src="assets/su22/veronica-tsai.mp4" type="video/mp4" />
+              Sorry, your browser doesn't support embedded videos.
+            </video>
+          </div>
+          <div class="pb-2">
+            <h5>Veronica Tsai &mdash; Bloom</h5>
+          </div>
+          <div>
+            <p>
+              Bloom is an infographic, interactive experience for The
+              Huntington. It showcases its gardens and unique plants in a
+              playful, typographic way.
+            </p>
+            <p>
+              Analog making has always been a significant part of my creative
+              process. I am interested in combinging analog and generative
+              design methods, challenging myself to design a digital interface
+              with an organic aesthetic.
+            </p>
+            <p>
+              Bloom uses hand drawn illustrations of plants from The
+              Huntington's different gardens as units that formulate the names
+              of the gardens. Users can use the arrow keys to visit different
+              virtual gardens.
+            </p>
+            <p>
+              The sketch mainly uses the Geomerative and peasycam libraries.
+              The Geomerative library turns the outlines of the letters into
+              points. The points are replaced by the illustration PNGs.
+              Peasycam allows users to rotate and zoom in and out of the
+              gardens to observe the sketch from different angles.
+            </p>
+          </div>
+        </div>
+
+        <!-- chloe zhang -->
+        <div class="pb-2 pt-3" id="chloe-zhang">
+          <hr>
+          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
+            <video class="embed-responsive-item" controls loop playsinline width="100%"
+              poster="assets/su22/chloe-zhang.jpg">
+              <source src="assets/su22/chloe-zhang.mp4" type="video/mp4" />
+              Sorry, your browser doesn't support embedded videos.
+            </video>
+          </div>
+          <div class="pb-2">
+            <h5>Chloe Zhang &mdash; FLEE</h5>
+          </div>
+          <div>
+            <p>
+              FLEE is a brand identity generator designed to give flea market
+              vendors the freedom to create their own visual identities and
+              collateral.
+            </p>
+            <p>
+              The name "FLEE" is inspired by the timelessness of flea markets,
+              encouraging shoppers to escape from the present and travel to
+              different eras.
+            </p>
+            <p>
+              FLEE's vintage funky colors and random variations provide a
+              unique playfulness that current flea market identities usually
+              lack. The generator contains six different types of brushes, a
+              clear canvas function, and a save image function. The user can
+              also create with a scatter brush, a sticker brush, and a typing
+              brush in the generator.
+            </p>
+          </div>
+        </div>
+
+        <!-- jiayi hu -->
+        <div class="pb-2 pt-3" id="jiayi-hu">
+          <hr>
+          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
+            <video class="embed-responsive-item" controls loop playsinline width="100%"
+              poster="assets/su22/jiayi-hu.jpg">
+              <source src="assets/su22/jiayi-hu.mp4" type="video/mp4" />
+              Sorry, your browser doesn't support embedded videos.
+            </video>
+          </div>
+          <div class="pb-2">
+            <h5>Jiayi Hu &mdash; >X</h5>
+          </div>
+          <div>
+            <p>
+              >X is an experimental typeface design project. Through
+              processing, this project built a physical font system using
+              Geomerative and Fisica. Just like the skeleton binding of the
+              animation, the anchor points on the outer outline of the font
+              are bound by joints, giving the dynamic font more variability
+              and organic feel. This visual system discusses the possibility
+              of giving type and graphics a spontaneous and flexible
+              characteristic.
+            </p>
+          </div>
+        </div>
+
+        <!-- ruopei xiao -->
+        <div class="pb-2 pt-3" id="ruopei-xiao">
+          <hr>
+          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
+            <video class="embed-responsive-item" controls loop playsinline width="100%"
+              poster="assets/su22/ruopei-xiao.jpg">
+              <source src="assets/su22/ruopei-xiao.mp4" type="video/mp4" />
+              Sorry, your browser doesn't support embedded videos.
+            </video>
+          </div>
+          <div class="pb-2">
+            <h5>Ruopei Xiao &mdash; FLOC|&lt;</h5>
+          </div>
+          <div>
+            <p>
+              FLOC|&lt; explores whether linkages exist between variation in
+              migration timing and subsequent changes in population size.
+            </p>
+            <p>
+              FLOC|&lt; is a data visualization of birding activities to
+              present the knowledge of migratory behavior to inspire birders
+              and scientists as well as to support decisions about
+              conservation actions on the ground.
+            </p>
+          </div>
+        </div>
+
+        <!-- sydney lee -->
+        <div class="pb-2 pt-3" id="sydney-lee">
+          <hr>
+          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
+            <video class="embed-responsive-item" controls loop playsinline width="100%"
+              poster="assets/su22/sydney-lee.jpg">
+              <source src="assets/su22/sydney-lee.mp4" type="video/mp4" />
+              Sorry, your browser doesn't support embedded videos.
+            </video>
+          </div>
+          <div class="pb-2">
+            <h5>Sydney Lee &mdash; Storm King Art Center</h5>
+          </div>
+          <div>
+            <p>
+              Storm King Art Center is dedicated to exhibiting, acquiring,
+              borrowing, and conserving modern art and contemporary art. The
+              focus on large-scale sculptures in an expansive landscape, to
+              create a dynamic and unique place for you to explore art and
+              nature.
+            </p>
+            <p>
+              The phrase "connect to art, connect to nature" is a brand
+              narrative. Storm King Art Center nurtures a vibrant bond between
+              art, nature, and people, creating a place where discovery is
+              limitless. Each small particles used in the design represents
+              art, nature, and people, vibrantly bonding to connect to each
+              other to form the phrase "connect to art, connect to nature".
+            </p>
+            <p>
+              The custom typeface has been designed to be responsive and
+              activated by motion. To achieve this, the typeface was put into
+              code and synced with the movement so that the particles
+              responded to the movement.
+            </p>
+          </div>
+        </div>
+
+        <!-- gloria zhang -->
+        <div class="pb-2 pt-3" id="gloria-zhang">
+          <hr>
+          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
+            <video class="embed-responsive-item" controls loop playsinline width="100%"
+              poster="assets/su22/gloria-zhang.jpg">
+              <source src="assets/su22/gloria-zhang.mp4" type="video/mp4" />
+              Sorry, your browser doesn't support embedded videos.
+            </video>
+          </div>
+          <div class="pb-2">
+            <h5>Gloria Zhang &mdash; 88rising</h5>
+          </div>
+          <div>
+            <p>
+              88rising is a company that has gained popularity as a musical
+              platform and record label primarily for Asian American and Asian
+              artists who release music in the United States. The founder of
+              88rising hopes the music it produced can bridge the gap between
+              Asian and American music. Keeping producing experimental music
+              going viral among young generations, 88rising gathers talented
+              music artists to create new trends in pop culture.
+            </p>
+            <p>
+              This project is an exploration of music visualization inspired
+              by the 88rising brand along with Head in the Clouds the music
+              event curated by it. All the music-reacting animations were made
+              on Processing. The music is from Blank&Jones, named Winelight.
+              All the background images and footage were materials found on
+              the Internet.
+            </p>
+          </div>
+        </div>
+
+        <!-- end of class projects -->
+      </div>
+    </div>
+  </div>
+  <!-- bootstrap script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+
+  <!-- theme script -->
+  <script src="theme-toggle.js"></script>
+</body>
+
 </html>

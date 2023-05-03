@@ -1,5 +1,5 @@
-const sunEmoji = "🌞";
-const moonEmoji = "🌚";
+const sunEmoji = "🐈";
+const moonEmoji = "🐈‍⬛";
 const htmlElement = document.getElementsByTagName("html")[0];
 const button = document.getElementById("theme-toggle");
 

@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: Fragment Mono;
   src: url(./fonts/FragmentMono-Regular.woff2);
   font-style: normal;
@@ -8,7 +8,7 @@
   font-family: Fragment Mono;
   src: url(./fonts/FragmentMono-Italic.woff2);
   font-style: italic;
-}
+} */
 
 html {
   --bg-color: #0d0d0d;
@@ -23,18 +23,23 @@ html.light {
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: "Fragment Mono", "IBM Plex Mono", monospace;
+  font-family: "Fragment Mono", monospace;
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+hr {
+  border-top: 1px solid var(--text-color);
+  opacity: 100%;
 }
 
 #theme-toggle {
   border: 0;
   padding: 0;
   background: none;
-  top: 1rem;
+  /* top: 1rem;
   right: 1rem;
-  position: absolute;
+  position: absolute; */
 }
 
 /* :root {
