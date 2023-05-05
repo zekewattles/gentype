@@ -21,6 +21,12 @@ hr {
   opacity: 100%;
 }
 
+#theme-toggle-container {
+  top: 1rem;
+  right: 1rem;
+  position: fixed;
+}
+
 #theme-toggle {
   border: 0;
   padding: 0;
