@@ -5,12 +5,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.3/p5.js"></script>
+
   <!-- meta tags -->
   <!-- Primary Meta Tags -->
   <title>Generative Typography</title>
   <meta name="title" content="Generative Typography" />
   <meta name="description"
-    content="Generative Typography is an introductory creative coding class for designers, working primarily in p5.js." />
+    content="Generative Typography is a 14-week ArtCenter course on p5.js. Through a series of demos, students learn to build their own code-based tools for graphic design and incorporate them into their other school or personal projects. The goal is for students to build their coding confidence and start thinking more systematically about design." />
   <meta name="author" content="Zeke Wattles" />
 
   <!-- Open Graph / Facebook -->
@@ -18,8 +20,8 @@
   <meta property="og:url" content="https://zeke.studio/gentype/" />
   <meta property="og:title" content="Generative Typography" />
   <meta property="og:description"
-    content="Generative Typography is an introductory creative coding class for designers, working primarily in p5.js." />
-  <meta property="og:image" content="https://zeke.studio/gentype/assets/fa22/kenny-zhang.jpg" />
+    content="Generative Typography is a 14-week ArtCenter course on p5.js. Through a series of demos, students learn to build their own code-based tools for graphic design and incorporate them into their other school or personal projects. The goal is for students to build their coding confidence and start thinking more systematically about design." />
+  <meta property="og:image" content="https://zeke.studio/gentype/assets/thumbnail.png" />
   <meta property="og:site_name" content="zeke.studio" />
 
   <!-- Twitter -->
@@ -27,839 +29,1168 @@
   <meta property="twitter:url" content="https://zeke.studio/gentype/" />
   <meta property="twitter:title" content="Generative Typography" />
   <meta property="twitter:description"
-    content="Generative Typography is an introductory creative coding class for designers, working primarily in p5.js." />
-  <meta property="twitter:image" content="https://zeke.studio/gentype/assets/fa22/kenny-zhang.jpg" />
+    content="Generative Typography is a 14-week ArtCenter course on p5.js. Through a series of demos, students learn to build their own code-based tools for graphic design and incorporate them into their other school or personal projects. The goal is for students to build their coding confidence and start thinking more systematically about design." />
+  <meta property="twitter:image" content="https://zeke.studio/gentype/assets/fa22/thumbnail.png" />
 
-  <!-- favicon stuff -->
-  <!-- <link rel="apple-touch-icon" sizes="180x180" href="/img/site/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/site/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/img/site/favicon-16x16.png">
-  <link rel="manifest" href="/img/site/site.webmanifest">
-  <link rel="mask-icon" href="/img/site/safari-pinned-tab.svg" color="#00ff00">
-  <link rel="shortcut icon" href="/img/site/favicon.ico">
-  <meta name="msapplication-TileColor" content="#00ff55">
-  <meta name="msapplication-config" content="/img/site/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff"> -->
-
-  <!-- <title>Generative Typography</title>
-  <meta name="description"
-    content="Generative Typography is an introductory creative coding class for designers, working primarily in p5.js." />
-  <meta name="author" content="Zeke Wattles" />
-  <meta property="og:title" content="Generative Typography" />
-  <meta property="og:type" content="website" />
-  <meta property="og:description"
-    content="Generative Typography is an introductory creative coding class for designers, working primarily in p5.js." />
-  <meta property="og:image" content="assets/fa22/kenny-zhang.jpg" />
-  <meta property="og:url" content="https://zeke.studio/gentype/" />
-  <meta property="og:site_name" content="zeke.studio" />
-  <meta name="twitter:card" content="summary_large_image" /> -->
-
-  <!-- google fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap" rel="stylesheet">
-
-  <!-- bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
-
-  <!-- style -->
-  <link href="style.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <meta charset="utf-8" />
 </head>
 
 <body>
-  <!-- theme button -->
-  <div id="theme-toggle-container">
-    <button id="theme-toggle" class="h4"></button>
-  </div>
+  <main>
+    <div id="canvasContainer"></div>
 
-  <!-- page content -->
-  <div class="container">
-    <div class="row">
-      <!-- class description -->
-      <div class="col-md-4">
-        <div class="sticky-md-top pt-3">
-          <div class="pb-2">
-            <div class="pb-2">
-              <hr>
-              <h2>Generative<br />Typography</h2>
-              <p>
-                Generative Typography is an introductory creative coding class for graphic designers. I’ve been teaching
-                it at ArtCenter College of Design since Summer 2022, building largely off of
-                the <a href="http://www.transmedia.graphics/gentype/index.html" target="_blank">work</a> of Roy Tatum
-                and Brad Bartlett.
-              </p>
-              <p>
-                The first half of the semester focuses on demos and exercises introducing students to <a
-                  href="https://p5js.org/" target="_blank">p5.js</a>. The second
-                half focuses on final projects (archived here), which are self-directed and open-ended so long as they
-                relate to type and code.
-              </p>
-              <p>
-                TERMS<br>
-                <a href="#sp23">SP23</a><br>
-                <a href="#fa22">FA22</a><br>
-                <a href="#su22">SU22</a>
-              </p>
-              <p>
-                INSTRUCTOR<br>
-                Zeke Wattles
-              </p>
-              <p>
-                DEMOS<br>
-                <a href="https://editor.p5js.org/zekewattles/sketches" target="_blank">p5.js archive</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- class projects -->
-      <div class="col-md-8 pb-5">
-
-        <!-- spring 2023 -->
-        <div class="pb-2 pt-3" id="sp23">
-          <hr>
-          <h2>Spring 2023</h2>
-          <div class="row">
-            <div class="col">
-              <p>
-                STUDENTS<br>
-                <a href="#emma-shipley">Emma Shipley</a><br>
-                <a href="#nancy-gao">Nancy Gao</a><br>
-                <a href="#jeffrey-xiang-su">Jeffrey Xiang Su</a><br>
-                <a href="#daisy-ding">Daisy Ding</a><br>
-                <a href="#mikayla-gao">Mikayla Gao</a><br>
-                <a href="#ning-hong">Ning Hong</a><br>
-                <a href="#terry-liu">Terry Liu</a><br>
-              </p>
-            </div>
-            <div class="col">
-              <p>
-                TA<br>
-                <a href="https://chloezrn.work/" target="_blank">Chloe Zhang</a>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- emma shipley -->
-        <div class="pb-2 pt-3" id="emma-shipley">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/sp23/emma-shipley.jpg">
-              <source src="assets/sp23/emma-shipley.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Emma Shipley &mdash; Gridlock</h5>
-          </div>
-          <div>
-            <p>
-              Gridlock is an examination of the many graphic languages of Los Angeles and how these alternate design
-              practices—those that run parallel to traditional design—might inform our individual processes. This
-              year-long study represents my journey to understand and expand my own practice as a graphic designer, from
-              exploring new tools and technologies to breaking free from a screen-based practice.
-            </p>
-            <p>
-              The website encapsulates my research and explorations from the project. It is also home to the generative
-              sketch that showcases what is lost when we remove color and culture from the built environment. The sketch
-              is built into the web experience using p5.js and bootstrap.
-            </p>
-            <p>
-              WORK<br>
-              <a href="https://gridlockthesis.com/" target="_blank">View Microsite</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- nancy gao -->
-        <div class="pb-2 pt-3" id="nancy-gao">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/sp23/nancy-gao.jpg">
-              <source src="assets/sp23/nancy-gao.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Nancy Gao &mdash; Invisible Architecture</h5>
-          </div>
-          <div>
-            <p>
-              Invisible Architecture is a bamboo installation exhibition by the Starn twins. It’s the invisible
-              architecture of life and living things. It’s an organism that we are just a part of-helping it to develop
-              along. The growth is always unfinished, yet it is always complete and constant.
-            </p>
-            <p>
-              Bamboo is the fastest growing plant. People can build their own typographic bamboo sculpture when they
-              browse this website. As they scroll down the page, the “bamboo” will grow across the page, controlled by
-              your mouse, giving people an immersive experience of being inside this invisible architecture, which is
-              built by themselves.
-            </p>
-            <p>
-              WORK<br>
-              <a href="https://nancygxx.github.io/" target="_blank">View Microsite</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- jeffrey xiang su -->
-        <div class="pb-2 pt-3" id="jeffrey-xiang-su">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/sp23/jeffrey-xiang-su.jpg">
-              <source src="assets/sp23/jeffrey-xiang-su.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Jeffrey Xiang Su &mdash; DELVE Experience</h5>
-          </div>
-          <div>
-            <p>
-              The DELVE Experience is an imaginative web-based journey that immerses users in a dream simulation
-              inspired by the fictional DELVE technology from the team last dance’s AMS project. Harnessing the power of
-              p5.js and Three.js, this captivating experience engages users through a combination of visual and auditory
-              elements, culminating in a mesmerizing computer-generated short film set in a world where DELVE technology
-              shapes the story. The project’s primary goal is to investigate the possibilities of web-enabled immersive
-              experiences in entertainment and storytelling while broadening the skillset in 3D graphics using
-              JavaScript and WebGL.
-            </p>
-            <p>
-              WORK<br>
-              <a href="https://editor.p5js.org/xsu/full/ylb_bWzrX" target="_blank">View Sketch 1</a><br>
-              <a href="https://editor.p5js.org/xsu/full/mTGzjsXJP" target="_blank">View Sketch 2</a><br>
-              <a href="https://editor.p5js.org/xsu/full/HEurfYHYF" target="_blank">View Sketch 3</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- daisy ding -->
-        <div class="pb-2 pt-3" id="daisy-ding">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/sp23/daisy-ding-2.jpg">
-              <source src="assets/sp23/daisy-ding.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Daisy Ding &mdash; Forbidden Future</h5>
-          </div>
-          <div>
-            <p>
-              These generative typography animations are designed for an entry wall for an exhibition called Forbidden
-              Future which is about post-apocalyptic games. Post-apocalyptic games mostly tell stories of the extinction
-              of human civilization due to disasters. Abandoned technology, nature, and unknown creatures are always the
-              features of those games. In my design, microorganisms, the cycle of life, and the feeling of abandoned
-              human existence will be the main design elements to bring a sense of mystery to the audience when they
-              enter the exhibition.
-            </p>
-            <p>
-              WORK<br>
-              <a href="https://editor.p5js.org/Zding/sketches/ht9sNko8H" target="_blank">View Sketch 1</a><br>
-              <a href="https://editor.p5js.org/Zding/sketches/Is1br992j" target="_blank">View Sketch 2</a><br>
-              <a href="https://editor.p5js.org/Zding/sketches/4k6952us9" target="_blank">View Sketch 3</a><br>
-              <a href="https://editor.p5js.org/Zding/sketches/PFLeZT7oN" target="_blank">View Sketch 4</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- mikayla gao -->
-        <div class="pb-2 pt-3" id="mikayla-gao">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/sp23/mikayla-gao.jpg">
-              <source src="assets/sp23/mikayla-gao.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Mikalyla Gao &mdash; Night Reimagined</h5>
-          </div>
-          <div>
-            <p>
-              Night Reimagined is an exhibition at the Griffith Observatory to inspire audience to understand the
-              effects of light pollution and protect our night quality.
-            </p>
-            <p>
-              This project is part of the exhibition. It is an information graphic poster that allows audience to
-              interact with the information presented. By selecting different state names, audience can have a simple
-              understanding of light pollution situations in different states of the US, and be encouraged to take
-              action to protect our night sky.
-            </p>
-            <p>
-              The state names on the poster are connected with real data about light strength, night quality, sky
-              clarity, etc. All data used is real data from Globe at Night.
-            </p>
-            <p>
-              WORK<br>
-              <a href="https://editor.p5js.org/Zding/sketches/PFLeZT7oN" target="_blank">View Sketch</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- ning hong -->
-        <div class="pb-2 pt-3" id="ning-hong">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/sp23/ning-hong.jpg">
-              <source src="assets/sp23/ning-hong.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Ning Hong &mdash; Flowing Narrative</h5>
-          </div>
-          <div>
-            <p>
-              “Flowing Narrative” showcases the artistic vision of Lygia Pape, a pioneering Brazilian artist who pushed
-              the boundaries of traditional art forms to create dynamic and immersive experiences. Through her works,
-              Pape explored themes of movement, light, and the human experience, often incorporating unconventional
-              materials and techniques. This exhibition brings together a selection of Pape's most celebrated pieces,
-              including installations, sculptures, and prints, inviting the viewer to immerse themselves in the artist’s
-              poetic and captivating world. With “Flowing Narrative,” we celebrate Lygia Pape's enduring legacy as a
-              visionary artist who continues to inspire and challenge us with her extraordinary creativity.
-            </p>
-            <p>
-              The exhibition’s website offers an interactive experience that allows users to view introductions about
-              specific artworks. This unique feature presents a generative page containing elements from the artwork,
-              bridging between the art and digital formats.
-            </p>
-            <p>
-              WORK<br>
-              <a href="https://editor.p5js.org/NingNing2/sketches/zVEba67aH" target="_blank">View Sketch 1</a><br>
-              <a href="https://editor.p5js.org/NingNing2/sketches/bVGIIgqbc" target="_blank">View Sketch 2</a><br>
-              <a href="https://editor.p5js.org/NingNing2/sketches/v1B7oRAy9" target="_blank">View Sketch 3</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- terry liu -->
-        <div class="pb-2 pt-3" id="terry-liu">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/sp23/terry-liu.jpg">
-              <source src="assets/sp23/terry-liu.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Terry Liu &mdash; LA Phil</h5>
-          </div>
-          <div>
-            <p>
-              For my project is to interact and let people to play with the graphic element of sound. To let people play
-              with
-              circular form that connects with the half circle of the Hollywood Bowl as one of the venues that houses LA
-              Phil. In
-              my design I want people to play with immersive sound and circle graphic elements.
-            </p>
-            <p>
-              WORK<br>
-              <a href="https://editor.p5js.org/liuterry1994/sketches/c0fidLj-b" target="_blank">View Sketch</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- fall 2022 -->
-        <div class="pb-2 pt-3" id="fa22">
-          <hr>
-          <h2>Fall 2022</h2>
-          <div class="row">
-            <div class="col">
-              <p>
-                STUDENTS<br>
-                <a href="#kenny-zhang">Kenny Zhang</a><br>
-                <a href="#faris-khedro">Faris Khedro</a><br>
-                <a href="#grace-kim">Grace Kim</a><br>
-                <a href="#sahar-habashi">Sahar Habashi</a><br>
-                <a href="#shaw-xiao">Shaw Xiao</a><br>
-                <a href="#ashley-aceves">Ashley Aceves</a><br>
-                <a href="#chera-park">Chera Park</a><br>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- kenny zhang -->
-        <div class="pb-2 pt-3" id="kenny-zhang">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/fa22/kenny-zhang.jpg">
-              <source src="assets/fa22/kenny-zhang.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Kenny Zhang &mdash; A Hundred Thousand Billion Poems</h5>
-          </div>
-          <div>
-            <p>
-              A Hundred Thousand Billion Poems is a book by Raymond Queneau, published in 1961. It is built as a set of
-              10 sonnets, with each line on a separate strip that can be combined infinitely, for a total of
-              100,000,000,000,000 different poems.
-            </p>
-            <p>
-              This project uses generative typography that brings the book’s content into creative coding. By
-              reconstructing the 10 sonnets into an interactive 3D experience, it explores the intersection between poem
-              and code and the transformation of poems from print-based to code-based media.
-            </p>
-            <p>
-              WORK<br>
-              <a href="https://editor.p5js.org/milkenny/sketches/WhBmS1Luw" target="_blank">View Sketch 1</a><br>
-              <a href="https://editor.p5js.org/milkenny/sketches/_rVJE3OJP" target="_blank">View Sketch 2</a><br>
-              <a href="https://editor.p5js.org/milkenny/sketches/cTsWW7diV" target="_blank">View Sketch 3</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- faris khedro -->
-        <div class="pb-2 pt-3" id="faris-khedro">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/fa22/faris-khedro.jpg">
-              <source src="assets/fa22/faris-khedro.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Faris Khedro &mdash; ArcFest London</h5>
-          </div>
-          <div>
-            <p>
-              ArcFest is an identity system that celebrates the functional and creative purpose of the annual,
-              month-long festival dedicated to showcasing architecture and city-making. The website offers an
-              interactive 3D structure that allows users to explore the relationship of light, color, and space. The
-              light and color of the structure is affected by the time of day in London, UK.
-            </p>
-            <p>
-              WORK<br>
-              <a href="https://editor.p5js.org/fkhedro/sketches/IlgqEhQgV" target="_blank">View Sketch</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- grace kim -->
-        <div class="pb-2 pt-3" id="grace-kim">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/fa22/grace-kim.jpg">
-              <source src="assets/fa22/grace-kim.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Grace Kim &mdash; Duomo Module-Type Generator</h5>
-          </div>
-          <div>
-            <p>
-              The Duomo Museum (Museo del Duomo) originates inside the Duomo cathedral (Duomo di Milano) in Italy. They
-              are exhibiting heritage marble sculptures and paintings; This is where you can enjoy the beautiful colors
-              of sacred stained glass and artworks from over 600 years of history. I visited Duomo di Milano back in
-              2016 with my friend. I was amazed by the magnificent cathedral when I got out of the subway station. It
-              was one of the most beautiful pieces of architecture I had ever seen. Out of everything else, I loved the
-              geometric yet delicate architectural motifs the most.
-            </p>
-            <p>
-              The Duomo module-type generator’s main concept is creating a module type inspired by motifs from the
-              gothic Duomo cathedral. Each letter design produced from the generator will be part of the branding
-              deliverables in many applications. The primary touch point with the audience is at a ticket purchase
-              machine. Each museum customer can interact with the Duomo module-type generator by typing their name for
-              the ticket purchase to the exhibition. Audiences can choose between twelve module shapes and can control
-              their size, density, rotation, and background colors. Each of them will get their own uniquely designed
-              tickets as souvenirs before entering the cathedral and exhibition.
-            </p>
-            <p>
-              WORK<br>
-              <a href="https://editor.p5js.org/grace951203/sketches/wsFvZLytH" target="_blank">View Sketch</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- sahar habashi -->
-        <div class="pb-2 pt-3" id="sahar-habashi">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/fa22/sahar-habashi-2.jpg">
-              <source src="assets/fa22/sahar-habashi.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Sahar Habashi &mdash; Boiler Room x Subculture Party</h5>
-          </div>
-          <div>
-            <p>
-              Boiler Room teamed up with LA’s Subculture Party to put together an explosive weekend of hyperpop,
-              electronic, and experimental sounds. Having gone on Day 1, I thought it would be fun to take on the
-              overwhelming event that it was (in terms of sounds, visuals, and people), and translate it into posters of
-              my personal interpretation. I created a poster series that used sound visualization, mapping, and
-              TextToPoints; some of the key skills I learned in Gen Type and now feel that I can apply to future
-              projects.
-            </p>
-            <p>
-              WORK<br>
-              <a href="https://editor.p5js.org/saharhabashi/sketches/sPX1ARVmW" target="_blank">View Sketch 1</a><br>
-              <a href="https://editor.p5js.org/saharhabashi/sketches/HzXqY6h0k" target="_blank">View Sketch 2</a><br>
-              <a href="https://editor.p5js.org/saharhabashi/sketches/SAa_FlAr84" target="_blank">View Sketch 3</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- shaw xiao -->
-        <div class="pb-2 pt-3" id="shaw-xiao">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/fa22/shaw-xiao.jpg">
-              <source src="assets/fa22/shaw-xiao.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Shaw Xiao &mdash; Memory Nodes</h5>
-          </div>
-          <div>
-            <p>
-              By attempting to explore the indirect relationship between human interaction and graph systems, it
-              transforms human memory of network data into a visual experience.
-            </p>
-            <p>
-              This project aims to help people become aware of the sheer size of their private data and how easily it is
-              ignored, using typographic visualization to help people build their own “Internet memory nodes.”
-            </p>
-            <p>
-              WORK<br>
-              <a href="https://editor.p5js.org/yxiao6/sketches/jQqSYSr2o" target="_blank">View Sketch 1</a><br>
-              <a href="https://editor.p5js.org/yxiao6/sketches/iOJC0SUIn" target="_blank">View Sketch 2</a><br>
-              <a href="https://editor.p5js.org/yxiao6/sketches/KyaMCHmOO" target="_blank">View Sketch 3</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- ashley aceves -->
-        <div class="pb-2 pt-3" id="ashley-aceves">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/fa22/ashley-aceves.jpg">
-              <source src="assets/fa22/ashley-aceves.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Ashley Aceves &mdash; LA Coffee Festival</h5>
-          </div>
-          <div>
-            <p>
-              LACF identity - Los Angeles Coffee Festival celebrates LA's bustling and vibrant coffee scene. To do so,
-              this identity comes with an abstract generative typography to represent coffee. Los Angeles Coffee
-              Festival celebrates and serves those with a niche hobby. The variety of visuals will add identity. The
-              function can be used manually or typographical.
-            </p>
-            <p>
-              WORK<br>
-              <a href="https://editor.p5js.org/ash.ley/sketches/zfpd3QS1b" target="_blank">View Sketch</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- chera park -->
-        <div class="pb-2 pt-3" id="chera-park">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/fa22/chera-park.jpg">
-              <source src="assets/fa22/chera-park.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Chera Park &mdash; TRY-ME</h5>
-          </div>
-          <div>
-            <p>
-              Try-Me is an interactive design experience for the users at The Textile Museum. It is a customizable
-              souvenir postcard you can take home to remember your special visit. It includes all the artists that are
-              featured at the Museum and the museum’s unique logo.
-            </p>
-            <p>
-              Penny-pressed souvenirs have always been one of my go-to things to do when I’m somewhere new and I was
-              interested in making something like this that can be easy but a bit more personal. I wanted to create an
-              interactive experience where the user can directly participate in making their own souvenir, choosing
-              their own colors and layouts.
-            </p>
-            <p>
-              The vibrant colors and unique typeface go together to provide something that feels much more alive. There
-              is a random button to change the layouts that never land on the same layout more than once, a slider to
-              zoom in and out, and three sliders for the background colors. They are in RGB mode(Rslider, Gslider,
-              Bslider) from left to right. The designed postcard is also available to download as a png file.
-            </p>
-            <p>
-              WORK<br>
-              <a href="https://editor.p5js.org/chera.park/sketches/_fhd3u3ak" target="_blank">View Sketch 1</a><br>
-              <a href="https://editor.p5js.org/chera.park/sketches/sIPQKOtXL" target="_blank">View Sketch 2</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- summer 2022 -->
-        <div class="pb-2 pt-3" id="su22">
-          <hr>
-          <h2>Summer 2022</h2>
-          <div class="row">
-            <div class="col">
-              <p>
-                STUDENTS<br>
-                <a href="#veronica-tsai">Veronica Tsai</a><br>
-                <a href="#chloe-zhang">Chloe Zhang</a><br>
-                <a href="#jiayi-hu">Jiayi Hu</a><br>
-                <a href="#ruopei-xiao">Ruopei Xiao</a><br>
-                <a href="#sydney-lee">Sydney Lee</a><br>
-                <a href="#gloria-zhang">Gloria Zhang</a>
-              </p>
-            </div>
-            <div class="col">
-              <p>
-                TA<br>
-                Shine Chang
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- veronica tsai -->
-        <div class="pb-2 pt-3" id="veronica-tsai">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/su22/veronica-tsai.jpg">
-              <source src="assets/su22/veronica-tsai.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Veronica Tsai &mdash; Bloom</h5>
-          </div>
-          <div>
-            <p>
-              Bloom is an infographic, interactive experience for The
-              Huntington. It showcases its gardens and unique plants in a
-              playful, typographic way.
-            </p>
-            <p>
-              Analog making has always been a significant part of my creative
-              process. I am interested in combinging analog and generative
-              design methods, challenging myself to design a digital interface
-              with an organic aesthetic.
-            </p>
-            <p>
-              Bloom uses hand drawn illustrations of plants from The
-              Huntington's different gardens as units that formulate the names
-              of the gardens. Users can use the arrow keys to visit different
-              virtual gardens.
-            </p>
-            <p>
-              The sketch mainly uses the Geomerative and peasycam libraries.
-              The Geomerative library turns the outlines of the letters into
-              points. The points are replaced by the illustration PNGs.
-              Peasycam allows users to rotate and zoom in and out of the
-              gardens to observe the sketch from different angles.
-            </p>
-          </div>
-        </div>
-
-        <!-- chloe zhang -->
-        <div class="pb-2 pt-3" id="chloe-zhang">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/su22/chloe-zhang.jpg">
-              <source src="assets/su22/chloe-zhang.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Chloe Zhang &mdash; FLEE</h5>
-          </div>
-          <div>
-            <p>
-              FLEE is a brand identity generator designed to give flea market
-              vendors the freedom to create their own visual identities and
-              collateral.
-            </p>
-            <p>
-              The name "FLEE" is inspired by the timelessness of flea markets,
-              encouraging shoppers to escape from the present and travel to
-              different eras.
-            </p>
-            <p>
-              FLEE's vintage funky colors and random variations provide a
-              unique playfulness that current flea market identities usually
-              lack. The generator contains six different types of brushes, a
-              clear canvas function, and a save image function. The user can
-              also create with a scatter brush, a sticker brush, and a typing
-              brush in the generator.
-            </p>
-          </div>
-        </div>
-
-        <!-- jiayi hu -->
-        <div class="pb-2 pt-3" id="jiayi-hu">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/su22/jiayi-hu.jpg">
-              <source src="assets/su22/jiayi-hu.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Jiayi Hu &mdash; >X</h5>
-          </div>
-          <div>
-            <p>
-              >X is an experimental typeface design project. Through
-              processing, this project built a physical font system using
-              Geomerative and Fisica. Just like the skeleton binding of the
-              animation, the anchor points on the outer outline of the font
-              are bound by joints, giving the dynamic font more variability
-              and organic feel. This visual system discusses the possibility
-              of giving type and graphics a spontaneous and flexible
-              characteristic.
-            </p>
-          </div>
-        </div>
-
-        <!-- ruopei xiao -->
-        <div class="pb-2 pt-3" id="ruopei-xiao">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/su22/ruopei-xiao.jpg">
-              <source src="assets/su22/ruopei-xiao.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Ruopei Xiao &mdash; FLOC|&lt;</h5>
-          </div>
-          <div>
-            <p>
-              FLOC|&lt; explores whether linkages exist between variation in
-              migration timing and subsequent changes in population size.
-            </p>
-            <p>
-              FLOC|&lt; is a data visualization of birding activities to
-              present the knowledge of migratory behavior to inspire birders
-              and scientists as well as to support decisions about
-              conservation actions on the ground.
-            </p>
-          </div>
-        </div>
-
-        <!-- sydney lee -->
-        <div class="pb-2 pt-3" id="sydney-lee">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/su22/sydney-lee.jpg">
-              <source src="assets/su22/sydney-lee.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Sydney Lee &mdash; Storm King Art Center</h5>
-          </div>
-          <div>
-            <p>
-              Storm King Art Center is dedicated to exhibiting, acquiring,
-              borrowing, and conserving modern art and contemporary art. The
-              focus on large-scale sculptures in an expansive landscape, to
-              create a dynamic and unique place for you to explore art and
-              nature.
-            </p>
-            <p>
-              The phrase "connect to art, connect to nature" is a brand
-              narrative. Storm King Art Center nurtures a vibrant bond between
-              art, nature, and people, creating a place where discovery is
-              limitless. Each small particles used in the design represents
-              art, nature, and people, vibrantly bonding to connect to each
-              other to form the phrase "connect to art, connect to nature".
-            </p>
-            <p>
-              The custom typeface has been designed to be responsive and
-              activated by motion. To achieve this, the typeface was put into
-              code and synced with the movement so that the particles
-              responded to the movement.
-            </p>
-          </div>
-        </div>
-
-        <!-- gloria zhang -->
-        <div class="pb-2 pt-3" id="gloria-zhang">
-          <hr>
-          <div id="trailer" class="embed-responsive embed-responsive-16by9 pb-3">
-            <video class="embed-responsive-item" controls loop playsinline width="100%"
-              poster="assets/su22/gloria-zhang.jpg">
-              <source src="assets/su22/gloria-zhang.mp4" type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          </div>
-          <div class="pb-2">
-            <h5>Gloria Zhang &mdash; 88rising</h5>
-          </div>
-          <div>
-            <p>
-              88rising is a company that has gained popularity as a musical
-              platform and record label primarily for Asian American and Asian
-              artists who release music in the United States. The founder of
-              88rising hopes the music it produced can bridge the gap between
-              Asian and American music. Keeping producing experimental music
-              going viral among young generations, 88rising gathers talented
-              music artists to create new trends in pop culture.
-            </p>
-            <p>
-              This project is an exploration of music visualization inspired
-              by the 88rising brand along with Head in the Clouds the music
-              event curated by it. All the music-reacting animations were made
-              on Processing. The music is from Blank&Jones, named Winelight.
-              All the background images and footage were materials found on
-              the Internet.
-            </p>
-          </div>
-        </div>
-
-        <!-- back to top button -->
-        <div class="pb-2 pt-3 text-center">
-          <a href="#top">↑ Back to top</a>
-        </div>
-
-        <!-- end of class projects -->
+    <!-- INFO -->
+    <button class="accordion">INFO</button>
+    <div class="panel">
+      <div class="panel-inner">
+        <p>
+          Generative Typography is a 14-week ArtCenter course on <a href="https://editor.p5js.org/zekewattles/sketches"
+            target="_blank">p5.js</a>. Through a series of demos, students learn to build their own code-based tools for
+          graphic design and incorporate them into their other school or personal projects. The goal is for students to
+          build their coding confidence and start thinking more systematically about design.
+        </p>
+        <p>Instructor: Zeke Wattles</p>
       </div>
     </div>
-  </div>
-  <!-- bootstrap script -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-    crossorigin="anonymous"></script>
 
-  <!-- theme script -->
-  <script src="theme-toggle.js"></script>
+    <!-- SP24 -->
+    <button class="accordion">SP24</button>
+    <div class="panel">
+
+      <!-- Elliana Lee -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp24/elliana-lee.jpeg">
+            <source src="assets/sp24/elliana-lee.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Elliana Lee &mdash; Live! From the Archive</h2>
+        <p>
+          Live! From the Archive, is a month-long annual event that facilitates dialogue between historical founding
+          artists of The Kitchen and contemporary curators and artists, and critics.
+        </p>
+        <p>
+          This installation at this event is by the entrance outside where there are lots of passerbyers. Promoting the
+          Live! From the Archive! event, and the dancers and choreography performances by using posenet and machine
+          learning in javascript. I bring the letterforms of the event, and have them assigned to each body part.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/leeelliana/collections/IKPYhZsOX" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Tori Kwon -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp24/tori-kwon.jpg">
+            <source src="assets/sp24/tori-kwon.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Tori Kwon &mdash; LightScapes</h2>
+        <p>
+          LightScapes is a data-driven interactive installation for the Ocma. This piece is a visual representation of
+          time. Using a historical history API, the data for hours of daylight in a day is collected and then translated
+          into a visual language.
+        </p>
+        <p>
+          What happens if we look at this data set at different scales? How does one day compare to one century? What is
+          your reaction to this, does your perception of time change? Do you react to this emotionally, intellectually,
+          or physically?
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/torikwonn/full/NtujkAi5I" target="_blank">View Sketch: 1D &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/torikwonn/full/NtujkAi5I" target="_blank">View Sketch: 1W &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/torikwonn/full/Ny8pVV3gl" target="_blank">View Sketch: 3M &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/torikwonn/full/xIVMHtgE4" target="_blank">View Sketch: 6M &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/torikwonn/full/qRdqd_N7a" target="_blank">View Sketch: 1Y &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/torikwonn/full/CExE0BS2p" target="_blank">View Sketch: 10Y &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/torikwonn/full/nVzPa8kES" target="_blank">View Sketch: 100Y &#x2192;</a>
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/torikwonn/full/s14pBFN5o" target="_blank">View Sketch: Title &#x2192;</a>
+        </p>
+
+
+
+      </div>
+
+      <!-- Jia Liu -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp24/jia-liu.jpeg">
+            <source src="assets/sp24/jia-liu.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Jia Liu &mdash; Interwoven</h2>
+        <p>
+          Interwoven is an upcoming solo exhibition by Samantha Bittman at MCASD, showcasing her unique approach to
+          textile art. Bittman’s works blend traditional craftsmanship with digital design, creating a fascinating
+          interplay between the physical and the virtual. Her intricate geometric patterns, initially conceived using
+          digital tools like Photoshop and Illustrator, are meticulously hand-woven and further enhanced with acrylic
+          paint, resulting in captivating textures and material qualities.
+        </p>
+        <p>
+          Through this exhibition, viewers are invited to engage with the concept of “weaving” in a novel and
+          interactive way. A digital loom, created using P5JS, allows users to draw patterns on a canvas using their
+          mouse, mimicking the motion of a shuttle. As the mouse glides across the vertical lines on the screen,
+          patterns emerge, enabling users to create their own digital textile works. This immersive experience offers a
+          unique exploration of the relationship between the physical and the digital, inviting viewers to appreciate
+          the art of weaving from a fresh perspective.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/RacheLiuuu/full/P8M8qfpHR" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Minhyung Eom -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp24/minhyung-eom.jpg">
+            <source src="assets/sp24/minhyung-eom.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Minhyung Eom &mdash; BeatLab</h2>
+        <p>
+          BeatLab, a workshop under MUSE:IQUE, embodies the belief that live music should be accessible to all. The
+          design for Beat Lab aims to convey a sense of fun and inclusivity, using vibrant visuals to encapsulate the
+          workshop’s dynamic and welcoming atmosphere.
+        </p>
+        <p>
+          The purpose of the BeatLab website is to provide an immersive digital platform where users can engage with a
+          wide array of object sounds at the touch of a keyboard.
+        </p>
+        <p>
+          The BeatLab installation is specifically designed to introduce and demystify the workshop’s musical concepts
+          to newcomers. This engaging setup serves as both an educational tool and a source of inspiration, making the
+          world of music creation accessible to those unfamiliar with the workshop’s offerings.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/mingeom/full/PosSO4XpK" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Addis Barge -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp24/addis-barge.jpg">
+            <source src="assets/sp24/addis-barge.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Addis Barge &mdash; Cornrow Cartography Generator</h2>
+        <p>
+          CAAM invites users to delve into the intersection of history, culture, and technology through Cornrow
+          Cartography, a form of ancestral technology.
+        </p>
+        <p>
+          By engaging with the Cornrow Cartography Generator, viewers will gain insight into the historical significance
+          of cornrow cartography and its profound connection to Black hair. Indeed, hair holds profound cultural
+          significance beyond its physical form.
+        </p>
+        <p>
+          What can be discovered if we used cornrow cartography to navigate, and visualize the future?
+        </p>
+        <p>
+          The Cornrow Cartography Generator, part of CAAM’s Ancestral Tech Archive, provides a platform for users to
+          generate intricate digital cornrow designs. These patterns are abstract navigation, offering a unique visual
+          mapping of cornrows as technology.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/imaddis/full/6aYrkKwqf" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Tae Hyun Kim -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp24/tae-hyun-kim.jpg">
+            <source src="assets/sp24/tae-hyun-kim.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Tae Hyun Kim &mdash; The Pink Awakening</h2>
+        <p>
+          The Pink Awakening examines the return to girlhood as a prominent trend in 2023 continuing into 2024.
+          Characterized by elements like bows and a predominant use of pink, the trend can be analyzed through various
+          lenses and forms of media, including nostalgia and escapism.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/tkim44/full/iHxDjwAhl" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Jean Wang -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp24/jean-wang.jpeg">
+            <source src="assets/sp24/jean-wang.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Jean Wang &mdash; Images Festival</h2>
+        <p>
+          Images Festival is a year round, experimental independent film festival. Through the process of experimenting
+          a new identity that expands traditional definitions of media art, I utilized creative coding that resulted in
+          creative branding tools. The art generator in this project inputs still frames from the films as the art
+          brush, letting the audience repurpose them to create new artworks.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/jjjw/full/boUDK0ZUj" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Umang Ahluwalia -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp24/umang-ahluwalia.jpg">
+            <source src="assets/sp24/umang-ahluwalia.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Umang Ahluwalia &mdash; ARKTOS</h2>
+        <p>
+          ARKTOS is a collaboration between Arctic Ice Project and RAINS. The collaboration aims to raise awareness of
+          the global climate change crisis we are currently in. Using p5.js, exhibition graphics were developed that
+          expand on the existing visual language and bring the weather conditions of the Arctic as well as the world to
+          the visitors of a pop up exhibition in New York City. The pop up exhibition creates a space for information,
+          statistics and internal reflection.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/uahluwalia-agate/full/q8IXjoFTP" target="_blank">View Sketch 1 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/uahluwalia-agate/full/Ir8iXGLf2" target="_blank">View Sketch 2 &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Grace Hwang -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp24/grace-hwang.jpg">
+            <source src="assets/sp24/grace-hwang.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Grace Hwang &mdash; Pioneer PlayLab</h2>
+        <p>
+          This is part of the rebranding project for Pioneer Works in the type 5 class.
+        </p>
+        <p>
+          Pioneer Works is a cultural space in New York, where artists and scientists come together to create new ideas.
+          They aim to foster artists at the intersection of art, music, science, and technology. They provide many
+          events and activities, exhibitions, and residency programs.
+        </p>
+        <p>
+          The reason why I chose this organization is Because I wanted it to explore the harmony between art and
+          technology. I was curious about the connection between the two. Also, I was interested in their point of view
+          that Science is a part of the culture and they value the cultural impact of scientific thinking.
+        </p>
+        <p>
+          In this project, I built an interactive installation for the annual event called Pioneer Play Lab. Play lab is
+          an event that celebrates residency works and people can join and be immersed in the interplay between art and
+          technology. This installation is going to be at the entrance of the space. The installation concept brings the
+          interaction between technology and art to life, creating an immersive experience. When users walk by, the
+          image of an artist’s piece is heightened and pops up in an interactive form. I want people to be more engaged
+          in these events and also get some overview of the events like which artists are participating.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/hjeongwon916/full/SCde_sIh2" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Mo Wang -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp24/mo-wang.jpeg">
+            <source src="assets/sp24/mo-wang.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Mo Wang &mdash; Paper Airplane</h2>
+        <p>
+          Paper Airplane, the city walk app that turns every step into a story. As you explore the city, our app
+          uncovers hidden tales and personal memories that others have left behind, transforming your stroll into an
+          engaging narrative journey. Whether you’re discovering local legends or sharing your own experiences, Paper
+          Airplane enriches your walks with community stories and connects you more deeply to each place. It’s not just
+          about moving through the city&mdash;it’s about moving through layers of shared history and personal
+          connections.
+          Dive into Paper Airplane, where every walk reveals a new chapter of the city’s living story </p>
+        <p>
+          <a href="https://editor.p5js.org/Mo0/full/VGm8oPZtO" target="_blank">View Sketch 1 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/Mo0/full/KeYF51t-jD" target="_blank">View Sketch 2 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/Mo0/full/d7F8tz1l4" target="_blank">View Sketch 3 &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- END OF SEMESTER -->
+    </div>
+
+    <!-- FA23 -->
+    <button class="accordion">FA23</button>
+    <div class="panel">
+
+      <!-- Zitong Wang -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa23/zitong-wang.jpg">
+            <source src="assets/fa23/zitong-wang.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Zitong Wang &mdash; Scent Chords</h2>
+        <p>
+          The Contemporary Craft Center is a place that enthusiastically embraces and promotes the exploration of a wide
+          range of unique craft materials, inviting people to unleash their endless creativity and bring their artistic
+          visions to life.
+        </p>
+        <p>
+          Scent Chords is an experimental lab situatedwithin the Contemporary Craft Center. While it draws the
+          inspiration from the pioneering 19th-century chemist and perfumer, Septimus Piesse, as it delves into the
+          intriguing fusionof craft, sound, and smell.
+        </p>
+        <p>
+          There are two parts about the project:
+        </p>
+        <p>
+          1. Personalized Postcard Creation with p5.js
+        </p>
+        <p>
+          With the p5.js code provided, users have the ability to craft their unique postcards featuring specially
+          designed fonts. The customization options include adjusting various pitches using sliders, selecting preferred
+          colors, and adding personalized text.
+        </p>
+        <p>
+          Once the postcard is tailored to individual preferences, users can save their creation and easily print it out
+          for a tangible keepsake.
+        </p>
+        <p>
+          2. The Processing and Arduino-Powered Musical Installation
+        </p>
+        <p>
+          Inspired by Piesse’s ‘Odophone,’ the theory linking smells to Western musical pitches, this project focuses on
+          seven pitches and their corresponding scents. The innovative design aims to visually represent each sound and
+          scent through fluid simulation. Simultaneously, the system integrates a color-coding scheme, with each
+          sound-smell pair having an associated color. The device activates a humidifier to emit the scent whenever the
+          corresponding color fluid is drawn on the screen. Additional buttons provide the flexibility to change the
+          color choice, enhancing the multisensory experience of this interactive musical installation.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/zwang30/full/iLY14kLbz" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Elton Tinoco -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa23/elton-tinoco.jpg">
+            <source src="assets/fa23/elton-tinoco.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Elton Tinoco &mdash; Literati Composer</h2>
+        <p>
+          Literati Composer is a user-friendly postcard/poster generator that allows individuals to effortlessly create
+          small 4-inch x 6-inch postcards or scale up to 24- inch x 36-inch posters. This innovative tool features
+          inspiring author quotes or enables users to craft custom messages. It’s seamlessly designed for use within the
+          Los Angeles Central Library’s Octavia Lab.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/etinoco/full/LzikQYXwp" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Mikayla Gao -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa23/mikayla-gao.jpg">
+            <source src="assets/fa23/mikayla-gao.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Mikayla Gao &mdash; PA Member Card Generator</h2>
+        <p>
+          The PA Member Card Generator is an interactive design experience. The main idea behind the design was to
+          embody the essence of the Pacific Ocean.
+        </p>
+        <p>
+          The concept came from a desire to create bonds and community between the audience and the aquarium. This
+          project aims to attract visitors to the aquarium’s membership program by providing a novel and customized user
+          experience. That allows members to create their own customized cards.
+        </p>
+        <p>
+          This generator allows for a variety of options: three font types, four patterns, unit scale, density, also
+          font and background colors.
+        </p>
+        <p>
+          This DIY method is available on the Pacific Aquarium website as an online version and can be found at the
+          Aquarium Store as a physical screen.
+        </p>
+        <p>
+          The generated design and typography become part of the Pacific Aquarium’s brand delivery, enhancing its
+          identity and the community aspect of audience connection. The program is not only an innovative approach to
+          generative typography but also a strategic idea for the Pacific Aquarium to enhance brand engagement and
+          customer experience.
+        </p>
+        <p>
+          This Generator used different designs developed on p5.js, and later integrated and organized them using
+          Processing to improve rendering efficiency and performance.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/gmy20021023/full/y3igmcf96" target="_blank">View Sketch 1 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/gmy20021023/full/CTmPpn1pk" target="_blank">View Sketch 2 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/gmy20021023/full/ubzrtKzC6" target="_blank">View Sketch 3 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/gmy20021023/full/OEU3rlKdE" target="_blank">View Sketch 4 &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Grace Johnson -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa23/grace-johnson.jpeg">
+            <source src="assets/fa23/grace-johnson.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Grace Johnson &mdash; Cinespia</h2>
+        <p>
+          Cinespia is LA’s first and longest running outdoor screening series. This trailer promotes a hypothetical
+          themed month of “Teen Apocalypse” films that would be screened at Hollywood Forever Cemetery. 8 different
+          generative type sketches inspired by the 8 films are layered over corresponding clips.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/gjohnson7/full/h8UJKajOD" target="_blank">View Sketch 1 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/gjohnson7/full/mNutO6_jY" target="_blank">View Sketch 2 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/gjohnson7/full/JfEBeHHmv" target="_blank">View Sketch 3 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/gjohnson7/full/fXjBz9I7n" target="_blank">View Sketch 4 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/gjohnson7/full/m9csgzOTq" target="_blank">View Sketch 5 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/gjohnson7/full/fwUUkrhSJ" target="_blank">View Sketch 6 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/gjohnson7/full/1NpaHku8O" target="_blank">View Sketch 7 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/gjohnson7/full/7BQ3Fhq4D" target="_blank">View Sketch 8 &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Jacob Ruiz -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa23/jacob-ruiz.jpeg">
+            <source src="assets/fa23/jacob-ruiz.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Jacob Ruiz &mdash; Portola Music Festival Visualizers</h2>
+        <p>
+          The Portola Music Festival is San Francisco’s first electronic music festival. It is known for bringing
+          musicians and artists from around the world to perform and exchange positive energy and fre- quencies through
+          music.
+        </p>
+        <p>
+          At the festival, visualizers are an essential component to the overall experience. The concept of having a
+          booth where attendees can control live visualizers for their favorite artist was the main goal to achieve.
+        </p>
+        <p>
+          These visualizers have particular pre-sets that allow a specific variable to change so the user does not
+          exceed what is necessary for the artist who is performing. With each visualizer being sound reactive, there is
+          a constant change in each sketch which will allow for never ending stimulation as long as theres music
+          playing.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/jruiz5/full/ni2TDc-OC" target="_blank">View Sketch 1 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/jruiz5/full/mxXapC8fH" target="_blank">View Sketch 2 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/jruiz5/full/Ydv1V-Y9z" target="_blank">View Sketch 3 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/jruiz5/full/YnXsQQ90F" target="_blank">View Sketch 4 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/jruiz5/full/X8BB5y80B" target="_blank">View Sketch 5 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/jruiz5/full/56TNu0lwt" target="_blank">View Sketch 6 &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Peace Park -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa23/peace-park.jpg">
+            <source src="assets/fa23/peace-park.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Peace Park &mdash; KCRW</h2>
+        <p>
+          KCRW is a radio station based in LA, dedicated to reforming cultural connections and creative landscapes for
+          Los Angelenos. The key elements for redesigning KCRW involve mixed culture transformation and reflection.
+          Blurred and noisy effects on the typography represent the fusion of diverse cultures in Los Angeles, creating
+          something new through transformation and mixed culture.
+        </p>
+        <p>
+          Using P5.js, you can dynamically adjust the blur effect in sync with the sound’s key elements and use scaling
+          to express rhythm more effectively, drawing inspiration from KCRW.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/ppark1/full/ThOEVn1Ea" target="_blank">View Sketch 1 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/ppark1/full/51GI_oI5I" target="_blank">View Sketch 2 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/ppark1/full/MJoBf05E7" target="_blank">View Sketch 3 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/ppark1/full/-6UYf78s6" target="_blank">View Sketch 4 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/ppark1/full/FyRx04UaA" target="_blank">View Sketch 5 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/ppark1/full/0Gxg8-wkx" target="_blank">View Sketch 6 &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Christina Liu -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa23/christina-liu.jpeg">
+            <source src="assets/fa23/christina-liu.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Christina Liu &mdash; Mood Poster Generator</h2>
+        <p>
+          The Mood Poster Generator is a poster creation tool built on p5.js, designed to detect the user’s mood and
+          generate corresponding posters. The user’s mood data is acquired through a temperature sensor. The visual
+          elements of the poster are adjusted to reflect the user’s mood dynamically. For higher temperatures, the
+          poster adopts warmer colors and more rounded shapes to convey a sense of happiness and warmth. Conversely,
+          lower temperatures result in the use of cooler colors and more rectangular shapes to evoke a cool feeling.
+        </p>
+        <p>
+          The temperature sensor incorporates Adafruit’s sensor in conjunction with Arduino and utilizes p5.js’s serial
+          port for data transmission to p5.js. Subsequently, p5.js maps the temperature data to a specific range,
+          generating shape probabilities based on the mapped values.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/yfchristina/full/akib1tSB0" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Orlando Li -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa23/christina-liu.jpeg">
+            <source src="assets/fa23/christina-liu.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Orlando Li &mdash; Body Tracking Fabric Generator</h2>
+        <p>
+          H. Lorenzo is a fashion boutique known for curating avant-garde and high-end designer clothing. It’s
+          recognized for its unique selection of clothing, often featuring cutting-edge designs and emerging designers
+          alongside established luxury brands.
+        </p>
+        <p>
+          I’ve crafted an avant-garde brand tone in my branding project, blending elegance and simplicity into the
+          exclusive H Type font for H.Lorenzo. Beyond this, I aspire to elevate our brand’s spatial design, inviting
+          customers into an immersive experience that embodies unconventional attitudes.
+        </p>
+        <p>
+          From the perspective of materials, I used different curves to create the effect of cloth and controlled the
+          movement of the shape through the X and Y axes of the mouse to bring about different dynamics. At the same
+          time, I added sliders to the code to control the shape and color. From black and white to primary color.</p>
+        <p>
+          I then added key press controls, using ‘b’ and ‘w’ to change the theme color of the background, ‘backspace’ to
+          clear the content on the canvas, ‘up’ and ‘down’ to control the speed of shape generation, and ‘f’ to Stop
+          generation, ‘p’ turns on full screen mode and ‘s’ to save pattern.
+        </p>
+        <p>
+          After all that, I feel mouse movement is not enough and I added body tracking model ml5 to my code to use
+          camera tracking body as the source that driven pattern generation.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/orlandoli/full/0TMiol5UI" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Lucas Shi -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa23/lucas-shi.jpg">
+            <source src="assets/fa23/lucas-shi.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Lucas Shi &mdash; CES</h2>
+        <p>
+          CES is an annual electronic trading show that brings newly released technologies to change peoples’ lives.
+          Using p5.js, I created a generative branding tool that allows for randomness and flexibility. CES is a
+          future-thinking expo with cutting edge technology, so I wanted the identity to reflect that by using
+          code-based tools.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/qilinshi/full/mws2QEtdB" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Eunsol Shim -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa23/eunsol-shim.jpeg">
+            <source src="assets/fa23/eunsol-shim.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Eunsol Shim &mdash; SOUND CAN KILL YOU</h2>
+        <p>
+          This is visualization art using PhpStorm based on the sound decibel (dB). Particle numbers and shapes are
+          expressed with the matching object by the level and effects of sound. At the death level of sound, the screen
+          becomes black like game over. This is following the unconventional way of magazine WIRED’s information
+          sharing. This visualization of sound effects on humans will be displayed in WIRED’s website as interaction
+          with audience about technology and sound.
+        </p>
+      </div>
+
+      <!-- END OF SEMESTER -->
+    </div>
+
+    <!-- SP23 -->
+    <button class="accordion">SP23</button>
+    <div class="panel">
+
+      <!-- Emma Shipley -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp23/emma-shipley.jpg">
+            <source src="assets/sp23/emma-shipley.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Emma Shipley &mdash; Gridlock</h2>
+        <p>
+          Gridlock is an examination of the many graphic languages of Los Angeles and how these alternate design
+          practices&mdash;those that run parallel to traditional design&mdash;might inform our individual processes.
+          This
+          year-long study represents my journey to understand and expand my own practice as a graphic designer, from
+          exploring new tools and technologies to breaking free from a screen-based practice.
+        </p>
+        <p>
+          The website encapsulates my research and explorations from the project. It is also home to the generative
+          sketch that showcases what is lost when we remove color and culture from the built environment. The sketch
+          is built into the web experience using p5.js and bootstrap.
+        </p>
+        <p>
+          <a href="https://gridlockthesis.com/" target="_blank">View Microsite &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Nancy Gao -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp23/nancy-gao.jpg">
+            <source src="assets/sp23/nancy-gao.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Nancy Gao &mdash; Invisible Architecture</h2>
+        <p>
+          Invisible Architecture is a bamboo installation exhibition by the Starn twins. It’s the invisible
+          architecture of life and living things. It’s an organism that we are just a part of-helping it to develop
+          along. The growth is always unfinished, yet it is always complete and constant.
+        </p>
+        <p>
+          Bamboo is the fastest growing plant. People can build their own typographic bamboo sculpture when they
+          browse this website. As they scroll down the page, the “bamboo” will grow across the page, controlled by
+          your mouse, giving people an immersive experience of being inside this invisible architecture, which is
+          built by themselves.
+        </p>
+        <p>
+          <a href="https://nancygxx.github.io/" target="_blank">View Microsite &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Jeffrey Xiang Su -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp23/jeffrey-xiang-su.jpg">
+            <source src="assets/sp23/jeffrey-xiang-su.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Jeffrey Xiang Su &mdash; DELVE Experience</h2>
+        <p>
+          The DELVE Experience is an imaginative web-based journey that immerses users in a dream simulation
+          inspired by the fictional DELVE technology from the team last dance’s AMS project. Harnessing the power of
+          p5.js and Three.js, this captivating experience engages users through a combination of visual and auditory
+          elements, culminating in a mesmerizing computer-generated short film set in a world where DELVE technology
+          shapes the story. The project’s primary goal is to investigate the possibilities of web-enabled immersive
+          experiences in entertainment and storytelling while broadening the skillset in 3D graphics using
+          JavaScript and WebGL.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/xsu/full/ylb_bWzrX" target="_blank">View Sketch 1 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/xsu/full/mTGzjsXJP" target="_blank">View Sketch 2 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/xsu/full/HEurfYHYF" target="_blank">View Sketch 3 &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Daisy Ding -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp23/daisy-ding.jpg">
+            <source src="assets/sp23/daisy-ding.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Daisy Ding &mdash; Forbidden Future</h2>
+        <p>
+          These generative typography animations are designed for an entry wall for an exhibition called Forbidden
+          Future which is about post-apocalyptic games. Post-apocalyptic games mostly tell stories of the extinction
+          of human civilization due to disasters. Abandoned technology, nature, and unknown creatures are always the
+          features of those games. In my design, microorganisms, the cycle of life, and the feeling of abandoned
+          human existence will be the main design elements to bring a sense of mystery to the audience when they
+          enter the exhibition.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/Zding/full/ht9sNko8H" target="_blank">View Sketch 1 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/Zding/full/Is1br992j" target="_blank">View Sketch 2 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/Zding/full/4k6952us9" target="_blank">View Sketch 3 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/Zding/full/PFLeZT7oN" target="_blank">View Sketch 4 &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Mikalyla Gao -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp23/mikayla-gao.jpg">
+            <source src="assets/sp23/mikayla-gao.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Mikalyla Gao &mdash; Night Reimagined</h2>
+        <p>
+          Night Reimagined is an exhibition at the Griffith Observatory to inspire audience to understand the
+          effects of light pollution and protect our night quality.
+        </p>
+        <p>
+          This project is part of the exhibition. It is an information graphic poster that allows audience to
+          interact with the information presented. By selecting different state names, audience can have a simple
+          understanding of light pollution situations in different states of the US, and be encouraged to take
+          action to protect our night sky.
+        </p>
+        <p>
+          The state names on the poster are connected with real data about light strength, night quality, sky
+          clarity, etc. All data used is real data from Globe at Night.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/Zding/full/PFLeZT7oN" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Ning Hong -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp23/ning-hong.jpg">
+            <source src="assets/sp23/ning-hong.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Ning Hong &mdash; Flowing Narrative</h2>
+        <p>
+          “Flowing Narrative” showcases the artistic vision of Lygia Pape, a pioneering Brazilian artist who pushed
+          the boundaries of traditional art forms to create dynamic and immersive experiences. Through her works,
+          Pape explored themes of movement, light, and the human experience, often incorporating unconventional
+          materials and techniques. This exhibition brings together a selection of Pape's most celebrated pieces,
+          including installations, sculptures, and prints, inviting the viewer to immerse themselves in the artist’s
+          poetic and captivating world. With “Flowing Narrative,” we celebrate Lygia Pape's enduring legacy as a
+          visionary artist who continues to inspire and challenge us with her extraordinary creativity.
+        </p>
+        <p>
+          The exhibition’s website offers an interactive experience that allows users to view introductions about
+          specific artworks. This unique feature presents a generative page containing elements from the artwork,
+          bridging between the art and digital formats.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/NingNing2/full/zVEba67aH" target="_blank">View Sketch 1 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/NingNing2/full/bVGIIgqbc" target="_blank">View Sketch 2 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/NingNing2/full/v1B7oRAy9" target="_blank">View Sketch 3 &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Terry Liu -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/sp23/terry-liu.jpg">
+            <source src="assets/sp23/terry-liu.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Terry Liu &mdash; LA Phil</h2>
+        <p>
+          For my project is to interact and let people to play with the graphic element of sound. To let people play
+          with circular form that connects with the half circle of the Hollywood Bowl as one of the venues that houses
+          LA Phil. In my design I want people to play with immersive sound and circle graphic elements.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/liuterry1994/full/c0fidLj-b" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- END OF SEMESTER -->
+    </div>
+
+    <!-- FA22 -->
+    <button class="accordion">FA22</button>
+    <div class="panel">
+
+      <!-- Kenny Zhang -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa22/kenny-zhang.jpg">
+            <source src="assets/fa22/kenny-zhang.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Kenny Zhang &mdash; A Hundred Thousand Billion Poems</h2>
+        <p>
+          A Hundred Thousand Billion Poems is a book by Raymond Queneau, published in 1961. It is built as a set of
+          10 sonnets, with each line on a separate strip that can be combined infinitely, for a total of
+          100,000,000,000,000 different poems.
+        </p>
+        <p>
+          This project uses generative typography that brings the book’s content into creative coding. By
+          reconstructing the 10 sonnets into an interactive 3D experience, it explores the intersection between poem
+          and code and the transformation of poems from print-based to code-based media.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/milkenny/full/WhBmS1Luw" target="_blank">View Sketch 1 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/milkenny/full/_rVJE3OJP" target="_blank">View Sketch 2 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/milkenny/full/cTsWW7diV" target="_blank">View Sketch 3 &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Faris Khedro -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa22/faris-khedro.jpg">
+            <source src="assets/fa22/faris-khedro.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Faris Khedro &mdash; ArcFest London</h2>
+        <p>
+          ArcFest is an identity system that celebrates the functional and creative purpose of the annual,
+          month-long festival dedicated to showcasing architecture and city-making. The website offers an
+          interactive 3D structure that allows users to explore the relationship of light, color, and space. The
+          light and color of the structure is affected by the time of day in London, UK.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/fkhedro/full/IlgqEhQgV" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Grace Kim -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa22/grace-kim.jpg">
+            <source src="assets/fa22/grace-kim.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Grace Kim &mdash; Duomo Module-Type Generator</h2>
+        <p>
+          The Duomo Museum (Museo del Duomo) originates inside the Duomo cathedral (Duomo di Milano) in Italy. They
+          are exhibiting heritage marble sculptures and paintings; This is where you can enjoy the beautiful colors
+          of sacred stained glass and artworks from over 600 years of history. I visited Duomo di Milano back in
+          2016 with my friend. I was amazed by the magnificent cathedral when I got out of the subway station. It
+          was one of the most beautiful pieces of architecture I had ever seen. Out of everything else, I loved the
+          geometric yet delicate architectural motifs the most.
+        </p>
+        <p>
+          The Duomo module-type generator’s main concept is creating a module type inspired by motifs from the
+          gothic Duomo cathedral. Each letter design produced from the generator will be part of the branding
+          deliverables in many applications. The primary touch point with the audience is at a ticket purchase
+          machine. Each museum customer can interact with the Duomo module-type generator by typing their name for
+          the ticket purchase to the exhibition. Audiences can choose between twelve module shapes and can control
+          their size, density, rotation, and background colors. Each of them will get their own uniquely designed
+          tickets as souvenirs before entering the cathedral and exhibition.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/grace951203/full/wsFvZLytH" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Sahar Habashi -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa22/sahar-habashi.jpg">
+            <source src="assets/fa22/sahar-habashi.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Sahar Habashi &mdash; Boiler Room x Subculture Party</h2>
+        <p>
+          Boiler Room teamed up with LA’s Subculture Party to put together an explosive weekend of hyperpop,
+          electronic, and experimental sounds. Having gone on Day 1, I thought it would be fun to take on the
+          overwhelming event that it was (in terms of sounds, visuals, and people), and translate it into posters of
+          my personal interpretation. I created a poster series that used sound visualization, mapping, and
+          TextToPoints; some of the key skills I learned in Gen Type and now feel that I can apply to future
+          projects.
+        </p>
+        <p>
+          WORK<br>
+          <a href="https://editor.p5js.org/saharhabashi/full/sPX1ARVmW" target="_blank">View Sketch 1 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/saharhabashi/full/HzXqY6h0k" target="_blank">View Sketch 2 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/saharhabashi/full/SAa_FlAr84" target="_blank">View Sketch 3 &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Shaw Xiao -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa22/shaw-xiao.jpg">
+            <source src="assets/fa22/shaw-xiao.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Shaw Xiao &mdash; Memory Nodes</h2>
+        <p>
+          By attempting to explore the indirect relationship between human interaction and graph systems, it
+          transforms human memory of network data into a visual experience.
+        </p>
+        <p>
+          This project aims to help people become aware of the sheer size of their private data and how easily it is
+          ignored, using typographic visualization to help people build their own “Internet memory nodes.”
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/yxiao6/full/jQqSYSr2o" target="_blank">View Sketch 1 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/yxiao6/full/iOJC0SUIn" target="_blank">View Sketch 2 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/yxiao6/full/KyaMCHmOO" target="_blank">View Sketch 3 &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Ashley Aceves -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa22/ashley-aceves.jpg">
+            <source src="assets/fa22/ashley-aceves.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Ashley Aceves &mdash; LA Coffee Festival</h2>
+        <p>
+          LACF identity - Los Angeles Coffee Festival celebrates LA's bustling and vibrant coffee scene. To do so,
+          this identity comes with an abstract generative typography to represent coffee. Los Angeles Coffee
+          Festival celebrates and serves those with a niche hobby. The variety of visuals will add identity. The
+          function can be used manually or typographical.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/ash.ley/full/zfpd3QS1b" target="_blank">View Sketch &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- Chera Park -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/fa22/chera-park.jpg">
+            <source src="assets/fa22/chera-park.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Chera Park &mdash; TRY-ME</h2>
+        <p>
+          Try-Me is an interactive design experience for the users at The Textile Museum. It is a customizable
+          souvenir postcard you can take home to remember your special visit. It includes all the artists that are
+          featured at the Museum and the museum’s unique logo.
+        </p>
+        <p>
+          Penny-pressed souvenirs have always been one of my go-to things to do when I’m somewhere new and I was
+          interested in making something like this that can be easy but a bit more personal. I wanted to create an
+          interactive experience where the user can directly participate in making their own souvenir, choosing
+          their own colors and layouts.
+        </p>
+        <p>
+          The vibrant colors and unique typeface go together to provide something that feels much more alive. There
+          is a random button to change the layouts that never land on the same layout more than once, a slider to
+          zoom in and out, and three sliders for the background colors. They are in RGB mode(Rslider, Gslider,
+          Bslider) from left to right. The designed postcard is also available to download as a png file.
+        </p>
+        <p>
+          <a href="https://editor.p5js.org/chera.park/full/_fhd3u3ak" target="_blank">View Sketch 1 &#x2192;</a>
+          <br>
+          <a href="https://editor.p5js.org/chera.park/full/sIPQKOtXL" target="_blank">View Sketch 2 &#x2192;</a>
+        </p>
+      </div>
+
+      <!-- END OF SEMESTER -->
+    </div>
+
+    <!-- SU22 -->
+    <button class="accordion">SU22</button>
+    <div class="panel">
+
+      <!-- Veronica Tsai -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/su22/veronica-tsai.jpg">
+            <source src="assets/su22/veronica-tsai.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Veronica Tsai &mdash; Bloom</h2>
+        <p>
+          Bloom is an infographic, interactive experience for The
+          Huntington. It showcases its gardens and unique plants in a
+          playful, typographic way.
+        </p>
+        <p>
+          Analog making has always been a significant part of my creative
+          process. I am interested in combinging analog and generative
+          design methods, challenging myself to design a digital interface
+          with an organic aesthetic.
+        </p>
+        <p>
+          Bloom uses hand drawn illustrations of plants from The
+          Huntington's different gardens as units that formulate the names
+          of the gardens. Users can use the arrow keys to visit different
+          virtual gardens.
+        </p>
+        <p>
+          The sketch mainly uses the Geomerative and peasycam libraries.
+          The Geomerative library turns the outlines of the letters into
+          points. The points are replaced by the illustration PNGs.
+          Peasycam allows users to rotate and zoom in and out of the
+          gardens to observe the sketch from different angles.
+        </p>
+      </div>
+
+      <!-- Chloe Zhang -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/su22/chloe-zhang.jpg">
+            <source src="assets/su22/chloe-zhang.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Chloe Zhang &mdash; FLEE</h2>
+        <p>
+          FLEE is a brand identity generator designed to give flea market
+          vendors the freedom to create their own visual identities and
+          collateral.
+        </p>
+        <p>
+          The name "FLEE" is inspired by the timelessness of flea markets,
+          encouraging shoppers to escape from the present and travel to
+          different eras.
+        </p>
+        <p>
+          FLEE's vintage funky colors and random variations provide a
+          unique playfulness that current flea market identities usually
+          lack. The generator contains six different types of brushes, a
+          clear canvas function, and a save image function. The user can
+          also create with a scatter brush, a sticker brush, and a typing
+          brush in the generator.
+        </p>
+      </div>
+
+      <!-- Jiayi Hu -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/su22/jiayi-hu.jpg">
+            <source src="assets/su22/jiayi-hu.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Jiayi Hu &mdash; X</h2>
+        <p>
+          >X is an experimental typeface design project. Through
+          processing, this project built a physical font system using
+          Geomerative and Fisica. Just like the skeleton binding of the
+          animation, the anchor points on the outer outline of the font
+          are bound by joints, giving the dynamic font more variability
+          and organic feel. This visual system discusses the possibility
+          of giving type and graphics a spontaneous and flexible
+          characteristic.
+        </p>
+      </div>
+
+      <!-- Ruopei Xiao -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/su22/ruopei-xiao.jpg">
+            <source src="assets/su22/ruopei-xiao.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Ruopei Xiao &mdash; FLOC|&lt;</h2>
+        <p>
+          FLOC|&lt; explores whether linkages exist between variation in
+          migration timing and subsequent changes in population size.
+        </p>
+        <p>
+          FLOC|&lt; is a data visualization of birding activities to
+          present the knowledge of migratory behavior to inspire birders
+          and scientists as well as to support decisions about
+          conservation actions on the ground.
+        </p>
+      </div>
+
+      <!-- Sydney Lee -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/su22/sydney-lee.jpg">
+            <source src="assets/su22/sydney-lee.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Sydney Lee &mdash; Storm King Art Center</h2>
+        <p>
+          Storm King Art Center is dedicated to exhibiting, acquiring,
+          borrowing, and conserving modern art and contemporary art. The
+          focus on large-scale sculptures in an expansive landscape, to
+          create a dynamic and unique place for you to explore art and
+          nature.
+        </p>
+        <p>
+          The phrase "connect to art, connect to nature" is a brand
+          narrative. Storm King Art Center nurtures a vibrant bond between
+          art, nature, and people, creating a place where discovery is
+          limitless. Each small particles used in the design represents
+          art, nature, and people, vibrantly bonding to connect to each
+          other to form the phrase "connect to art, connect to nature".
+        </p>
+        <p>
+          The custom typeface has been designed to be responsive and
+          activated by motion. To achieve this, the typeface was put into
+          code and synced with the movement so that the particles
+          responded to the movement.
+        </p>
+      </div>
+
+      <!-- Gloria Zhang -->
+      <div class="panel-inner">
+        <div class="videoContainer">
+          <video controls width="100%" height="auto" poster="assets/su22/gloria-zhang.jpg">
+            <source src="assets/su22/gloria-zhang.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2>Gloria Zhang &mdash; 88rising</h2>
+        <p>
+          88rising is a company that has gained popularity as a musical
+          platform and record label primarily for Asian American and Asian
+          artists who release music in the United States. The founder of
+          88rising hopes the music it produced can bridge the gap between
+          Asian and American music. Keeping producing experimental music
+          going viral among young generations, 88rising gathers talented
+          music artists to create new trends in pop culture.
+        </p>
+        <p>
+          This project is an exploration of music visualization inspired
+          by the 88rising brand along with Head in the Clouds the music
+          event curated by it. All the music-reacting animations were made
+          on Processing. The music is from Blank&Jones, named Winelight.
+          All the background images and footage were materials found on
+          the Internet.
+        </p>
+      </div>
+
+      <!-- END OF SEMESTER -->
+    </div>
+  </main>
+  <script src="script.js"></script>
+  <script src="sketch.js"></script>
 </body>
 
 </html>

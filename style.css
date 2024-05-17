@@ -1,34 +1,75 @@
-html {
-  --bg-color: #0d0d0d;
-  --text-color: #f4f4f4;
+* {
+  box-sizing: border-box;
+}
+.fragment-mono-regular {
+  font-family: "Fragment Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
 
-html.light {
-  --bg-color: #f4f4f4;
-  --text-color: #0d0d0d;
+.fragment-mono-regular-italic {
+  font-family: "Fragment Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+html {
+  background-color: black;
+  color: white;
+  font-family: "Fragment Mono", Courier, monospace;
+  font-size: 0.875em;
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: "Fragment Mono", monospace;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0px 15px 0px 15px;
 }
 
-hr {
-  border-top: 1.5px solid var(--text-color);
-  opacity: 100%;
+.accordion {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  font-family: "Fragment Mono", Courier, monospace;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  transition: 0.5s ease;
+  font-size: 3em;
+  border-top: solid 1px rgba(255, 255, 255, 0.25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-#theme-toggle-container {
-  top: 1rem;
-  right: 1rem;
-  position: fixed;
+.accordion:after {
+  content: "\002B";
+  color: #fff;
+  float: right;
+  font-size: 3em;
 }
 
-#theme-toggle {
-  border: 0;
-  padding: 0;
-  background: none;
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.panel-inner {
+  margin-bottom: 60px;
+}
+
+video {
+  object-fit: cover;
+}
+
+canvas {
+  display: block;
 }
