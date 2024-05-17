@@ -1,14 +1,17 @@
 * {
   box-sizing: border-box;
 }
-.fragment-mono-regular {
+
+@font-face {
   font-family: "Fragment Mono", monospace;
+  src: url(FragmentMono-Regular.ttf);
   font-weight: 400;
   font-style: normal;
 }
 
-.fragment-mono-regular-italic {
+@font-face {
   font-family: "Fragment Mono", monospace;
+  src: url(FragmentMono-Italic.ttf);
   font-weight: 400;
   font-style: italic;
 }
