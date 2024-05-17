@@ -3,16 +3,13 @@
 }
 
 @font-face {
-  font-family: "Fragment Mono", monospace;
+  font-family: "Fragment Mono";
   src: url(FragmentMono-Regular.ttf);
-  font-weight: 400;
-  font-style: normal;
 }
 
 @font-face {
-  font-family: "Fragment Mono", monospace;
+  font-family: "Fragment Mono";
   src: url(FragmentMono-Italic.ttf);
-  font-weight: 400;
   font-style: italic;
 }
 
