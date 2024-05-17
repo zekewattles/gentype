@@ -4,12 +4,12 @@
 
 @font-face {
   font-family: "Fragment Mono";
-  src: url(FragmentMono-Regular.ttf);
+  src: url(FragmentMono-Regular.woff2);
 }
 
 @font-face {
   font-family: "Fragment Mono";
-  src: url(FragmentMono-Italic.ttf);
+  src: url(FragmentMono-Italic.woff2);
   font-style: italic;
 }
 
