@@ -16,7 +16,7 @@
 html {
   background-color: black;
   color: white;
-  font-family: "Fragment Mono", Courier, monospace;
+  font-family: "Fragment Mono", monospace;
   font-size: 0.875em;
 }
 
@@ -34,7 +34,7 @@ p {
   background-color: black;
   color: white;
   cursor: pointer;
-  font-family: "Fragment Mono", Courier, monospace;
+  font-family: "Fragment Mono", monospace;
   padding-left: 0;
   padding-right: 0;
   width: 100%;
