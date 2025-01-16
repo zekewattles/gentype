@@ -1,14 +1,6 @@
-let ratio = 0.4375;
-let canvas;
-let canvasDiv;
-let w, h;
-
-let font;
-let points;
-let bounds;
-let words =
-  "Generative Typography is a 14-week ArtCenter course on p5.js. Through a series of demos, students learn to build their own code-based tools for graphic design and incorporate them into their other school or personal projects. The goal is for students to build their coding confidence and start thinking more systematically about design. ";
-let letters = [];
+let ratio = 1/3;
+let canvas, canvasDiv, w, h, font, points, bounds;
+let words = "Generative Typography is a creative coding course taught by Zeke Wattles at ArtCenter College of Design. Through focused exercises, students learn to build custom code-based tools for graphic design and integrate them into larger identity systems. ";
 
 function preload() {
   font = loadFont("FragmentMono-Regular.ttf");
@@ -20,8 +12,6 @@ function setup() {
   w = canvasDiv.offsetWidth;
   h = canvasDiv.offsetWidth * ratio;
   canvas = createCanvas(w, h).parent("canvasContainer");
-
-  letters = words.split("");
   word = " " + "GenType" + " ";
 }
 
@@ -41,11 +31,11 @@ function draw() {
 
   for (let i = 0; i < points.length; i++) {
     fill(255);
-    textFont(font, 16);
+    textFont(font, 14);
     text(
-      letters[i % letters.length],
+      words[i % words.length],
       points[i].x * multiplier,
-      points[i].y * multiplier + sin(frameCount * 0.02 + points[i].x * 0.1) * 10,
+      points[i].y * multiplier,
     );
   }
 }
