@@ -1,13 +1,26 @@
+/* Root Variables */
 :root {
-  --main-bg-color: black;
-  --main-color: white;
-  --main-accent-color: #cf0;
+  --bg-color: #f8f8f8;
+  --text-color: #3f3f3f;
+  --border-color: #e0e0e0;
+  --header-color: #000;
+  --font-primary: "Fragment Mono", Courier, monospace;
+  --font-size-base: 0.75rem;
+  --font-size-large: 1.5rem;
+  --font-size-small: 0.875rem;
+  --accordion-padding: 0.25em 0;
+  --accordion-font-size: 3rem;
+  --footer-margin: 3em 0;
+  --border-radius: 10px;
+  --transition-speed: 0.25s ease;
 }
 
+/* Universal Rules */
 * {
   box-sizing: border-box;
 }
 
+/* Font Faces */
 @font-face {
   font-family: "Fragment Mono";
   src: url(FragmentMono-Regular.woff2);
@@ -19,50 +32,57 @@
   font-style: italic;
 }
 
+/* Base Styles */
 html {
-  background: var(--main-bg-color);
-  color: var(--main-color);
-  font-family: "Fragment Mono", Courier, monospace;
-  font-size: 0.75em;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
 }
 
 body {
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 1em;
+  padding: 1em;
+}
+
+h2 {
+  font-size: var(--font-size-large);
+  color: var(--header-color);
 }
 
 a {
-  color: var(--main-accent-color);
+  color: var(--header-color);
 }
 
 footer {
-  font-size: 0.875em;
+  font-size: var(--font-size-small);
   color: rgba(255, 255, 255, 0.5);
   text-align: center;
-  margin: 3em 0;
+  margin: var(--footer-margin);
 }
 
 p {
   line-height: 1.4;
 }
 
+/* Accordion Styles */
 .accordion {
-  background: var(--main-bg-color);
-  color: var(--main-color);
-  font-family: "Fragment Mono", Courier, monospace;
-  font-size: 3em;
-  padding: 0.25em 0;
+  background: var(--bg-color);
+  color: var(--header-color);
+  font-family: var(--font-primary);
+  font-size: var(--accordion-font-size);
+  padding: var(--accordion-padding);
   width: 100%;
   border: none;
-  border-top: 1px dashed var(--main-color);
+  border-top: 1px solid var(--border-color);
   text-align: left;
   cursor: pointer;
   outline: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: 0.25s ease;
+  transition: var(--transition-speed);
 }
 
 .accordion:after {
@@ -76,17 +96,17 @@ p {
 .panel {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.25s ease;
+  transition: max-height var(--transition-speed);
 }
 
 .panel-inner {
-  padding-bottom: 3em;
+  padding-bottom: var(--footer-margin);
 }
 
-video {
+/* Media Styles */
+video, canvas {
   object-fit: cover;
-}
-
-canvas {
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
   display: block;
 }
