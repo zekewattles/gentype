@@ -20,7 +20,7 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
         <video
           ref={videoRef}
           src={videoSrc}
-          poster={posterSrc || "/placeholder.svg"}
+          poster={posterSrc}
           className="w-full h-full object-cover"
           playsInline
           controls
