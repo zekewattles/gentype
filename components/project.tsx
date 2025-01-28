@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef } from "react"
+import { basePath } from "@/lib/utils"
 
 interface ProjectProps {
   author: string
@@ -19,8 +20,8 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
       <div className="w-full mx-auto aspect-video mb-4">
         <video
           ref={videoRef}
-          src={videoSrc}
-          poster={posterSrc}
+          src={`${basePath}${videoSrc}`}
+          poster={`${basePath}${posterSrc}`}
           className="w-full h-full object-cover"
           playsInline
           controls

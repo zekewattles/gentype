@@ -6,6 +6,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  env: {
+    BASE_PATH: "/gentype",
+  },
 }
 
 module.exports = nextConfig
