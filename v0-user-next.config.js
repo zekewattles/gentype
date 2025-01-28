@@ -1,13 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
   output: "export",
+  distDir: "out",
   basePath: "/gentype",
+  assetPrefix: "/gentype/",
   images: {
     unoptimized: true,
-    domains: ["v0.blob.com"],
   },
-  assetPrefix: "/gentype/",
 }
 
 module.exports = nextConfig
