@@ -13,7 +13,7 @@ export function SemesterLayout({ semester, projects }: SemesterLayoutProps) {
       <Sidebar />
       <main className="flex-1 p-3 overflow-y-auto">
         <h1 className="text-3xl font-bold mb-4">{semester.toUpperCase()}</h1>
-        <div className="space-y-24">
+        <div className="space-y-16">
           {projects.map((project) => (
             <Project key={project.id} {...project} />
           ))}
