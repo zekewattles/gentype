@@ -1,0 +1,49 @@
+"use client"
+
+import { useState, useRef } from "react"
+
+interface ProjectProps {
+  author: string
+  title: string
+  description: string
+  videoSrc: string
+  posterSrc: string
+  links?: { text: string; url: string }[]
+}
+
+export function Project({ author, title, description, videoSrc, posterSrc, links }: ProjectProps) {
+  const [isPlaying, setIsPlaying] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  return (
+    <article className="w-full">
+      <div className="w-full mx-auto aspect-video mb-4">
+        <video
+          ref={videoRef}
+          src={videoSrc}
+          poster={posterSrc}
+          className="w-full h-full object-cover"
+          playsInline
+          controls
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+        />
+      </div>
+      <p className="text-sm font-medium">{author}</p>
+      <h2 className="text-2xl font-medium">{title}</h2>
+      <div className="text-xs leading-relaxed space-y-3" dangerouslySetInnerHTML={{ __html: description }} />
+      {links?.map((link, index) => (
+        <div key={index} className="block mt-2">
+          <a
+            href={link.url}
+            className="btn text-xs font-medium inline-flex items-center hover:opacity-70"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {link.text}
+          </a>
+        </div>
+      ))}
+    </article>
+  )
+}

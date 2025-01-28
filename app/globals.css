@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* background-color: black;
+  color: white; */
+  background-color: #f5f5f5;
+}
+
+@layer components {
+  .btn {
+    @apply text-sm hover:opacity-70 transition-all inline-flex items-center;
+  }
+
+  .btn::after {
+    content: "→";
+    @apply ml-1;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .btn:hover::after {
+    transform: translateX(3px);
+  }
+}
+
+@keyframes arrowMove {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(3px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@layer utilities {
+  .animate-blink {
+    animation: blink 0.7s infinite;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
