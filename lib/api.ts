@@ -41,8 +41,8 @@ export async function getProjectsBySemester(semester: string) {
   )
 
   return projects.sort((a, b) => {
-    const aNumber = a.id ? Number.parseInt(a.id.split("-").pop() || "0", 10) : 0
-    const bNumber = b.id ? Number.parseInt(b.id.split("-").pop() || "0", 10) : 0
+    const aNumber = Number.parseInt(a.id?.split("-").pop() ?? "0", 10)
+    const bNumber = Number.parseInt(b.id?.split("-").pop() ?? "0", 10)
     return aNumber - bNumber
   })
 }

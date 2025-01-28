@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useRef } from "react"
 
 interface ProjectProps {
   author: string
@@ -12,7 +12,6 @@ interface ProjectProps {
 }
 
 export function Project({ author, title, description, videoSrc, posterSrc, links }: ProjectProps) {
-  const [isPlaying, setIsPlaying] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   return (
@@ -21,12 +20,10 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
         <video
           ref={videoRef}
           src={videoSrc}
-          poster={posterSrc}
+          poster={posterSrc || "/placeholder.svg"}
           className="w-full h-full object-cover"
           playsInline
           controls
-          onPlay={() => setIsPlaying(true)}
-          onPause={() => setIsPlaying(false)}
         />
       </div>
       <p className="text-sm font-medium">{author}</p>
@@ -47,3 +44,4 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
     </article>
   )
 }
+
