@@ -19,8 +19,8 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
       <div className="w-full mx-auto aspect-video mb-4">
         <video
           ref={videoRef}
-          src={videoSrc}
-          poster={posterSrc}
+          src={`/gentype${videoSrc}`}
+          poster={`/gentype${posterSrc}`}
           className="w-full h-full object-cover"
           playsInline
           controls

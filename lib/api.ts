@@ -6,7 +6,15 @@ import html from "remark-html"
 
 const semestersDirectory = path.join(process.cwd(), "content/semesters")
 
+// Cache object to store processed projects
+const projectsCache: { [key: string]: any[] } = {}
+
 export async function getProjectsBySemester(semester: string) {
+  // Check if projects for this semester are already in cache
+  if (projectsCache[semester]) {
+    return projectsCache[semester]
+  }
+
   const semesterDirectory = path.join(semestersDirectory, semester.toLowerCase())
   const fileNames = fs.readdirSync(semesterDirectory)
 
@@ -40,10 +48,20 @@ export async function getProjectsBySemester(semester: string) {
     }),
   )
 
-  return projects.sort((a, b) => {
+  const sortedProjects = projects.sort((a, b) => {
     const aNumber = Number.parseInt(a.id?.split("-").pop() ?? "0", 10)
     const bNumber = Number.parseInt(b.id?.split("-").pop() ?? "0", 10)
     return aNumber - bNumber
   })
+
+  if (projects.length === 0) {
+    console.warn(`No projects found for semester: ${semester}`)
+    console.warn(`Searched directory: ${semesterDirectory}`)
+  }
+
+  // Store the processed and sorted projects in cache
+  projectsCache[semester] = sortedProjects
+
+  return sortedProjects
 }
 

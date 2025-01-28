@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: "GenType",
     images: [
       {
-        url: "semesters/fa24/posters/alvin-lin.jpg",
+        url: "/gentype/semesters/fa24/posters/alvin-lin.jpg",
         width: 1200,
         height: 630,
       },
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "GenType",
     description: "Generative Typography course at ArtCenter College of Design",
-    images: ["semesters/fa24/posters/alvin-lin.jpg"],
+    images: ["/gentype/semesters/fa24/posters/alvin-lin.jpg"],
   },
   icons: {
     icon: [
