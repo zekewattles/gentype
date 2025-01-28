@@ -30,10 +30,10 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
       <h2 className="text-2xl font-bold">{title}</h2>
       <div className="text-sm leading-relaxed space-y-3" dangerouslySetInnerHTML={{ __html: description }} />
       {links?.map((link, index) => (
-        <div key={index} className="block mt-2">
+        <div key={index} className="mt-2">
           <a
             href={link.url}
-            className="btn text-sm font-bold inline-flex items-center hover:opacity-70"
+            className="text-violet-600 text-sm hover:text-violet-800 underline cursor-pointer"
             target="_blank"
             rel="noopener noreferrer"
           >
