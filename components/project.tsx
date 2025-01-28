@@ -1,7 +1,6 @@
 "use client"
 
 import { useRef } from "react"
-import { basePath } from "@/lib/utils"
 
 interface ProjectProps {
   author: string
@@ -15,13 +14,20 @@ interface ProjectProps {
 export function Project({ author, title, description, videoSrc, posterSrc, links }: ProjectProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
+  // Ensure URLs start with /gentype
+  const getFullUrl = (path: string) => {
+    // Remove any leading slash to avoid double slashes
+    const cleanPath = path.startsWith("/") ? path.slice(1) : path
+    return `/gentype/${cleanPath}`
+  }
+
   return (
     <article className="w-full">
       <div className="w-full mx-auto aspect-video mb-4">
         <video
           ref={videoRef}
-          src={`${basePath}${videoSrc}`}
-          poster={`${basePath}${posterSrc}`}
+          src={getFullUrl(videoSrc)}
+          poster={getFullUrl(posterSrc)}
           className="w-full h-full object-cover"
           playsInline
           controls
