@@ -25,6 +25,20 @@ body {
   .btn:hover::after {
     transform: translateX(3px);
   }
+
+  /* New class for the 'Scroll to top' button */
+  .scroll-to-top-btn {
+    @apply text-sm hover:opacity-70 transition-all inline-flex items-center;
+  }
+  .scroll-to-top-btn::after {
+    content: "↑";
+    @apply ml-1 text-sm;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  .scroll-to-top-btn:hover::after {
+    transform: translateY(-3px);
+  }
 }
 
 @keyframes arrowMove {

@@ -26,14 +26,14 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
           controls
         />
       </div>
-      <p className="text-sm font-medium">{author}</p>
-      <h2 className="text-2xl font-medium">{title}</h2>
-      <div className="text-xs leading-relaxed space-y-3" dangerouslySetInnerHTML={{ __html: description }} />
+      <p className="text-md font-bold">{author}</p>
+      <h2 className="text-2xl font-bold">{title}</h2>
+      <div className="text-sm leading-relaxed space-y-3" dangerouslySetInnerHTML={{ __html: description }} />
       {links?.map((link, index) => (
         <div key={index} className="block mt-2">
           <a
             href={link.url}
-            className="btn text-xs font-medium inline-flex items-center hover:opacity-70"
+            className="btn text-sm font-bold inline-flex items-center hover:opacity-70"
             target="_blank"
             rel="noopener noreferrer"
           >
