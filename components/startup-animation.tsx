@@ -91,7 +91,7 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
         <pre className="text-xs font-medium whitespace-pre startup-text text-left">{lines.slice(0, visibleLines).join("\n")}</pre>
       </div>
       {isComplete && (
-        <div className="p-5 pb-20 md:pb-5">
+        <div className="p-5 pb-24 md:pb-5">
           <pre className="text-xs font-medium whitespace-pre startup-text text-left">
             <span className="animate-blink">*** GENTYPE BOOT COMPLETE ***</span>
           </pre>
