@@ -14,7 +14,6 @@ body {
 body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  color: #333;
 }
 
 @keyframes blink {
@@ -33,15 +32,11 @@ body {
 }
 
 .startup-background {
-  background-color: #000300;
+  background-color: #000;
 }
 
 .startup-text {
   color: #0f0;
-  text-shadow: 0 0 3px rgba(0, 255, 0, 0.7), 0 0 10px rgba(0, 255, 0, 0.5);
-}
-
-.startup-text .animate-blink {
-  text-shadow: 0 0 3px rgba(0, 255, 0, 0.7), 0 0 10px rgba(0, 255, 0, 0.5);
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.6);
 }
 
