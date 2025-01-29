@@ -1,6 +1,9 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
+import { GeistMono } from "geist/font/mono"
+
+const geistMono = GeistMono
 
 interface InitialData {
   totalProjects: number
@@ -81,15 +84,15 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
   if (lines.length === 0) return null
 
   return (
-    <div className="fixed inset-0 startup-background flex flex-col justify-between">
+    <div
+      className={`fixed inset-0 startup-background flex flex-col justify-between overflow-hidden ${geistMono.className}`}
+    >
       <div className="p-5 overflow-auto">
-        <pre className="font-mono text-xs whitespace-pre startup-text text-left">
-          {lines.slice(0, visibleLines).join("\n")}
-        </pre>
+        <pre className="text-xs font-medium whitespace-pre startup-text text-left">{lines.slice(0, visibleLines).join("\n")}</pre>
       </div>
       {isComplete && (
-        <div className="p-5">
-          <pre className="font-mono text-xs whitespace-pre startup-text text-left">
+        <div className="p-5 pb-20 md:pb-5">
+          <pre className="text-xs font-medium whitespace-pre startup-text text-left">
             <span className="animate-blink">*** GENTYPE BOOT COMPLETE ***</span>
           </pre>
         </div>
