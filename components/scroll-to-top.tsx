@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import type { ReactNode } from "react"
+import type React from "react" // Added import for React
 
 interface ScrollToTopProps {
   href: string
@@ -15,7 +16,7 @@ export function ScrollToTop({ href, children, className }: ScrollToTopProps) {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     router.push(href)
-    window.scrollTo({ top: 0, behavior: "instant" })
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" })
   }
 
   return (

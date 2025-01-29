@@ -82,9 +82,8 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
 
   return (
     <div className="fixed inset-0 startup-background">
-      <div className="absolute inset-0 startup-noise"></div>
-      <div className="relative z-10 p-3">
-        <pre className="font-mono text-sm whitespace-pre startup-text">
+      <div className="relative z-10 p-5">
+        <pre className="font-mono text-xs whitespace-pre startup-text">
           {lines.slice(0, visibleLines).join("\n")}
           {isComplete && (
             <>

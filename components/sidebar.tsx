@@ -26,7 +26,7 @@ function SidebarComponent() {
         </p>
       </div>
       <nav className="p-3 pt-0">
-      <h2 className="text-sm font-bold mb-1">Terms</h2>
+        <h2 className="text-sm font-bold mb-1">Terms</h2>
         <ul className="space-y-0">
           {semesterOrder.map((semester) => (
             <li key={semester}>
