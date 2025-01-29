@@ -53,23 +53,29 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
   useEffect(() => {
     if (lines.length === 0) return
 
-    const interval = setInterval(
-      () => {
+    const delays = lines.map(() => Math.random() * 150 + 50) // Generate random delays for each line
+    let totalDelay = 0
+
+    const timeouts = lines.map((_, index) => {
+      totalDelay += delays[index]
+      return setTimeout(() => {
         setVisibleLines((prev) => {
           if (prev < lines.length) {
             return prev + 1
-          } else {
-            clearInterval(interval)
+          }
+          return prev
+        })
+
+        if (index === lines.length - 1) {
+          setTimeout(() => {
             setIsComplete(true)
             setTimeout(onComplete, 3000)
-            return prev
-          }
-        })
-      },
-      Math.random() * 200 + 80,
-    )
+          }, 500) // Wait a bit before showing the final message
+        }
+      }, totalDelay)
+    })
 
-    return () => clearInterval(interval)
+    return () => timeouts.forEach(clearTimeout)
   }, [lines, onComplete])
 
   if (lines.length === 0) return null
