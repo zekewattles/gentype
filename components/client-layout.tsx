@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { StartupAnimation } from "./startup-animation"
 
 interface InitialData {
@@ -18,6 +18,16 @@ export function ClientLayout({
   initialData: InitialData
 }) {
   const [showContent, setShowContent] = useState(false)
+
+  useEffect(() => {
+    if (showContent) {
+      // Change theme-color meta tag when main content is shown
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute("content", "#f5f5f5")
+      }
+    }
+  }, [showContent])
 
   return (
     <>

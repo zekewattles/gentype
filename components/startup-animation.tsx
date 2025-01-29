@@ -84,19 +84,18 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
   if (lines.length === 0) return null
 
   return (
-    <div
-      className={`fixed inset-0 startup-background flex flex-col justify-between overflow-hidden ${geistMono.className}`}
-    >
-      <div className="p-5 overflow-auto">
-        <pre className="text-xs font-medium whitespace-pre startup-text text-left">{lines.slice(0, visibleLines).join("\n")}</pre>
+    <div className="fixed inset-0 startup-background">
+      <div className="relative z-10 p-5">
+        <pre className={`${geistMono.className} text-xs font-medium whitespace-pre startup-text`}>
+          {lines.slice(0, visibleLines).join("\n")}
+          {isComplete && (
+            <>
+              {"\n"}
+              <span className="animate-blink">*** GENTYPE BOOT COMPLETE ***</span>
+            </>
+          )}
+        </pre>
       </div>
-      {isComplete && (
-        <div className="p-5 pb-24 md:pb-5">
-          <pre className="text-xs font-medium whitespace-pre startup-text text-left">
-            <span className="animate-blink">*** GENTYPE BOOT COMPLETE ***</span>
-          </pre>
-        </div>
-      )}
     </div>
   )
 }

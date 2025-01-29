@@ -17,8 +17,11 @@ export default async function RootLayout({
   const initialData = await getInitialData()
 
   return (
-    <html lang="en">
-      <body className={`${geistMono.className} antialiased`}>
+    <html lang="en" className={geistMono.className}>
+      <head>
+        <meta name="theme-color" content="#f5f5f5" />
+      </head>
+      <body className="antialiased">
         <ClientLayout initialData={initialData}>{children}</ClientLayout>
       </body>
     </html>
