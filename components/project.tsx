@@ -23,7 +23,7 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
 
   return (
     <article className="w-full">
-      <div className="w-full mx-auto aspect-video mb-4">
+      <div className="w-full mx-auto aspect-video mb-5">
         <video
           ref={videoRef}
           src={getFullUrl(videoSrc)}
@@ -33,14 +33,14 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
           controls
         />
       </div>
-      <p className="text-md font-bold">{author}</p>
-      <h2 className="text-2xl font-bold">{title}</h2>
+      <p className="text-sm font-bold mb-1">{author}</p>
+      <h2 className="text-2xl font-medium">{title}</h2>
       <div className="text-sm leading-relaxed space-y-3" dangerouslySetInnerHTML={{ __html: description }} />
       {links?.map((link, index) => (
         <div key={index} className="mt-2">
           <a
             href={link.url}
-            className="text-violet-600 text-sm hover:text-violet-800 underline cursor-pointer"
+            className="text-indigo-600 text-sm hover:text-indigo-800 font-medium cursor-pointer"
             target="_blank"
             rel="noopener noreferrer"
           >

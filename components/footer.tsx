@@ -14,7 +14,7 @@ export function Footer() {
       <span>© {currentYear} Zeke Wattles & all students.</span>
       <button
         onClick={scrollToTop}
-        className="text-violet-600 text-xs hover:text-violet-800 underline cursor-pointer"
+        className="text-indigo-600 text-xs hover:text-indigo-800 font-medium cursor-pointer"
         aria-label="Scroll to top of page"
       >
         ↑ Scroll up
