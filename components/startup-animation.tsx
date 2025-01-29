@@ -24,10 +24,10 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
 
     return [
       "GenType BIOS v2.0.1",
-      `(C) 2022-${initialData.currentYear} GenType Microsystems, Inc.`,
+      `(C) 2022-${initialData.currentYear} GT MICROSYSTEMS, INC.`,
       "All rights reserved.",
       `Released: ${new Date().toISOString().split("T")[0]}`,
-      "----------------------------------------",
+      "",
       "GenType-PCI BIOS Revision 2.0",
       `CPU: ${(typeof navigator !== "undefined" && navigator.hardwareConcurrency) || "Unknown"}-core`,
       `Memory Test: ${getDeviceMemory()} GB`,
@@ -35,14 +35,14 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
       "Mouse... Detected",
       `Display Adapter: ${typeof window !== "undefined" ? `${window.screen.width}x${window.screen.height} @ ${window.screen.colorDepth}-bit` : "Unknown"}`,
       "Boot Device: GenType v2.0",
-      "----------------------------------------",
+      "",
       "Scanning archive directory...",
       `Total Semesters: ${initialData.totalSemesters}`,
       `Total Projects: ${initialData.totalProjects}`,
-      "----------------------------------------",
+      "",
       "Finalizing archive parameters... OK",
       "Initializing UI...",
-      "----------------------------------------",
+      "",
     ]
   }, [initialData])
 
@@ -61,12 +61,12 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
           } else {
             clearInterval(interval)
             setIsComplete(true)
-            setTimeout(onComplete, 2400)
+            setTimeout(onComplete, 3000)
             return prev
           }
         })
       },
-      Math.random() * 180 + 60,
+      Math.random() * 200 + 80,
     )
 
     return () => clearInterval(interval)
