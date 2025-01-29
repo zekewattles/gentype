@@ -34,11 +34,7 @@ body {
 
 .startup-text {
   color: #0f0;
-  text-shadow: 0 0 3px rgba(0, 255, 0, 0.7);
-}
-
-.startup-text .animate-blink {
-  text-shadow: 0 0 5px rgba(0, 255, 0, 0.9), 0 0 10px rgba(0, 255, 0, 0.7);
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.7), 0 0 10px rgba(0, 255, 0, 0.5);
 }
 
 .startup-noise {
