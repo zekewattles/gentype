@@ -81,18 +81,19 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
   if (lines.length === 0) return null
 
   return (
-    <div className="fixed inset-0 startup-background">
-      <div className="relative z-10 p-5">
-        <pre className="font-mono text-xs whitespace-pre startup-text">
+    <div className="fixed inset-0 startup-background flex flex-col justify-between">
+      <div className="p-5 overflow-auto">
+        <pre className="font-mono text-xs whitespace-pre startup-text text-left">
           {lines.slice(0, visibleLines).join("\n")}
-          {isComplete && (
-            <>
-              {"\n"}
-              <span className="animate-blink">*** GENTYPE BOOT COMPLETE ***</span>
-            </>
-          )}
         </pre>
       </div>
+      {isComplete && (
+        <div className="p-5">
+          <pre className="font-mono text-xs whitespace-pre startup-text text-left">
+            <span className="animate-blink">*** GENTYPE BOOT COMPLETE ***</span>
+          </pre>
+        </div>
+      )}
     </div>
   )
 }
