@@ -19,7 +19,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={geistMono.className}>
       <head>
-        <meta name="theme-color" content="#f5f5f5" />
+        <meta name="theme-color" content="#000" />
       </head>
       <body className="antialiased">
         <ClientLayout initialData={initialData}>{children}</ClientLayout>
