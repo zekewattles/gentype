@@ -19,22 +19,17 @@ export function ClientLayout({
 }) {
   const [showContent, setShowContent] = useState(false)
 
-  useEffect(() => {
-    // Get the computed values of our CSS variables
-    const root = document.documentElement
-    const computedStyle = getComputedStyle(root)
-    const startupBgColor = computedStyle.getPropertyValue("--startup-background-color").trim()
-    const mainBgColor = computedStyle.getPropertyValue("--background-color").trim()
+  // Define our theme colors
+  const themeColors = {
+    startup: "#000000",
+    main: "#f5f5f5",
+  }
 
+  useEffect(() => {
+    // Update theme color when content visibility changes
     const metaThemeColor = document.querySelector('meta[name="theme-color"]')
     if (metaThemeColor) {
-      // Set initial theme color to match startup background
-      metaThemeColor.setAttribute("content", startupBgColor)
-
-      // When content is shown, update to main background color
-      if (showContent) {
-        metaThemeColor.setAttribute("content", mainBgColor)
-      }
+      metaThemeColor.setAttribute("content", showContent ? themeColors.main : themeColors.startup)
     }
   }, [showContent])
 
