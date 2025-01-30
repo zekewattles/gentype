@@ -24,8 +24,19 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
   const initializeLines = useCallback(() => {
     // Helper function to safely get device memory
     const getDeviceMemory = () => {
-      if (typeof navigator !== "undefined" && "deviceMemory" in navigator) {
-        return (navigator as any).deviceMemory
+      if (typeof navigator !== "undefined") {
+        if ("deviceMemory" in navigator) {
+          return `${(navigator as any).deviceMemory} GB`
+        }
+        // Fallback for devices that don't support deviceMemory
+        if ("hardwareConcurrency" in navigator) {
+          // Estimate based on CPU cores (very rough estimate)
+          const cores = navigator.hardwareConcurrency
+          if (cores <= 2) return "2 GB (est.)"
+          if (cores <= 4) return "4 GB (est.)"
+          if (cores <= 8) return "8 GB (est.)"
+          return "16+ GB (est.)"
+        }
       }
       return "Unknown"
     }
@@ -38,7 +49,7 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
       "",
       "GenType-PCI BIOS Revision 2.0",
       `CPU: ${(typeof navigator !== "undefined" && navigator.hardwareConcurrency) || "Unknown"}-core`,
-      `Memory Test: ${getDeviceMemory()} GB`,
+      `Memory Test: ${getDeviceMemory()}`,
       "Keyboard... Detected",
       "Mouse... Detected",
       `Display Adapter: ${typeof window !== "undefined" ? `${window.screen.width}x${window.screen.height} @ ${window.screen.colorDepth}-bit` : "Unknown"}`,
@@ -92,7 +103,7 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
     <div className={`fixed inset-0 startup-background ${ibmBiosFont.variable}`}>
       <div className="absolute top-3 right-3 w-24 h-24">
         <Image
-          src="/images/energy-star-logo.png"
+          src="/gentype/images/energy-star-logo.png"
           alt="ENERGY STAR"
           width={266}
           height={168}
