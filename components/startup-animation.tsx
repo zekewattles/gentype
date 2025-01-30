@@ -77,7 +77,7 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
         if (index === lines.length - 1) {
           setTimeout(() => {
             setIsComplete(true)
-            setTimeout(onComplete, 2500)
+            setTimeout(onComplete, 2000)
           }, 500) // Wait a bit before showing the final message
         }
       }, totalDelay)
