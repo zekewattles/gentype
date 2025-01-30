@@ -1,9 +1,14 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { GeistMono } from "geist/font/mono"
+import localFont from "next/font/local"
+import Image from "next/image"
 
-const geistMono = GeistMono
+// Load the custom IBM BIOS font
+const ibmBiosFont = localFont({
+  src: "../public/fonts/WebPlus_IBM_BIOS-2y.woff",
+  variable: "--font-ibm-bios",
+})
 
 interface InitialData {
   totalProjects: number
@@ -72,7 +77,7 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
         if (index === lines.length - 1) {
           setTimeout(() => {
             setIsComplete(true)
-            setTimeout(onComplete, 3000)
+            setTimeout(onComplete, 2500)
           }, 500) // Wait a bit before showing the final message
         }
       }, totalDelay)
@@ -84,9 +89,18 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
   if (lines.length === 0) return null
 
   return (
-    <div className="fixed inset-0 startup-background">
-      <div className="relative z-10 p-5">
-        <pre className={`${geistMono.className} text-xs font-medium whitespace-pre startup-text`}>
+    <div className={`fixed inset-0 startup-background ${ibmBiosFont.variable}`}>
+      <div className="absolute top-3 right-3 w-16 h-16">
+        <Image
+          src="/images/energy-star-logo.png"
+          alt="Energy Star Logo"
+          width={128}
+          height={128}
+          className="startup-logo"
+        />
+      </div>
+      <div className="relative z-10 p-3">
+        <pre className="font-ibm-bios text-neutral-300 text-xs font-medium whitespace-pre">
           {lines.slice(0, visibleLines).join("\n")}
           {isComplete && (
             <>

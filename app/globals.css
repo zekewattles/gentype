@@ -35,8 +35,20 @@ body {
   background-color: #000;
 }
 
-.startup-text {
+/* .startup-text {
   color: #0f0;
-  text-shadow: 0 0 3px rgba(0, 255, 0, 0.6);
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.7), 0 0 10px rgba(0, 255, 0, 0.5);
+} */
+
+.startup-logo {
+  opacity: 1;
+  mix-blend-mode: screen;
+  background-size: contain;
 }
 
+/* Add the custom font to Tailwind's font family */
+@layer base {
+  .font-ibm-bios {
+    font-family: var(--font-ibm-bios);
+  }
+}
