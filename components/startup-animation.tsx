@@ -92,7 +92,7 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
     <div className={`fixed inset-0 startup-background ${ibmBiosFont.variable}`}>
       <div className="absolute top-3 right-3 w-16 h-16">
         <Image
-          src="/images/energy-star-logo.png"
+          src="/gentype/images/energy-star-logo.png"
           alt="Energy Star Logo"
           width={128}
           height={128}
