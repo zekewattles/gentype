@@ -19,8 +19,8 @@ export default async function RootLayout({
   return (
     <html lang="en" className={geistMono.className}>
       <head>
+        <meta name="theme-color" content="#09090b" />
         {/* Set initial theme color to match startup screen */}
-        <meta name="theme-color" content="#000000" />
       </head>
       <body className="antialiased">
         <ClientLayout initialData={initialData}>{children}</ClientLayout>

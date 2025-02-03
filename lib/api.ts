@@ -13,7 +13,7 @@ export async function getProjectsBySemester(semester: string) {
 
     const projects = await Promise.all(
       fileNames
-        .filter((fileName) => fileName.endsWith(".md")) // Only process markdown files
+        .filter((fileName) => fileName.endsWith(".md"))
         .map(async (fileName) => {
           const fullPath = path.join(semesterDirectory, fileName)
           const fileContents = await fs.readFile(fullPath, "utf8")
@@ -36,8 +36,8 @@ export async function getProjectsBySemester(semester: string) {
             author: data.author,
             title: data.title,
             description: contentHtml,
-            videoSrc: data.videoSrc,
-            posterSrc: data.posterSrc,
+            videoSrc: data.videoSrc ? `/gentype/${data.videoSrc.replace(/^\//, "")}` : null,
+            posterSrc: data.posterSrc ? `/gentype/${data.posterSrc.replace(/^\//, "")}` : null,
             links: data.links || [],
           }
         }),
@@ -94,6 +94,51 @@ export async function getInitialData() {
       currentYear: new Date().getFullYear(),
       totalSemesters: 0,
     }
+  }
+}
+
+export async function getAllSemesterPosters(): Promise<Record<string, string>> {
+  try {
+    const entries = await fs.readdir(semestersDirectory, { withFileTypes: true })
+    const semesters = entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name)
+
+    const posterPromises = semesters.map(async (semester) => {
+      const poster = await getFirstProjectPosterBySemester(semester)
+      return [semester, poster]
+    })
+
+    const posters = await Promise.all(posterPromises)
+    return Object.fromEntries(
+      posters.filter(([, poster]) => poster !== null).map(([semester, poster]) => [semester, `/gentype${poster}`]),
+    )
+  } catch (error) {
+    console.error("Error in getAllSemesterPosters:", error)
+    return {}
+  }
+}
+
+async function getFirstProjectPosterBySemester(semester: string): Promise<string | null> {
+  try {
+    const semesterDirectory = path.join(semestersDirectory, semester.toLowerCase())
+    const entries = await fs.readdir(semesterDirectory, { withFileTypes: true })
+
+    const mdFiles = entries.filter((entry) => entry.isFile() && entry.name.endsWith(".md")).map((entry) => entry.name)
+
+    if (mdFiles.length === 0) return null
+
+    const firstProjectFile = mdFiles[0]
+    const fullPath = path.join(semesterDirectory, firstProjectFile)
+    const fileContents = await fs.readFile(fullPath, "utf8")
+
+    const { data } = matter(fileContents)
+    return data.posterSrc || null
+  } catch (error) {
+    if (error instanceof Error && "code" in error && error.code === "ENOTDIR") {
+      console.warn(`Skipping non-directory entry in semesters: ${semester}`)
+      return null
+    }
+    console.error(`Error in getFirstProjectPosterBySemester for ${semester}:`, error)
+    return null
   }
 }
 

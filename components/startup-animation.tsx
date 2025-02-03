@@ -100,7 +100,7 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
   if (lines.length === 0) return null
 
   return (
-    <div className={`fixed inset-0 startup-background ${ibmBiosFont.variable}`}>
+    <div className={`fixed inset-0 bg-zinc-950 ${ibmBiosFont.variable}`}>
       <div className="absolute top-3 right-3 w-24 h-24">
         <Image
           src="/gentype/images/energy-star-logo.png"
@@ -111,7 +111,7 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
         />
       </div>
       <div className="relative z-10 p-3">
-        <pre className="font-ibm-bios text-neutral-300 text-xs font-medium whitespace-pre">
+        <pre className="font-ibm-bios text-zinc-300 text-xs font-medium whitespace-pre">
           {lines.slice(0, visibleLines).join("\n")}
           {isComplete && (
             <>

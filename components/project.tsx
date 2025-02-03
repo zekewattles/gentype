@@ -6,48 +6,46 @@ interface ProjectProps {
   author: string
   title: string
   description: string
-  videoSrc: string
-  posterSrc: string
+  videoSrc: string | null
+  posterSrc: string | null
   links?: { text: string; url: string }[]
 }
 
 export function Project({ author, title, description, videoSrc, posterSrc, links }: ProjectProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  // Ensure URLs start with /gentype
-  const getFullUrl = (path: string) => {
-    // Remove any leading slash to avoid double slashes
-    const cleanPath = path.startsWith("/") ? path.slice(1) : path
-    return `/gentype/${cleanPath}`
-  }
-
   return (
-    <article className="w-full">
-      <div className="w-full mx-auto aspect-video mb-5">
+    <article className="w-full space-y-3 rounded-lg overflow-hidden">
+      <div className="w-full mx-auto aspect-video rounded-lg overflow-hidden">
         <video
           ref={videoRef}
-          src={getFullUrl(videoSrc)}
-          poster={getFullUrl(posterSrc)}
+          src={videoSrc || undefined}
+          poster={posterSrc || undefined}
           className="w-full h-full object-cover"
           playsInline
           controls
         />
       </div>
-      <p className="text-sm font-bold mb-1">{author}</p>
-      <h2 className="text-2xl font-medium">{title}</h2>
-      <div className="text-sm leading-relaxed space-y-3" dangerouslySetInnerHTML={{ __html: description }} />
-      {links?.map((link, index) => (
-        <div key={index} className="mt-2">
-          <a
-            href={link.url}
-            className="text-indigo-600 text-sm hover:text-indigo-800 font-medium cursor-pointer"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {link.text}
-          </a>
-        </div>
-      ))}
+      <div className="bg-zinc-900 rounded-lg p-4 space-y-3">
+        <p className="text-sm font-medium text-zinc-400">{author}</p>
+        <h2 className="text-2xl font-medium text-zinc-50">{title}</h2>
+        <div
+          className="text-sm leading-relaxed space-y-3 text-zinc-50"
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
+        {links?.map((link, index) => (
+          <div key={index}>
+            <a
+              href={link.url}
+              className="text-lime-400 text-sm hover:text-zinc-300 font-medium cursor-pointer"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {link.text}
+            </a>
+          </div>
+        ))}
+      </div>
     </article>
   )
 }
