@@ -15,8 +15,8 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
   const videoRef = useRef<HTMLVideoElement>(null)
 
   return (
-    <article className="w-full space-y-3 rounded-lg overflow-hidden">
-      <div className="w-full mx-auto aspect-video rounded-lg overflow-hidden">
+    <article className="w-full space-y-3 rounded-md overflow-hidden">
+      <div className="w-full mx-auto aspect-video rounded-md overflow-hidden">
         <video
           ref={videoRef}
           src={videoSrc || undefined}
@@ -26,7 +26,7 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
           controls
         />
       </div>
-      <div className="bg-zinc-900 rounded-lg p-4 space-y-3">
+      <div className="bg-zinc-900 rounded-md p-4 space-y-3">
         <p className="text-sm font-medium text-zinc-400">{author}</p>
         <h2 className="text-2xl font-medium text-zinc-50">{title}</h2>
         <div

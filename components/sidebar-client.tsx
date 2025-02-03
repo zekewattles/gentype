@@ -8,9 +8,9 @@ interface SidebarClientProps {
 
 export function SidebarClient({ semesterPosters }: SidebarClientProps) {
   return (
-    <aside className="w-full md:w-4/12 md:sticky md:top-0 md:h-screen overflow-y-auto bg-zinc-950 scrollbar-hide rounded-lg">
+    <aside className="w-full md:w-4/12 md:sticky md:top-0 md:h-screen overflow-y-auto bg-zinc-950 scrollbar-hide rounded-md">
       <div className="p-3 space-y-3 h-full overflow-y-auto scrollbar-hide">
-        <div className="info bg-zinc-900 rounded-lg p-4 space-y-3">
+        <div className="info bg-zinc-900 rounded-md p-4 space-y-3">
           <Link href="/" className="inline-block">
             <h1 className="text-2xl font-medium text-zinc-50">GenType</h1>
           </Link>
@@ -36,7 +36,7 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
               <li key={semester}>
                 <Link
                   href={`/${semester.toLowerCase()}`}
-                  className="block aspect-video rounded-lg text-white transition-colors relative overflow-hidden group"
+                  className="block aspect-video rounded-md text-white transition-colors relative overflow-hidden group"
                 >
                   <div
                     className="absolute inset-0 bg-cover bg-center"
@@ -48,7 +48,7 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
                   <div className="relative z-10 w-full h-full flex items-center justify-center">
                     <span className="font-medium text-2xl md:text-4xl">{semester}</span>
                   </div>
-                  <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity" />
+                  <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
                 </Link>
               </li>
             ))}
