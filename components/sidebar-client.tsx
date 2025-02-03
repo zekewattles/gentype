@@ -10,14 +10,14 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
   return (
     <aside className="w-full md:w-4/12 md:sticky md:top-0 md:h-screen overflow-y-auto bg-zinc-950 scrollbar-hide rounded-md">
       <div className="p-3 space-y-3 h-full overflow-y-auto scrollbar-hide">
-        <div className="info bg-zinc-900 rounded-md p-4 space-y-3">
+        <div className="info bg-zinc-900 rounded-md p-3 space-y-2">
           <Link href="/" className="inline-block">
             <h1 className="text-2xl font-medium text-zinc-50">GenType</h1>
           </Link>
-          <p className="text-sm leading-relaxed text-zinc-50">
+          <p className="text-xs leading-relaxed text-zinc-50">
             Generative Typography is a creative coding course taught by Zeke Wattles at ArtCenter College of Design.
           </p>
-          <p className="text-sm leading-relaxed text-zinc-50">
+          <p className="text-xs leading-relaxed text-zinc-50">
             Through focused exercises, students learn to build custom{" "}
             <a
               href="https://editor.p5js.org/zekewattles/sketches"

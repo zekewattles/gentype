@@ -26,11 +26,11 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
           controls
         />
       </div>
-      <div className="bg-zinc-900 rounded-md p-4 space-y-3">
-        <p className="text-sm font-medium text-zinc-400">{author}</p>
+      <div className="bg-zinc-900 rounded-md p-3 space-y-2">
+        <p className="text-xs font-medium text-zinc-400">{author}</p>
         <h2 className="text-2xl font-medium text-zinc-50">{title}</h2>
         <div
-          className="text-sm leading-relaxed space-y-3 text-zinc-50"
+          className="text-xs leading-relaxed space-y-2 text-zinc-50"
           dangerouslySetInnerHTML={{ __html: description }}
         />
         {links?.map((link, index) => (
