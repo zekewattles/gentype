@@ -1,8 +1,8 @@
 import { GeistMono } from "geist/font/mono"
 import "./globals.css"
-import { Sidebar } from "../components/Sidebar"
+import { Sidebar } from "./components/Sidebar"
 import type { Metadata } from "next"
-import type React from "react"
+import type React from "react" // Import React
 
 const geistMono = GeistMono
 
