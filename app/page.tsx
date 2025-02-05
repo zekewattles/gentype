@@ -1,4 +1,4 @@
-import { Project } from "@/components/Project"
+import { Project } from "../components/Project"
 import { getProjectsBySemester } from "@/lib/api-utils"
 import { semesterOrder } from "@/lib/constants"
 
