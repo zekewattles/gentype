@@ -7,6 +7,8 @@ interface SidebarClientProps {
 }
 
 export function SidebarClient({ semesterPosters }: SidebarClientProps) {
+  console.log("SidebarClient received semesterPosters:", semesterPosters)
+
   return (
     <aside className="w-full md:w-4/12 md:sticky md:top-0 md:h-screen overflow-y-auto bg-black scrollbar-hide">
       <div className="p-3 space-y-3 h-full overflow-y-auto scrollbar-hide">
@@ -32,26 +34,31 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
         </div>
         <nav>
           <ul className="grid grid-cols-2 gap-3 md:grid-cols-1">
-            {semesterOrder.map((semester) => (
-              <li key={semester} className="overflow-hidden">
-                <Link
-                  href={`/${semester.toLowerCase()}`}
-                  className="block aspect-video rounded-sm text-white transition-colors relative overflow-hidden group"
-                >
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{
-                      backgroundImage: `url(${semesterPosters[semester.toLowerCase()]})`,
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black opacity-20" />
-                  <div className="relative z-20 w-full h-full flex items-center justify-center">
-                    <span className="font-medium text-2xl md:text-4xl">{semester}</span>
-                  </div>
-                  <div className="absolute inset-0 backdrop-blur-none group-hover:backdrop-blur-md transition-all duration-200 ease-in-out" />
-                </Link>
-              </li>
-            ))}
+            {semesterOrder.map((semester) => {
+              const posterUrl = semesterPosters[semester.toLowerCase()]
+              console.log(`Semester: ${semester}, Poster URL: ${posterUrl}`)
+              return (
+                <li key={semester} className="overflow-hidden">
+                  <Link
+                    href={`/${semester.toLowerCase()}`}
+                    className="block aspect-video rounded-sm text-white transition-colors relative overflow-hidden group"
+                  >
+                    <div
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{
+                        backgroundImage: posterUrl ? `url(${posterUrl})` : "none",
+                        backgroundColor: posterUrl ? "transparent" : "rgba(255, 255, 255, 0.1)",
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-black opacity-20" />
+                    <div className="relative z-20 w-full h-full flex items-center justify-center">
+                      <span className="font-medium text-2xl md:text-4xl">{semester}</span>
+                    </div>
+                    <div className="absolute inset-0 backdrop-blur-none group-hover:backdrop-blur-md transition-all duration-200 ease-in-out" />
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
         </nav>
       </div>

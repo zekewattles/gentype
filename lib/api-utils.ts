@@ -1,8 +1,11 @@
 import fs from "fs/promises"
 import path from "path"
 import matter from "gray-matter"
-import { remark } from "remark"
-import html from "remark-html"
+import { unified } from "unified"
+import remarkParse from "remark-parse"
+import remarkRehype from "remark-rehype"
+import rehypeStringify from "rehype-stringify"
+import { VFile } from "vfile"
 
 const semestersDirectory = path.join(process.cwd(), "content/semesters")
 
@@ -19,13 +22,12 @@ export async function getProjectsBySemester(semester: string) {
           const fileContents = await fs.readFile(fullPath, "utf8")
           const { data, content } = matter(fileContents)
 
-          const processedContent = await remark().use(html).process(content)
-          const contentHtml = processedContent
-            .toString()
-            .split("\n")
-            .filter((paragraph) => paragraph.trim() !== "")
-            .map((paragraph) => `<p>${paragraph}</p>`)
-            .join("")
+          const processedContent = await unified()
+            .use(remarkParse)
+            .use(remarkRehype)
+            .use(rehypeStringify)
+            .process(new VFile(content))
+          const contentHtml = processedContent.toString()
 
           if (!data.id) {
             console.warn(`Project file ${fileName} is missing an id in its frontmatter`)
@@ -77,18 +79,30 @@ export async function getTotalProjectCount(): Promise<number> {
 
 export async function getAllSemesterPosters(): Promise<Record<string, string>> {
   try {
+    console.log("Semesters directory:", semestersDirectory)
     const entries = await fs.readdir(semestersDirectory, { withFileTypes: true })
+    console.log("Directory entries:", entries)
     const semesters = entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name)
+    console.log("Filtered semesters:", semesters)
 
     const posterPromises = semesters.map(async (semester) => {
       const poster = await getFirstProjectPosterBySemester(semester)
-      return [semester, poster]
+      console.log(`Poster for ${semester}:`, poster)
+      return [semester, poster] as [string, string | null]
     })
 
     const posters = await Promise.all(posterPromises)
-    return Object.fromEntries(
-      posters.filter(([, poster]) => poster !== null).map(([semester, poster]) => [semester, `/gentype${poster}`]),
-    )
+    const result = Object.fromEntries(
+      posters
+        .filter(([, poster]) => poster !== null)
+        .map(([semester, poster]) => [
+          semester.toLowerCase(),
+          poster ? `/gentype/${poster.replace(/^\//, "")}` : "/placeholder-poster.jpg",
+        ]),
+    ) as Record<string, string>
+
+    console.log("Final result:", result)
+    return result
   } catch (error) {
     console.error("Error in getAllSemesterPosters:", error)
     return {}
@@ -98,9 +112,11 @@ export async function getAllSemesterPosters(): Promise<Record<string, string>> {
 async function getFirstProjectPosterBySemester(semester: string): Promise<string | null> {
   try {
     const semesterDirectory = path.join(semestersDirectory, semester.toLowerCase())
+    console.log("Checking semester directory:", semesterDirectory)
     const entries = await fs.readdir(semesterDirectory, { withFileTypes: true })
 
     const mdFiles = entries.filter((entry) => entry.isFile() && entry.name.endsWith(".md")).map((entry) => entry.name)
+    console.log("MD files found:", mdFiles)
 
     if (mdFiles.length === 0) return null
 
@@ -109,6 +125,7 @@ async function getFirstProjectPosterBySemester(semester: string): Promise<string
     const fileContents = await fs.readFile(fullPath, "utf8")
 
     const { data } = matter(fileContents)
+    console.log("Frontmatter data:", data)
     return data.posterSrc || null
   } catch (error) {
     if (error instanceof Error && "code" in error && error.code === "ENOTDIR") {
