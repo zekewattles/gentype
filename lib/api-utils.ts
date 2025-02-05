@@ -1,4 +1,4 @@
-import fs from "fs/promises"
+import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
 import { unified } from "unified"
@@ -6,20 +6,21 @@ import remarkParse from "remark-parse"
 import remarkRehype from "remark-rehype"
 import rehypeStringify from "rehype-stringify"
 import { VFile } from "vfile"
+import { semesterOrder, type Semester } from "./constants"
 
 const semestersDirectory = path.join(process.cwd(), "content/semesters")
 
 export async function getProjectsBySemester(semester: string) {
   try {
     const semesterDirectory = path.join(semestersDirectory, semester.toLowerCase())
-    const fileNames = await fs.readdir(semesterDirectory)
+    const fileNames = await fs.promises.readdir(semesterDirectory)
 
     const projects = await Promise.all(
       fileNames
         .filter((fileName) => fileName.endsWith(".md"))
         .map(async (fileName) => {
           const fullPath = path.join(semesterDirectory, fileName)
-          const fileContents = await fs.readFile(fullPath, "utf8")
+          const fileContents = await fs.promises.readFile(fullPath, "utf8")
           const { data, content } = matter(fileContents)
 
           const processedContent = await unified()
@@ -56,52 +57,26 @@ export async function getProjectsBySemester(semester: string) {
   }
 }
 
-export async function getTotalProjectCount(): Promise<number> {
+export async function getAllSemesterPosters(): Promise<Record<string, string>> {
   try {
-    let totalCount = 0
-    const semesters = await fs.readdir(semestersDirectory)
+    console.log("getAllSemesterPosters called")
+    console.log("Semesters directory:", semestersDirectory)
 
-    for (const semester of semesters) {
-      const semesterPath = path.join(semestersDirectory, semester)
-      const stat = await fs.stat(semesterPath)
-      if (stat.isDirectory()) {
-        const files = await fs.readdir(semesterPath)
-        totalCount += files.filter((file) => file.endsWith(".md")).length
+    const result: Record<string, string> = {}
+
+    for (const semester of semesterOrder) {
+      const poster = getFirstProjectPosterBySemester(semester)
+      if (poster) {
+        result[semester.toLowerCase()] = `/gentype/${poster.replace(/^\//, "")}`
       }
     }
 
-    return totalCount
-  } catch (error) {
-    console.error("Error in getTotalProjectCount:", error)
-    return 0
-  }
-}
-
-export async function getAllSemesterPosters(): Promise<Record<string, string>> {
-  try {
-    console.log("Semesters directory:", semestersDirectory)
-    const entries = await fs.readdir(semestersDirectory, { withFileTypes: true })
-    console.log("Directory entries:", entries)
-    const semesters = entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name)
-    console.log("Filtered semesters:", semesters)
-
-    const posterPromises = semesters.map(async (semester) => {
-      const poster = await getFirstProjectPosterBySemester(semester)
-      console.log(`Poster for ${semester}:`, poster)
-      return [semester, poster] as [string, string | null]
-    })
-
-    const posters = await Promise.all(posterPromises)
-    const result = Object.fromEntries(
-      posters
-        .filter(([, poster]) => poster !== null)
-        .map(([semester, poster]) => [
-          semester.toLowerCase(),
-          poster ? `/gentype/${poster.replace(/^\//, "")}` : "/placeholder-poster.jpg",
-        ]),
-    ) as Record<string, string>
-
     console.log("Final result:", result)
+
+    if (Object.keys(result).length === 0) {
+      throw new Error("No valid semester posters found")
+    }
+
     return result
   } catch (error) {
     console.error("Error in getAllSemesterPosters:", error)
@@ -109,29 +84,25 @@ export async function getAllSemesterPosters(): Promise<Record<string, string>> {
   }
 }
 
-async function getFirstProjectPosterBySemester(semester: string): Promise<string | null> {
+function getFirstProjectPosterBySemester(semester: Semester): string | null {
   try {
     const semesterDirectory = path.join(semestersDirectory, semester.toLowerCase())
     console.log("Checking semester directory:", semesterDirectory)
-    const entries = await fs.readdir(semesterDirectory, { withFileTypes: true })
+    const entries = fs.readdirSync(semesterDirectory)
 
-    const mdFiles = entries.filter((entry) => entry.isFile() && entry.name.endsWith(".md")).map((entry) => entry.name)
+    const mdFiles = entries.filter((entry) => entry.endsWith(".md"))
     console.log("MD files found:", mdFiles)
 
     if (mdFiles.length === 0) return null
 
     const firstProjectFile = mdFiles[0]
     const fullPath = path.join(semesterDirectory, firstProjectFile)
-    const fileContents = await fs.readFile(fullPath, "utf8")
+    const fileContents = fs.readFileSync(fullPath, "utf8")
 
     const { data } = matter(fileContents)
     console.log("Frontmatter data:", data)
     return data.posterSrc || null
   } catch (error) {
-    if (error instanceof Error && "code" in error && error.code === "ENOTDIR") {
-      console.warn(`Skipping non-directory entry in semesters: ${semester}`)
-      return null
-    }
     console.error(`Error in getFirstProjectPosterBySemester for ${semester}:`, error)
     return null
   }

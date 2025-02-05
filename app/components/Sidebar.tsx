@@ -1,41 +1,19 @@
 "use client"
 
 import { SidebarClient } from "./SidebarClient"
-import { useEffect, useState } from "react"
 
-export function Sidebar() {
-  const [semesterPosters, setSemesterPosters] = useState<Record<string, string>>({})
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+interface SidebarProps {
+  semesterPosters: Record<string, string>
+  error: string | null
+}
 
-  useEffect(() => {
-    async function fetchSemesterPosters() {
-      try {
-        setIsLoading(true)
-        const response = await fetch("/api/semesterPosters")
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
-        }
-        const data = await response.json()
-        console.log("Fetched semester posters:", data)
-        setSemesterPosters(data)
-      } catch (error) {
-        console.error("Error fetching semester posters:", error)
-        setError(`Failed to fetch semester posters. Error: ${error instanceof Error ? error.message : String(error)}`)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    fetchSemesterPosters()
-  }, [])
-
-  if (isLoading) {
-    return <div>Loading...</div>
+export function Sidebar({ semesterPosters, error }: SidebarProps) {
+  if (error) {
+    return <div className="text-red-500 p-4">Error: {error}</div>
   }
 
-  if (error) {
-    return <div>Error: {error}</div>
+  if (Object.keys(semesterPosters).length === 0) {
+    return <div className="text-white p-4">No semester posters found.</div>
   }
 
   return <SidebarClient semesterPosters={semesterPosters} />
