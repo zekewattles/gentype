@@ -6,10 +6,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  experimental: {
-    // Enable new features if needed
-    // serverActions: true,
-  },
+  // This is important for GitHub Pages
+  trailingSlash: true,
 }
 
 module.exports = nextConfig
