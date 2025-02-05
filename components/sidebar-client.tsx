@@ -48,7 +48,7 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
                   <div className="relative z-20 w-full h-full flex items-center justify-center">
                     <span className="font-medium text-2xl md:text-4xl">{semester}</span>
                   </div>
-                  <div className="absolute inset-0 backdrop-blur-none group-hover:backdrop-blur-md transition-all duration-200 ease-in-out" />
+                  <div className="absolute inset-0 backdrop-blur-none group-hover:backdrop-blur-sm transition-all duration-150 ease-in-out" />
                 </Link>
               </li>
             ))}
