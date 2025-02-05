@@ -19,8 +19,8 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
   }
 
   return (
-    <article className="w-full space-y-3 overflow-hidden">
-      <div className="w-full mx-auto aspect-video rounded-sm overflow-hidden border border-white/20">
+    <article className="w-full space-y-2 overflow-hidden">
+      <div className="w-full mx-auto aspect-video rounded-md overflow-hidden border border border-neutral-800">
         <video
           ref={videoRef}
           src={videoSrc || undefined}
@@ -30,8 +30,8 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
           controls
         />
       </div>
-      <div className="bg-white/10 border border-white/20 rounded-sm p-4 space-y-1.5">
-        <p className="text-xs font-medium uppercase text-white/50">{author}</p>
+      <div className="bg-neutral-950 border border border-neutral-800 rounded-md p-3 space-y-1.5">
+        <p className="text-xs font-medium uppercase text-neutral-500">{author}</p>
         <h2 className="text-2xl font-medium text-white">{title}</h2>
         <div
           className="text-xs leading-relaxed space-y-2 text-white"

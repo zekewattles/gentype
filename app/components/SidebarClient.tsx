@@ -9,8 +9,8 @@ interface SidebarClientProps {
 export function SidebarClient({ semesterPosters }: SidebarClientProps) {
   return (
     <aside className="w-full md:w-4/12 md:sticky md:top-0 md:h-screen overflow-y-auto bg-black scrollbar-hide">
-      <div className="p-3 space-y-3 h-full overflow-y-auto scrollbar-hide">
-        <div className="info bg-white/10 rounded-sm p-4 space-y-2 border border-white/20">
+      <div className="p-2 space-y-2 h-full overflow-y-auto scrollbar-hide">
+        <div className="info bg-neutral-950 rounded-md p-3 space-y-2 border border-neutral-800">
           <Link href="/" className="inline-block">
             <h1 className="text-2xl font-medium text-white">GenType</h1>
           </Link>
@@ -31,14 +31,14 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
           </p>
         </div>
         <nav>
-          <ul className="grid grid-cols-2 gap-3 md:grid-cols-1">
+          <ul className="grid grid-cols-2 gap-2 md:grid-cols-1">
             {semesterOrder.map((semester) => {
               const posterUrl = semesterPosters[semester.toLowerCase()]
               return (
                 <li key={semester}>
                   <Link
                     href={`/${semester.toLowerCase()}`}
-                    className="block aspect-video rounded-sm text-white relative overflow-hidden group border border-white/20"
+                    className="block aspect-video rounded-md text-white relative overflow-hidden group border border border-neutral-800"
                   >
                     <div
                       className="absolute inset-0 bg-cover bg-center scale-110 blur-sm group-hover:blur-none transition-all duration-200"

@@ -20,19 +20,10 @@ export default function SemesterPage({ params }: PageProps) {
 async function SemesterContent({ params }: PageProps) {
   const { semester } = await params
   const normalizedSemester = semester.toUpperCase() as Semester
-
-  if (!semesterOrder.includes(normalizedSemester)) {
-    return <div className="text-white text-center p-8">Invalid semester.</div>
-  }
-
   const projects = await getProjectsBySemester(normalizedSemester)
 
-  if (!projects || projects.length === 0) {
-    return <div className="text-white text-center p-8">No projects found for this semester.</div>
-  }
-
   return (
-    <div className="space-y-3">
+    <div className="space-y-2">
       {projects.map((project) => (
         <Project key={project.id} {...project} />
       ))}
