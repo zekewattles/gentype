@@ -38,20 +38,22 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
                 <li key={semester} className="overflow-hidden">
                   <Link
                     href={`/${semester.toLowerCase()}`}
-                    className="block aspect-video rounded-sm text-white transition-colors relative overflow-hidden group touch-none"
+                    className="block aspect-video rounded-sm text-white transition-colors relative overflow-hidden group"
                   >
-                    <div
-                      className="absolute inset-0 bg-cover bg-center"
-                      style={{
-                        backgroundImage: posterUrl ? `url(${posterUrl})` : "none",
-                        backgroundColor: posterUrl ? "transparent" : "rgba(255, 255, 255, 0.1)",
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-black opacity-20" />
-                    <div className="absolute inset-0 backdrop-blur-none group-hover:backdrop-blur-md group-active:backdrop-blur-none transition-all duration-200 ease-in-out" />
-                    <div className="relative z-30 w-full h-full flex items-center justify-center">
+                    <div className="absolute inset-0 overflow-hidden rounded-sm">
+                      <div
+                        className="absolute inset-0 bg-cover bg-center"
+                        style={{
+                          backgroundImage: posterUrl ? `url(${posterUrl})` : "none",
+                          backgroundColor: posterUrl ? "transparent" : "rgba(255, 255, 255, 0.1)",
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-black opacity-20" />
+                    </div>
+                    <div className="relative z-20 w-full h-full flex items-center justify-center">
                       <span className="font-medium text-2xl md:text-4xl">{semester}</span>
                     </div>
+                    <div className="absolute inset-0 backdrop-blur-none group-hover:backdrop-blur-md transition-all duration-200 ease-in-out" />
                   </Link>
                 </li>
               )
