@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import { Project } from "@/components/Project"
 import { getProjectsBySemester } from "@/lib/api-utils"
 import { semesterOrder } from "@/lib/constants"
+import type { Metadata } from "next"
 
 export default async function SemesterPage({ params }: { params: Promise<{ semester: string }> }) {
   const { semester } = await params
@@ -26,7 +27,7 @@ export function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ semester: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ semester: string }> }): Promise<Metadata> {
   const { semester } = await params
   return {
     title: `${semester.toUpperCase()} Semester | GenType`,
