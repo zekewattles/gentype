@@ -31,7 +31,7 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
         />
       </div>
       <div className="backdrop-blur-2xl bg-white/5 rounded-sm p-3 space-y-1.5">
-        <p className="text-xs font-medium text-white/50">{author}</p>
+        <p className="text-xs font-medium uppercase text-white/50">{author}</p>
         <h2 className="text-2xl font-medium text-white">{title}</h2>
         <div
           className="text-xs leading-relaxed space-y-2 text-white"
