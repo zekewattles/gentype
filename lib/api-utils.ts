@@ -75,28 +75,6 @@ export async function getTotalProjectCount(): Promise<number> {
   }
 }
 
-export async function getInitialData() {
-  try {
-    const totalProjects = await getTotalProjectCount()
-    const semesters = (await fs.readdir(semestersDirectory)).filter(async (item) => {
-      const stat = await fs.stat(path.join(semestersDirectory, item))
-      return stat.isDirectory()
-    })
-    return {
-      totalProjects,
-      currentYear: new Date().getFullYear(),
-      totalSemesters: semesters.length,
-    }
-  } catch (error) {
-    console.error("Error in getInitialData:", error)
-    return {
-      totalProjects: 0,
-      currentYear: new Date().getFullYear(),
-      totalSemesters: 0,
-    }
-  }
-}
-
 export async function getAllSemesterPosters(): Promise<Record<string, string>> {
   try {
     const entries = await fs.readdir(semestersDirectory, { withFileTypes: true })

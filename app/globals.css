@@ -17,46 +17,12 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-@keyframes blink {
-  0%,
-  49% {
-    opacity: 1;
-  }
-  50%,
-  100% {
-    opacity: 0;
-  }
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
-
-.animate-blink {
-  animation: blink 0.5s step-end infinite;
-}
-
-.startup-background {
-  @apply bg-black;
-}
-
-.startup-logo {
-  opacity: 1;
-  mix-blend-mode: screen;
-  background-size: contain;
-}
-
-/* Add the custom font to Tailwind's font family */
-@layer base {
-  .font-ibm-bios {
-    font-family: var(--font-ibm-bios);
-  }
-}
-
-@layer utilities {
-  .scrollbar-hide {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
-  }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 
 video::-webkit-media-controls-fullscreen-button {
@@ -68,3 +34,4 @@ video:fullscreen {
   width: 100vw;
   height: 100vh;
 }
+

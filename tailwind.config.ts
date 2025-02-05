@@ -9,10 +9,8 @@ module.exports = {
 	],
 	theme: {
 	  extend: {
-		fontFamily: {
-		  "ibm-bios": ["var(--font-ibm-bios)"],
-		},
 		colors: {
+		  glass: "rgba(255, 255, 255, 0.2)",
 		  border: "hsl(var(--border))",
 		  input: "hsl(var(--input))",
 		  ring: "hsl(var(--ring))",
@@ -46,12 +44,15 @@ module.exports = {
 			DEFAULT: "hsl(var(--card))",
 			foreground: "hsl(var(--card-foreground))",
 		  },
-		  "startup-background": "var(--startup-background-color)",
 		},
 		borderRadius: {
 		  lg: "var(--radius)",
 		  md: "calc(var(--radius) - 2px)",
 		  sm: "calc(var(--radius) - 4px)",
+		},
+		backdropFilter: {
+		  none: "none",
+		  blur: "blur(20px)",
 		},
 	  },
 	},
