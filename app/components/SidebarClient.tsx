@@ -7,8 +7,6 @@ interface SidebarClientProps {
 }
 
 export function SidebarClient({ semesterPosters }: SidebarClientProps) {
-  console.log("SidebarClient received semesterPosters:", semesterPosters)
-
   return (
     <aside className="w-full md:w-4/12 md:sticky md:top-0 md:h-screen overflow-y-auto bg-black scrollbar-hide">
       <div className="p-3 space-y-3 h-full overflow-y-auto scrollbar-hide">
@@ -36,7 +34,6 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
           <ul className="grid grid-cols-2 gap-3 md:grid-cols-1">
             {semesterOrder.map((semester) => {
               const posterUrl = semesterPosters[semester.toLowerCase()]
-              console.log(`Semester: ${semester}, Poster URL: ${posterUrl}`)
               return (
                 <li key={semester} className="overflow-hidden">
                   <Link

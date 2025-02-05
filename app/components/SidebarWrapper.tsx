@@ -2,16 +2,12 @@ import { getAllSemesterPosters } from "@/lib/api-utils"
 import { Sidebar } from "./Sidebar"
 
 export async function SidebarWrapper() {
-  let semesterPosters: Record<string, string> = {}
-  let error: string | null = null
-
   try {
-    semesterPosters = await getAllSemesterPosters()
+    const semesterPosters = await getAllSemesterPosters()
+    return <Sidebar semesterPosters={semesterPosters} error={null} />
   } catch (e) {
-    console.error("Error fetching semester posters:", e)
-    error = e instanceof Error ? e.message : String(e)
+    const error = e instanceof Error ? e.message : String(e)
+    return <Sidebar semesterPosters={{}} error={error} />
   }
-
-  return <Sidebar semesterPosters={semesterPosters} error={error} />
 }
 
