@@ -14,6 +14,10 @@ interface ProjectProps {
 export function Project({ author, title, description, videoSrc, posterSrc, links }: ProjectProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
+  if (!title || !author) {
+    return null
+  }
+
   return (
     <article className="w-full space-y-3 rounded-sm overflow-hidden">
       <div className="w-full mx-auto aspect-video rounded-md overflow-hidden">

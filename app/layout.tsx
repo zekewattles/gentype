@@ -1,6 +1,6 @@
 import { GeistMono } from "geist/font/mono"
 import "./globals.css"
-import { Sidebar } from "./components/Sidebar"
+import { SidebarWrapper } from "./components/SidebarWrapper"
 import type { Metadata } from "next"
 import type React from "react" // Import React
 
@@ -58,7 +58,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <div className="flex flex-col md:flex-row min-h-screen bg-black">
-          <Sidebar />
+          <SidebarWrapper />
           <main className="flex-1 p-3 space-y-3 overflow-y-auto bg-black">{children}</main>
         </div>
       </body>
