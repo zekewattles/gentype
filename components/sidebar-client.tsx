@@ -8,22 +8,22 @@ interface SidebarClientProps {
 
 export function SidebarClient({ semesterPosters }: SidebarClientProps) {
   return (
-    <aside className="w-full md:w-4/12 md:sticky md:top-0 md:h-screen overflow-y-auto bg-zinc-950 scrollbar-hide rounded-md">
+    <aside className="w-full md:w-4/12 md:sticky md:top-0 md:h-screen overflow-y-auto bg-black scrollbar-hide rounded-md">
       <div className="p-3 space-y-3 h-full overflow-y-auto scrollbar-hide">
-        <div className="info bg-zinc-900 rounded-md p-3 space-y-2">
+        <div className="info backdrop-blur-2xl bg-white/5 rounded-sm p-3 space-y-2">
           <Link href="/" className="inline-block">
-            <h1 className="text-2xl font-medium text-zinc-50">GenType</h1>
+            <h1 className="text-2xl font-medium text-white">GenType</h1>
           </Link>
-          <p className="text-xs leading-relaxed text-zinc-50">
+          <p className="text-xs leading-relaxed text-white">
             Generative Typography is a creative coding course taught by Zeke Wattles at ArtCenter College of Design.
           </p>
-          <p className="text-xs leading-relaxed text-zinc-50">
+          <p className="text-xs leading-relaxed text-white">
             Through focused exercises, students learn to build custom{" "}
             <a
               href="https://editor.p5js.org/zekewattles/sketches"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-lime-400 hover:text-zinc-300 font-medium cursor-pointer"
+              className="text-lime-400 hover:text-lime-600 font-medium cursor-pointer"
             >
               code-based tools
             </a>{" "}
@@ -36,7 +36,7 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
               <li key={semester}>
                 <Link
                   href={`/${semester.toLowerCase()}`}
-                  className="block aspect-video rounded-md text-white transition-colors relative overflow-hidden group"
+                  className="block aspect-video rounded-sm text-white transition-colors relative overflow-hidden group"
                 >
                   <div
                     className="absolute inset-0 bg-cover bg-center"
@@ -45,10 +45,10 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
                     }}
                   />
                   <div className="absolute inset-0 bg-black opacity-20" />
-                  <div className="relative z-10 w-full h-full flex items-center justify-center">
+                  <div className="relative z-20 w-full h-full flex items-center justify-center">
                     <span className="font-medium text-2xl md:text-4xl">{semester}</span>
                   </div>
-                  <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
+                  <div className="absolute inset-0 backdrop-blur-none group-hover:backdrop-blur-md transition-all duration-200 ease-in-out" />
                 </Link>
               </li>
             ))}

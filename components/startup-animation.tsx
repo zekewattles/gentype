@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react"
 import localFont from "next/font/local"
 import Image from "next/image"
+import packageJson from "../package.json"
 
 // Load the custom IBM BIOS font
 const ibmBiosFont = localFont({
@@ -42,7 +43,7 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
     }
 
     return [
-      "GenType BIOS v2.0.1",
+      `GenType BIOS v${packageJson.version}`,
       `(C) 2022-${initialData.currentYear} GT MICROSYSTEMS, INC.`,
       "All rights reserved.",
       `Released: ${new Date().toISOString().split("T")[0]}`,
@@ -100,7 +101,7 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
   if (lines.length === 0) return null
 
   return (
-    <div className={`fixed inset-0 bg-zinc-950 ${ibmBiosFont.variable}`}>
+    <div className={`fixed inset-0 bg-black ${ibmBiosFont.variable}`}>
       <div className="absolute top-3 right-3 w-24 h-24">
         <Image
           src="/gentype/images/energy-star-logo.png"
@@ -110,8 +111,8 @@ export function StartupAnimation({ onComplete, initialData }: { onComplete: () =
           className="startup-logo"
         />
       </div>
-      <div className="relative z-10 p-3">
-        <pre className="font-ibm-bios text-zinc-300 text-xs font-medium whitespace-pre">
+      <div className="relative z-10 p-5">
+        <pre className="font-ibm-bios text-white text-xs font-medium whitespace-pre">
           {lines.slice(0, visibleLines).join("\n")}
           {isComplete && (
             <>

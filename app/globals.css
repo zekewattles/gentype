@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background-color: theme("colors.zinc.950");
+  --background-color: theme("colors.black");
   --radius: 0.5rem;
 }
 
 html,
 body {
-  @apply bg-zinc-950 text-white scrollbar-hide;
+  @apply bg-black text-white scrollbar-hide;
 }
 
 body {
@@ -33,7 +33,7 @@ body {
 }
 
 .startup-background {
-  @apply bg-zinc-950;
+  @apply bg-black;
 }
 
 .startup-logo {
@@ -57,4 +57,14 @@ body {
   .scrollbar-hide::-webkit-scrollbar {
     display: none; /* Chrome, Safari and Opera */
   }
+}
+
+video::-webkit-media-controls-fullscreen-button {
+  display: block;
+}
+
+video:fullscreen {
+  object-fit: contain;
+  width: 100vw;
+  height: 100vh;
 }

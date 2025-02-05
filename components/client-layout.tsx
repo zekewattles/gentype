@@ -22,7 +22,7 @@ export function ClientLayout({
   return (
     <>
       {!showContent && <StartupAnimation onComplete={() => setShowContent(true)} initialData={initialData} />}
-      {showContent && <div className="flex flex-col md:flex-row min-h-screen bg-zinc-950">{children}</div>}
+      {showContent && <div className="flex flex-col md:flex-row min-h-screen bg-black">{children}</div>}
     </>
   )
 }
