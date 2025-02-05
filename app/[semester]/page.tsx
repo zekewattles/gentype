@@ -1,13 +1,23 @@
+import { Suspense } from "react"
 import { Project } from "../components/Project"
 import { getProjectsBySemester } from "@/lib/api-utils"
 import { semesterOrder, type Semester } from "@/lib/constants"
 import type { Metadata } from "next"
+import Loading from "../loading"
 
 interface PageProps {
   params: Promise<{ semester: string }>
 }
 
-export default async function SemesterPage({ params }: PageProps) {
+export default function SemesterPage({ params }: PageProps) {
+  return (
+    <Suspense fallback={<Loading />}>
+      <SemesterContent params={params} />
+    </Suspense>
+  )
+}
+
+async function SemesterContent({ params }: PageProps) {
   const { semester } = await params
   const normalizedSemester = semester.toUpperCase() as Semester
 
