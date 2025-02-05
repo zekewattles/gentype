@@ -21,7 +21,7 @@ export function Sidebar() {
         setSemesterPosters(data)
       } catch (error) {
         console.error("Error fetching semester posters:", error)
-        setError("Failed to fetch semester posters. Please try again later.")
+        setError(`Failed to fetch semester posters. Error: ${error instanceof Error ? error.message : String(error)}`)
       } finally {
         setIsLoading(false)
       }

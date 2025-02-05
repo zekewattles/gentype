@@ -105,7 +105,7 @@ export async function getAllSemesterPosters(): Promise<Record<string, string>> {
     return result
   } catch (error) {
     console.error("Error in getAllSemesterPosters:", error)
-    return {}
+    throw new Error(`Failed to get all semester posters: ${error instanceof Error ? error.message : String(error)}`)
   }
 }
 
