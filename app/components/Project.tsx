@@ -19,8 +19,8 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
   }
 
   return (
-    <article className="w-full space-y-3 rounded-sm overflow-hidden">
-      <div className="w-full mx-auto aspect-video rounded-md overflow-hidden">
+    <article className="w-full space-y-3 overflow-hidden">
+      <div className="w-full mx-auto aspect-video rounded-sm overflow-hidden">
         <video
           ref={videoRef}
           src={videoSrc || undefined}
