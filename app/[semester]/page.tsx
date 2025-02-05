@@ -49,7 +49,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { semester } = await params
   return {
-    title: `${semester.toUpperCase()} Semester | GenType`,
+    title: `${semester.toUpperCase()}`,
   }
 }
 
