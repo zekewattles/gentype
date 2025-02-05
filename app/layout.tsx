@@ -2,7 +2,7 @@ import { GeistMono } from "geist/font/mono"
 import "./globals.css"
 import { SidebarWrapper } from "./components/SidebarWrapper"
 import type { Metadata } from "next"
-import type React from "react" // Import React
+import type React from "react"
 
 const geistMono = GeistMono
 
@@ -12,17 +12,17 @@ export const metadata: Metadata = {
     template: "%s | GenType",
   },
   description: "Generative Typography course at ArtCenter College of Design",
-  metadataBase: new URL("https://zeke.studio/gentype/"),
+  metadataBase: new URL("https://zeke.studio"),
   authors: [{ name: "Zeke Wattles" }],
   keywords: ["Generative Typography", "Creative Coding", "Graphic Design", "ArtCenter College of Design"],
   openGraph: {
     title: "GenType",
     description: "Generative Typography course at ArtCenter College of Design",
-    url: "/",
+    url: "/gentype/",
     siteName: "GenType",
     images: [
       {
-        url: "semesters/fa24/posters/alvin-lin.jpg",
+        url: "/gentype/semesters/fa24/posters/alvin-lin.jpg",
         width: 1200,
         height: 630,
       },
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "GenType",
     description: "Generative Typography course at ArtCenter College of Design",
-    images: ["semesters/fa24/posters/alvin-lin.jpg"],
+    images: ["/gentype/semesters/fa24/posters/alvin-lin.jpg"],
   },
   icons: {
     icon: [

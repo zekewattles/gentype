@@ -10,7 +10,7 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
   return (
     <aside className="w-full md:w-4/12 md:sticky md:top-0 md:h-screen overflow-y-auto bg-black scrollbar-hide">
       <div className="p-3 space-y-3 h-full overflow-y-auto scrollbar-hide">
-        <div className="info backdrop-blur-2xl bg-white/5 rounded-sm p-3 space-y-2">
+        <div className="info bg-white/10 rounded-sm p-4 space-y-2 border border-white/20">
           <Link href="/" className="inline-block">
             <h1 className="text-2xl font-medium text-white">GenType</h1>
           </Link>
@@ -35,25 +35,21 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
             {semesterOrder.map((semester) => {
               const posterUrl = semesterPosters[semester.toLowerCase()]
               return (
-                <li key={semester} className="overflow-hidden">
+                <li key={semester}>
                   <Link
                     href={`/${semester.toLowerCase()}`}
-                    className="block aspect-video rounded-sm text-white transition-colors relative overflow-hidden group"
+                    className="block aspect-video rounded-sm text-white relative overflow-hidden group border border-white/20"
                   >
-                    <div className="absolute inset-0 overflow-hidden rounded-sm">
-                      <div
-                        className="absolute inset-0 bg-cover bg-center"
-                        style={{
-                          backgroundImage: posterUrl ? `url(${posterUrl})` : "none",
-                          backgroundColor: posterUrl ? "transparent" : "rgba(255, 255, 255, 0.1)",
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-black opacity-20" />
+                    <div
+                      className="absolute inset-0 bg-cover bg-center scale-110 blur-sm group-hover:blur-none transition-all duration-200"
+                      style={{
+                        backgroundImage: posterUrl ? `url(${posterUrl})` : "none",
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-black/30" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="font-medium text-2xl md:text-4xl z-10">{semester}</span>
                     </div>
-                    <div className="relative z-20 w-full h-full flex items-center justify-center">
-                      <span className="font-medium text-2xl md:text-4xl">{semester}</span>
-                    </div>
-                    <div className="absolute inset-0 backdrop-blur-none group-hover:backdrop-blur-md transition-all duration-200 ease-in-out" />
                   </Link>
                 </li>
               )

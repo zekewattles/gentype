@@ -52,9 +52,13 @@ export async function getAllSemesterPosters(): Promise<Record<string, string>> {
   const result: Record<string, string> = {}
 
   for (const semester of semesterOrder) {
-    const poster = getFirstProjectPosterBySemester(semester)
-    if (poster) {
-      result[semester.toLowerCase()] = `/gentype/${poster.replace(/^\//, "")}`
+    try {
+      const poster = getFirstProjectPosterBySemester(semester)
+      if (poster) {
+        result[semester.toLowerCase()] = `/gentype/${poster.replace(/^\//, "")}`
+      }
+    } catch (error) {
+      // Silently continue if there's an error
     }
   }
 
@@ -63,11 +67,17 @@ export async function getAllSemesterPosters(): Promise<Record<string, string>> {
 
 function getFirstProjectPosterBySemester(semester: Semester): string | null {
   const semesterDirectory = path.join(semestersDirectory, semester.toLowerCase())
-  const entries = fs.readdirSync(semesterDirectory)
 
+  if (!fs.existsSync(semesterDirectory)) {
+    return null
+  }
+
+  const entries = fs.readdirSync(semesterDirectory)
   const mdFiles = entries.filter((entry) => entry.endsWith(".md"))
 
-  if (mdFiles.length === 0) return null
+  if (mdFiles.length === 0) {
+    return null
+  }
 
   const firstProjectFile = mdFiles[0]
   const fullPath = path.join(semesterDirectory, firstProjectFile)
