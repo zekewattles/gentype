@@ -8,7 +8,7 @@ interface SidebarClientProps {
 
 export function SidebarClient({ semesterPosters }: SidebarClientProps) {
   return (
-    <aside className="w-full md:w-4/12 md:sticky md:top-0 md:h-screen overflow-y-auto bg-black scrollbar-hide rounded-md">
+    <aside className="w-full md:w-4/12 md:sticky md:top-0 md:h-screen overflow-y-auto bg-black scrollbar-hide">
       <div className="p-3 space-y-3 h-full overflow-y-auto scrollbar-hide">
         <div className="info backdrop-blur-2xl bg-white/5 rounded-sm p-3 space-y-2">
           <Link href="/" className="inline-block">
@@ -33,7 +33,7 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
         <nav>
           <ul className="grid grid-cols-2 gap-3 md:grid-cols-1">
             {semesterOrder.map((semester) => (
-              <li key={semester}>
+              <li key={semester} className="overflow-hidden">
                 <Link
                   href={`/${semester.toLowerCase()}`}
                   className="block aspect-video rounded-sm text-white transition-colors relative overflow-hidden group"
