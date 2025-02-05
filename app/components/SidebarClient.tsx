@@ -38,7 +38,7 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
                 <li key={semester} className="overflow-hidden">
                   <Link
                     href={`/${semester.toLowerCase()}`}
-                    className="block aspect-video rounded-sm text-white transition-colors relative overflow-hidden group"
+                    className="block aspect-video rounded-sm text-white transition-colors relative overflow-hidden group active:backdrop-blur-none"
                   >
                     <div
                       className="absolute inset-0 bg-cover bg-center"
@@ -51,7 +51,7 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
                     <div className="relative z-20 w-full h-full flex items-center justify-center">
                       <span className="font-medium text-2xl md:text-4xl">{semester}</span>
                     </div>
-                    <div className="absolute inset-0 backdrop-blur-none group-hover:backdrop-blur-md transition-all duration-200 ease-in-out" />
+                    <div className="absolute inset-0 backdrop-blur-none group-hover:backdrop-blur-md active:backdrop-blur-none transition-all duration-200 ease-in-out z-30" />
                   </Link>
                 </li>
               )
