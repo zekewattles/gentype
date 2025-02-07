@@ -10,9 +10,9 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
   return (
     <aside className="w-full md:w-4/12 md:sticky md:top-0 md:h-screen overflow-y-auto bg-black scrollbar-hide">
       <div className="p-2 space-y-2 h-full overflow-y-auto scrollbar-hide">
-        <div className="info bg-neutral-950 rounded-md p-3 space-y-2 border border-neutral-800">
+        <div className="info bg-neutral-950 rounded-lg p-3 space-y-2 border border-neutral-800">
           <Link href="/" className="inline-block">
-            <h1 className="text-2xl font-medium text-white">GenType</h1>
+            <h1 className="text-3xl font-light text-white">GenType</h1>
           </Link>
           <p className="text-xs leading-relaxed text-white">
             Generative Typography is a creative coding course taught by Zeke Wattles at ArtCenter College of Design.
@@ -38,7 +38,7 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
                 <li key={semester}>
                   <Link
                     href={`/${semester.toLowerCase()}`}
-                    className="block aspect-video rounded-md text-white relative overflow-hidden group border border border-neutral-800"
+                    className="block aspect-video rounded-lg text-white relative overflow-hidden group border border border-neutral-800"
                   >
                     <div
                       className="absolute inset-0 bg-cover bg-center scale-110 blur-sm group-hover:blur-none transition-all duration-200"
@@ -48,7 +48,7 @@ export function SidebarClient({ semesterPosters }: SidebarClientProps) {
                     />
                     <div className="absolute inset-0 bg-black/30" />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-medium text-2xl md:text-4xl z-10">{semester}</span>
+                      <span className="font-light text-3xl md:text-5xl z-10">{semester}</span>
                     </div>
                   </Link>
                 </li>
