@@ -19,8 +19,8 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
   }
 
   return (
-    <article className="w-full space-y-2 overflow-hidden">
-      <div className="w-full mx-auto aspect-video rounded-lg overflow-hidden border border border-neutral-800">
+    <article className="w-full space-y-4 mb-24">
+      <div className="w-full aspect-video bg-neutral-300">
         <video
           ref={videoRef}
           src={videoSrc || undefined}
@@ -30,25 +30,26 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
           controls
         />
       </div>
-      <div className="bg-neutral-950 border border border-neutral-800 rounded-lg p-3 space-y-1">
-        <p className="text-xs font uppercase text-neutral-500">{author}</p>
-        <h2 className="text-3xl font-light text-white">{title}</h2>
-        <div
-          className="text-xs leading-relaxed space-y-2 text-white"
-          dangerouslySetInnerHTML={{ __html: description }}
-        />
-        {links?.map((link, index) => (
-          <div key={index}>
+      <div className="space-y-4">
+        <h3 className="text-base">
+          <span className="font-bold">
+            {author} — {title}
+          </span>
+        </h3>
+        <div className="text-base leading-relaxed space-y-2" dangerouslySetInnerHTML={{ __html: description }} />
+        <div className="space-y-1">
+          {links?.map((link, index) => (
             <a
+              key={index}
               href={link.url}
-              className="text-lime-400 text-xs uppercase hover:text-lime-600 cursor-pointer"
+              className="block text-base underline hover:no-underline"
               target="_blank"
               rel="noopener noreferrer"
             >
               {link.text}
             </a>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </article>
   )

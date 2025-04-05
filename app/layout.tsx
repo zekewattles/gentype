@@ -1,10 +1,7 @@
-import { GeistMono } from "geist/font/mono"
 import "./globals.css"
-import { SidebarWrapper } from "./components/SidebarWrapper"
+import { Menu } from "./components/Menu"
 import type { Metadata } from "next"
 import type React from "react"
-
-const geistMono = GeistMono
 
 export const metadata: Metadata = {
   title: {
@@ -39,7 +36,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">👾</text></svg>',
+        url: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" fontSize="90">👾</text></svg>',
         type: "image/svg+xml",
       },
     ],
@@ -52,14 +49,20 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={geistMono.className}>
+    <html lang="en" className="geist-mono">
       <head>
         <meta name="theme-color" content="#000" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body className="antialiased">
-        <div className="flex flex-col md:flex-row min-h-screen bg-black">
-          <SidebarWrapper />
-          <main className="flex-1 p-2 space-y-2 overflow-y-auto bg-black">{children}</main>
+        <div className="min-h-screen bg-black text-white">
+          <Menu />
+          <div className="container mx-auto px-4 pt-12 max-w-6xl">{children}</div>
         </div>
       </body>
     </html>
