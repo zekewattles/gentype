@@ -20,12 +20,12 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
 
   return (
     <article className="w-full space-y-4 mb-24">
-      <div className="w-full aspect-video bg-neutral-300">
+      <div className="w-full aspect-video bg-black">
         <video
           ref={videoRef}
           src={videoSrc || undefined}
           poster={posterSrc || undefined}
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover"
           playsInline
           controls
         />
