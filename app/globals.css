@@ -33,7 +33,7 @@ video:fullscreen {
 }
 
 hr {
-  @apply my-12 border-white;
+  @apply my-12;
 }
 
 /* Add scroll margin to account for fixed header */
