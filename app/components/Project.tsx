@@ -19,7 +19,9 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
   }
 
   return (
-    <article className="w-full space-y-4 mb-24">
+    <article className="w-full space-y-6">
+      {" "}
+      {/* Removed mb-24 since spacing is handled by parent */}
       <div className="w-full aspect-video bg-black border border-neutral-800">
         <video
           ref={videoRef}
@@ -36,8 +38,8 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
             {author} — {title}
           </span>
         </h3>
-        <div className="text-base leading-relaxed space-y-2" dangerouslySetInnerHTML={{ __html: description }} />
-        <div className="space-y-1">
+        <div className="text-base leading-relaxed space-y-4" dangerouslySetInnerHTML={{ __html: description }} />
+        <div className="space-y-4">
           {links?.map((link, index) => (
             <a
               key={index}

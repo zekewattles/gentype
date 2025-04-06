@@ -59,7 +59,7 @@ export default function RootLayout({
       <body className="antialiased">
         <div className="min-h-screen bg-black text-white">
           <Menu />
-          <div className="container mx-auto px-4 pt-12 max-w-6xl">{children}</div>
+          <div className="container mx-auto px-4 pt-large pb-large max-w-6xl">{children}</div>
         </div>
       </body>
     </html>

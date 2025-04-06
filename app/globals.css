@@ -5,6 +5,7 @@
 :root {
   --background-color: theme("colors.black");
   --radius: 0.5rem;
+  --large-spacing: 5rem; /* Added variable for consistent spacing */
 }
 
 html,
@@ -33,11 +34,24 @@ video:fullscreen {
 }
 
 hr {
-  @apply my-12;
+  @apply my-20 border-neutral-800 border-dashed; /* Changed from my-24 to my-20 */
 }
 
 /* Add scroll margin to account for fixed header */
 section[id] {
-  scroll-margin-top: calc(3rem - 1px);
+  scroll-margin-top: calc(var(--large-spacing) - 1px);
+}
+
+/* Added utility classes for consistent large spacing */
+.large-spacing {
+  margin-bottom: var(--large-spacing);
+}
+
+.pt-large {
+  padding-top: var(--large-spacing);
+}
+
+.pb-large {
+  padding-bottom: var(--large-spacing);
 }
 

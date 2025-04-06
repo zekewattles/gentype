@@ -12,10 +12,12 @@ export default async function Home() {
   )
 
   return (
-    <div>
+    <div className="space-y-20">
+      {" "}
+      {/* Changed from space-y-24 to space-y-20 */}
       {/* Info Section */}
-      <section id="info" className="mb-24">
-        <h1 className="text-5xl font-normal mb-8">
+      <section id="info">
+        <h1 className="text-4xl font-normal mb-4">
           Generative
           <br />
           Typography
@@ -42,16 +44,18 @@ export default async function Home() {
           , students learn to build custom code-based tools for graphic design and use them to build generative identity systems, microsites, installations, and more.
         </p>
       </section>
-
       <hr />
-
       {/* Semester Sections */}
-      {semesterProjects.map(({ semester, projects }) => (
-        <section key={semester} id={semester.toLowerCase()} className="mb-12">
-          <h1 className="text-5xl font-normal mb-12">{semester}</h1>
-          {projects.map((project) => (
-            <Project key={project.id} {...project} />
-          ))}
+      {semesterProjects.map(({ semester, projects }, index) => (
+        <section key={semester} id={semester.toLowerCase()}>
+          <h1 className="text-4xl font-normal mb-20">{semester}</h1> {/* Changed from mb-24 to mb-20 */}
+          <div className="space-y-20">
+            {" "}
+            {/* Changed from space-y-24 to space-y-20 */}
+            {projects.map((project) => (
+              <Project key={project.id} {...project} />
+            ))}
+          </div>
           {semester !== semesterOrder[semesterOrder.length - 1] && <hr />}
         </section>
       ))}
