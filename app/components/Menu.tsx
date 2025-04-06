@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { semesterOrder } from "@/lib/constants"
 
 // Array of Tailwind 500 colors
@@ -52,6 +52,8 @@ const generateMenuColors = () => {
 export function Menu() {
   const [isOpen, setIsOpen] = useState(false)
   const [menuColors, setMenuColors] = useState<ColorMap>(generateMenuColors)
+  const menuRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   const toggleMenu = () => {
     // If we're opening the menu, randomize the colors
@@ -61,9 +63,35 @@ export function Menu() {
     setIsOpen(!isOpen)
   }
 
+  // Handle clicks outside the menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isOpen &&
+        menuRef.current &&
+        buttonRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false)
+      }
+    }
+
+    // Add event listener when menu is open
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside)
+    }
+
+    // Clean up event listener
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [isOpen])
+
   return (
     <>
       <button
+        ref={buttonRef}
         onClick={toggleMenu}
         className={`fixed text-lg top-4 right-4 z-50 px-4 py-2 bg-white text-black ${
           isOpen ? "" : "rounded-full hover:rounded-none"
@@ -73,7 +101,7 @@ export function Menu() {
       </button>
 
       {isOpen && (
-        <div className="fixed top-0 right-0 z-40 pt-16 pr-4">
+        <div ref={menuRef} className="fixed top-0 right-0 z-40 pt-16 pr-4">
           <nav>
             <ul className="flex flex-col">
               <li>
