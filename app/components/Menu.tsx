@@ -69,8 +69,7 @@ export function Menu() {
         <div className="fixed top-0 right-0 z-40 pt-16 pr-4">
           <nav>
             <ul className="flex flex-col">
-              {/* Adjusted to remove spacing between menu items */}
-              <li className="-mt-1">
+              <li>
                 <a
                   href="#info"
                   className={`block text-white text-lg px-4 py-2 rounded-full hover:rounded-none ${menuColors.info}`}
