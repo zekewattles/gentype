@@ -35,22 +35,29 @@ const getUniqueRandomColors = (count: number) => {
   return shuffled.slice(0, count)
 }
 
-export function Menu() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [menuColors] = useState<ColorMap>(() => {
-    // Get unique colors for all menu items (Info + all semesters)
-    const uniqueColors = getUniqueRandomColors(semesterOrder.length + 1)
+// Function to generate menu colors
+const generateMenuColors = () => {
+  // Get unique colors for all menu items (Info + all semesters)
+  const uniqueColors = getUniqueRandomColors(semesterOrder.length + 1)
 
-    // Assign colors to menu items
-    const colors: ColorMap = { info: uniqueColors[0] }
-    semesterOrder.forEach((semester, index) => {
-      colors[semester.toLowerCase()] = uniqueColors[index + 1] || tailwind500Colors[0] // Fallback just in case
-    })
-
-    return colors
+  // Assign colors to menu items
+  const colors: ColorMap = { info: uniqueColors[0] }
+  semesterOrder.forEach((semester, index) => {
+    colors[semester.toLowerCase()] = uniqueColors[index + 1] || tailwind500Colors[0] // Fallback just in case
   })
 
+  return colors
+}
+
+export function Menu() {
+  const [isOpen, setIsOpen] = useState(false)
+  const [menuColors, setMenuColors] = useState<ColorMap>(generateMenuColors)
+
   const toggleMenu = () => {
+    // If we're opening the menu, randomize the colors
+    if (!isOpen) {
+      setMenuColors(generateMenuColors())
+    }
     setIsOpen(!isOpen)
   }
 
