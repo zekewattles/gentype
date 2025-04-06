@@ -44,6 +44,6 @@ hr {
 
 /* Add scroll margin to account for fixed header */
 section[id] {
-  scroll-margin-top: 3rem;
+  scroll-margin-top: calc(3rem - 1px);
 }
 
