@@ -14,8 +14,8 @@ export default async function Home() {
   return (
     <div>
       {/* Info Section */}
-      <section id="info" className="mb-12">
-        <h1 className="text-4xl font-normal mb-8">
+      <section id="info" className="mb-24">
+        <h1 className="text-5xl font-normal mb-8">
           Generative
           <br />
           Typography
@@ -48,7 +48,7 @@ export default async function Home() {
       {/* Semester Sections */}
       {semesterProjects.map(({ semester, projects }) => (
         <section key={semester} id={semester.toLowerCase()} className="mb-12">
-          <h1 className="text-4xl font-normal mb-12">{semester}</h1>
+          <h1 className="text-5xl font-normal mb-12">{semester}</h1>
           {projects.map((project) => (
             <Project key={project.id} {...project} />
           ))}
