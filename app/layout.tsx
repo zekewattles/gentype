@@ -4,19 +4,16 @@ import type { Metadata } from "next"
 import type React from "react"
 
 export const metadata: Metadata = {
-  title: {
-    default: "GenType",
-    template: "%s | GenType",
-  },
+  title: "Generative Typography",
   description: "Generative Typography course at ArtCenter College of Design",
   metadataBase: new URL("https://zeke.studio"),
   authors: [{ name: "Zeke Wattles" }],
   keywords: ["Generative Typography", "Creative Coding", "Graphic Design", "ArtCenter College of Design"],
   openGraph: {
-    title: "GenType",
+    title: "Generative Typography",
     description: "Generative Typography course at ArtCenter College of Design",
     url: "/gentype/",
-    siteName: "GenType",
+    siteName: "Generative Typography",
     images: [
       {
         url: "/gentype/semesters/fa22/posters/kenny-zhang.jpg",
@@ -29,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "GenType",
+    title: "Generative Typography",
     description: "Generative Typography course at ArtCenter College of Design",
     images: ["/gentype/semesters/fa22/posters/kenny-zhang.jpg"],
   },

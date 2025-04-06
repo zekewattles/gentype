@@ -9,7 +9,7 @@
 
 html,
 body {
-  @apply bg-black text-white scrollbar-hide;
+  @apply bg-black text-white;
   font-size: 0.8rem;
 }
 
@@ -20,13 +20,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
-}
+/* Removed scrollbar-hide class and its associated styles */
 
 video::-webkit-media-controls-fullscreen-button {
   display: block;
