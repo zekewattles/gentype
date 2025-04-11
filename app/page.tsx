@@ -3,7 +3,6 @@ import { getProjectsBySemester } from "@/lib/api-utils"
 import { semesterOrder } from "@/lib/constants"
 
 export default async function Home() {
-  // Get all projects for each semester
   const semesterProjects = await Promise.all(
     semesterOrder.map(async (semester) => {
       const projects = await getProjectsBySemester(semester)
@@ -13,11 +12,8 @@ export default async function Home() {
 
   return (
     <div className="space-y-20">
-      {" "}
-      {/* Changed from space-y-24 to space-y-20 */}
-      {/* Info Section */}
       <section id="info">
-        <h1 className="text-4xl font-normal mb-4">
+        <h1 className="text-5xl font-normal mb-8">
           Generative
           <br />
           Typography
@@ -41,17 +37,15 @@ export default async function Home() {
           >
             p5.js demos
           </a>
-          , students learn to build custom code-based tools for graphic design and use them to build generative identity systems, microsites, installations, and more.
+          , students learn to build custom code-based tools for graphic design and use them to build generative identity
+          systems, microsites, installations, and more.
         </p>
       </section>
       <hr />
-      {/* Semester Sections */}
       {semesterProjects.map(({ semester, projects }, index) => (
         <section key={semester} id={semester.toLowerCase()}>
-          <h1 className="text-4xl font-normal mb-20">{semester}</h1> {/* Changed from mb-24 to mb-20 */}
+          <h1 className="text-5xl font-normal mb-20">{semester}</h1>
           <div className="space-y-20">
-            {" "}
-            {/* Changed from space-y-24 to space-y-20 */}
             {projects.map((project) => (
               <Project key={project.id} {...project} />
             ))}
@@ -62,4 +56,3 @@ export default async function Home() {
     </div>
   )
 }
-

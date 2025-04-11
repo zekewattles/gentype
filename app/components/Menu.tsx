@@ -3,14 +3,11 @@
 import { useState, useRef, useEffect } from "react"
 import { semesterOrder } from "@/lib/constants"
 
-// Define a type for the colors object
 type ColorMap = {
   [key: string]: string
 }
 
-// Function to generate menu colors - now just assigning IDs since we're using glass effect
 const generateMenuColors = () => {
-  // Assign colors to menu items - now just using IDs for tracking
   const colors: ColorMap = { info: "info" }
 
   semesterOrder.forEach((semester) => {
@@ -30,7 +27,6 @@ export function Menu() {
     setIsOpen(!isOpen)
   }
 
-  // Handle clicks outside the menu
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -44,18 +40,15 @@ export function Menu() {
       }
     }
 
-    // Add event listener when menu is open
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside)
     }
 
-    // Clean up event listener
     return () => {
       document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [isOpen])
 
-  // Glass effect button styles
   const baseButtonStyles = `
     text-base 
     px-4 

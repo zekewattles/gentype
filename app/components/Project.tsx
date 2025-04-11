@@ -20,8 +20,6 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
 
   return (
     <article className="w-full space-y-6">
-      {" "}
-      {/* Removed mb-24 since spacing is handled by parent */}
       <div className="w-full aspect-video bg-black border border-neutral-800">
         <video
           ref={videoRef}
@@ -56,4 +54,3 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
     </article>
   )
 }
-
