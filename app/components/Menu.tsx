@@ -3,48 +3,18 @@
 import { useState, useRef, useEffect } from "react"
 import { semesterOrder } from "@/lib/constants"
 
-// Define flat colors - using darker 600 variants for more vibrant colors
-const buttonColors = [
-  "bg-red-600",
-  "bg-orange-600",
-  "bg-amber-600",
-  "bg-yellow-600",
-  "bg-lime-600",
-  "bg-green-600",
-  "bg-emerald-600",
-  "bg-teal-600",
-  "bg-cyan-600",
-  "bg-sky-600",
-  "bg-blue-600",
-  "bg-indigo-600",
-  "bg-violet-600",
-  "bg-purple-600",
-  "bg-fuchsia-600",
-  "bg-pink-600",
-  "bg-rose-600",
-]
-
-// Define a type for the colors object - simplified to just background colors
+// Define a type for the colors object
 type ColorMap = {
   [key: string]: string
 }
 
-// Simplified function to get unique random colors
-const getUniqueRandomColors = (count: number) => {
-  const shuffled = [...buttonColors].sort(() => 0.5 - Math.random())
-  return shuffled.slice(0, count)
-}
-
-// Function to generate menu colors - simplified
+// Function to generate menu colors - now just assigning IDs since we're using glass effect
 const generateMenuColors = () => {
-  // Get unique colors for all menu items (Info + all semesters)
-  const uniqueColors = getUniqueRandomColors(semesterOrder.length + 1)
+  // Assign colors to menu items - now just using IDs for tracking
+  const colors: ColorMap = { info: "info" }
 
-  // Assign colors to menu items
-  const colors: ColorMap = { info: uniqueColors[0] }
-
-  semesterOrder.forEach((semester, index) => {
-    colors[semester.toLowerCase()] = uniqueColors[index + 1] || buttonColors[0]
+  semesterOrder.forEach((semester) => {
+    colors[semester.toLowerCase()] = semester.toLowerCase()
   })
 
   return colors
@@ -57,10 +27,6 @@ export function Menu() {
   const buttonRef = useRef<HTMLButtonElement>(null)
 
   const toggleMenu = () => {
-    // If we're opening the menu, randomize the colors
-    if (!isOpen) {
-      setMenuColors(generateMenuColors())
-    }
     setIsOpen(!isOpen)
   }
 
@@ -89,31 +55,38 @@ export function Menu() {
     }
   }, [isOpen])
 
-  // Common button styles
-  const baseButtonStyles = "text-lg px-4 py-2 border border-white/10 shadow-sm"
-  const menuButtonStyles = `${baseButtonStyles} bg-white text-black border-neutral-300`
-  const coloredButtonStyles = `${baseButtonStyles} block text-white rounded-full hover:rounded`
+  // Glass effect button styles
+  const baseButtonStyles = `
+    text-base 
+    px-4 
+    py-2 
+    shadow-sm 
+    transition-all 
+    duration-200 
+    rounded-full 
+    backdrop-filter 
+    backdrop-blur-md 
+    bg-white/10
+    hover:bg-white/30
+    text-white
+  `
 
   return (
     <div className="fixed top-4 right-4 z-50 flex flex-col items-end">
-      <button
-        ref={buttonRef}
-        onClick={toggleMenu}
-        className={`${menuButtonStyles} ${isOpen ? "rounded" : "rounded-full hover:rounded"}`}
-      >
+      <button ref={buttonRef} onClick={toggleMenu} className={`${baseButtonStyles} ${isOpen ? "bg-white/30" : ""}`}>
         Menu
       </button>
 
       {isOpen && (
         <div ref={menuRef} className="mt-1 flex flex-col gap-1">
-          <a href="#info" className={`${coloredButtonStyles} ${menuColors.info}`} onClick={() => setIsOpen(false)}>
+          <a href="#info" className={baseButtonStyles} onClick={() => setIsOpen(false)}>
             Info
           </a>
           {semesterOrder.map((semester) => (
             <a
               key={semester}
               href={`#${semester.toLowerCase()}`}
-              className={`${coloredButtonStyles} ${menuColors[semester.toLowerCase()]}`}
+              className={baseButtonStyles}
               onClick={() => setIsOpen(false)}
             >
               {semester}

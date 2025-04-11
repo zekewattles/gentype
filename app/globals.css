@@ -5,7 +5,7 @@
 :root {
   --background-color: theme("colors.black");
   --radius: 0.5rem;
-  --large-spacing: 5rem; /* Added variable for consistent spacing */
+  --large-spacing: 5rem;
 }
 
 html,
@@ -21,8 +21,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Removed scrollbar-hide class and its associated styles */
-
 video::-webkit-media-controls-fullscreen-button {
   display: block;
 }
@@ -34,15 +32,13 @@ video:fullscreen {
 }
 
 hr {
-  @apply my-20 border-neutral-800 border-dashed; /* Changed from my-24 to my-20 */
+  @apply my-20 border-neutral-800;
 }
 
-/* Add scroll margin to account for fixed header */
 section[id] {
   scroll-margin-top: calc(var(--large-spacing) - 1px);
 }
 
-/* Added utility classes for consistent large spacing */
 .large-spacing {
   margin-bottom: var(--large-spacing);
 }
@@ -55,3 +51,9 @@ section[id] {
   padding-bottom: var(--large-spacing);
 }
 
+@layer utilities {
+  .backdrop-blur-md {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+}
