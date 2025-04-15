@@ -32,11 +32,7 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
         </div>
 
         <div className="w-full aspect-video bg-stone-800 relative flex items-center justify-center">
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
-            <div className="text-xl text-stone-100 text-center">{title.toUpperCase()}</div>
-            <div className="text-xl subtitle-text text-center mt-2">{author.toUpperCase()}</div>
-          </div>
-
+          {/* Removed the text overlay that was here */}
           <video
             ref={videoRef}
             src={videoSrc || undefined}
