@@ -3,22 +3,35 @@
 @tailwind utilities;
 
 :root {
-  --background-color: theme("colors.black");
-  --radius: 0.5rem;
-  --large-spacing: 5rem;
+  --section-spacing: 5rem;
+  --content-spacing: 1rem;
+  --content-spacing-double: calc(var(--content-spacing) * 2);
 }
 
 html,
 body {
-  @apply bg-black text-white;
+  @apply bg-stone-900 text-stone-100;
   font-size: 0.8rem;
 }
 
 body {
-  font-family: "Geist Mono", monospace;
+  font-family: "Fragment Mono", monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+p {
+  margin-bottom: var(--content-spacing);
+}
+
+a {
+  @apply text-stone-400 underline uppercase hover:text-stone-100;
+}
+
+/* Remove underline from menu links */
+.menu-link {
+  @apply no-underline;
 }
 
 video::-webkit-media-controls-fullscreen-button {
@@ -32,28 +45,52 @@ video:fullscreen {
 }
 
 hr {
-  @apply my-20 border-neutral-800;
+  @apply border-stone-400;
+  margin-top: var(--section-spacing) 0;
 }
 
 section[id] {
-  scroll-margin-top: calc(var(--large-spacing) - 1px);
+  scroll-margin-top: var(--section-spacing);
 }
 
-.large-spacing {
-  margin-bottom: var(--large-spacing);
-}
+/* Utility classes for common patterns */
+@layer components {
+  .title-text {
+    @apply text-xl font-normal text-stone-100;
+  }
 
-.pt-large {
-  padding-top: var(--large-spacing);
-}
+  .subtitle-text {
+    @apply text-stone-400;
+  }
 
-.pb-large {
-  padding-bottom: var(--large-spacing);
+  .section-title {
+    @apply text-5xl font-normal mb-[var(--content-spacing)];
+  }
+
+  .content-spacing {
+    @apply space-y-[var(--content-spacing)];
+  }
+
+  .content-spacing-double {
+    @apply space-y-[var(--content-spacing-double)];
+  }
+
+  .section-spacing {
+    @apply mb-[var(--section-spacing)];
+  }
+
+  .menu-button {
+    @apply text-xl px-4 py-2 transition-all duration-200 rounded backdrop-filter backdrop-blur-md bg-white/10 text-stone-100;
+  }
+
+  .menu-button-active {
+    @apply rounded-none bg-stone-100 text-stone-900;
+  }
 }
 
 @layer utilities {
   .backdrop-blur-md {
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
   }
 }
