@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { semesterOrder } from "@/lib/constants"
 
 export function Menu() {
@@ -9,92 +9,71 @@ export function Menu() {
   const menuRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
-
+  // Simplified click outside handler
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        isOpen &&
-        menuRef.current &&
-        buttonRef.current &&
-        !menuRef.current.contains(event.target as Node) &&
-        !buttonRef.current.contains(event.target as Node)
-      ) {
+    if (!isOpen) return
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!menuRef.current?.contains(e.target as Node) && !buttonRef.current?.contains(e.target as Node)) {
         setIsOpen(false)
       }
     }
 
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside)
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
-    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [isOpen])
 
+  // Simplified scroll handler using Intersection Observer
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["info", ...semesterOrder.map((s) => s.toLowerCase())]
+    const sections = ["info", ...semesterOrder.map((s) => s.toLowerCase())]
 
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          if (rect.top <= 100) {
-            setActiveSection(section)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.target.id) {
+            setActiveSection(entry.target.id)
           }
-        }
-      }
-    }
+        })
+      },
+      { threshold: 0.1, rootMargin: "-100px 0px 0px 0px" },
+    )
 
-    window.addEventListener("scroll", handleScroll)
-    handleScroll()
+    sections.forEach((section) => {
+      const element = document.getElementById(section)
+      if (element) observer.observe(element)
+    })
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
+    return () => observer.disconnect()
   }, [])
 
-  const handleMenuItemClick = (section: string) => {
-    setActiveSection(section)
-    setIsOpen(false)
-  }
+  // Simplified menu rendering
+  const menuItems = ["info", ...semesterOrder.map((s) => s.toLowerCase())]
 
   return (
     <div className="fixed top-4 right-4 z-50 flex flex-col items-end">
       <button
         ref={buttonRef}
-        onClick={toggleMenu}
-        className={`menu-button menu-link ${isOpen ? "menu-button-active" : "hover:rounded-none hover:bg-stone-100 hover:text-stone-900"}`}
+        onClick={() => setIsOpen(!isOpen)}
+        className={`menu-button ${isOpen ? "menu-button-active" : "hover:rounded-none hover:bg-stone-100 hover:text-stone-900"}`}
       >
         MENU
       </button>
 
       {isOpen && (
         <div ref={menuRef} className="mt-1 flex flex-col gap-1">
-          <a
-            href="#info"
-            className={`menu-button menu-link ${activeSection === "info" ? "menu-button-active" : "hover:rounded-none hover:bg-stone-100 hover:text-stone-900"}`}
-            onClick={() => handleMenuItemClick("info")}
-          >
-            INFO
-          </a>
-          {semesterOrder.map((semester) => {
-            const lowercaseSemester = semester.toLowerCase()
-            return (
-              <a
-                key={semester}
-                href={`#${lowercaseSemester}`}
-                className={`menu-button menu-link ${activeSection === lowercaseSemester ? "menu-button-active" : "hover:rounded-none hover:bg-stone-100 hover:text-stone-900"}`}
-                onClick={() => handleMenuItemClick(lowercaseSemester)}
-              >
-                {semester}
-              </a>
-            )
-          })}
+          {menuItems.map((item) => (
+            <a
+              key={item}
+              href={`#${item}`}
+              className={`menu-button ${activeSection === item ? "menu-button-active" : "hover:rounded-none hover:bg-stone-100 hover:text-stone-900"}`}
+              onClick={() => {
+                setActiveSection(item)
+                setIsOpen(false)
+              }}
+            >
+              {item === "info" ? "INFO" : item.toUpperCase()}
+            </a>
+          ))}
         </div>
       )}
     </div>

@@ -1,15 +1,25 @@
+import { Suspense } from "react"
 import { Project } from "./components/Project"
 import { getProjectsBySemester } from "@/lib/api-utils"
 import { semesterOrder } from "@/lib/constants"
 import { Footer } from "./components/Footer"
 
-export default async function Home() {
-  const semesterProjects = await Promise.all(
-    semesterOrder.map(async (semester) => {
-      const projects = await getProjectsBySemester(semester)
-      return { semester, projects }
-    }),
+// Helper component to load semester projects with Suspense
+async function SemesterProjectsComponent({ semester }: { semester: string }) {
+  const projects = await getProjectsBySemester(semester)
+
+  return (
+    <>
+      {projects.map((project, i) => (
+        <Project key={project.id} {...project} isLast={i === projects.length - 1} />
+      ))}
+    </>
   )
+}
+
+export default async function Home() {
+  // Pre-fetch the first semester for faster initial load
+  const firstSemesterProjects = await getProjectsBySemester(semesterOrder[0])
 
   return (
     <div className="py-[var(--section-spacing)]">
@@ -33,18 +43,27 @@ export default async function Home() {
         </p>
       </section>
 
-      {semesterProjects.map(({ semester, projects }, semesterIndex) => (
+      {/* First semester loaded eagerly */}
+      <section id={semesterOrder[0].toLowerCase()} className="section-spacing">
+        <h1 className="section-title mb-[var(--section-spacing)]">{semesterOrder[0]}</h1>
+        {firstSemesterProjects.map((project, i) => (
+          <Project key={project.id} {...project} isLast={i === firstSemesterProjects.length - 1} />
+        ))}
+      </section>
+
+      {/* Other semesters loaded with Suspense */}
+      {semesterOrder.slice(1).map((semester) => (
         <section key={semester} id={semester.toLowerCase()} className="section-spacing">
           <h1 className="section-title mb-[var(--section-spacing)]">{semester}</h1>
-          <div>
-            {projects.map((project, projectIndex) => (
-              <Project key={project.id} {...project} isLast={projectIndex === projects.length - 1} />
-            ))}
-          </div>
+          <Suspense
+            fallback={<div className="h-24 flex items-center justify-center text-stone-400">Loading projects...</div>}
+          >
+            <SemesterProjectsComponent semester={semester} />
+          </Suspense>
         </section>
       ))}
 
-      <Footer logoSrc="/gentype/images/logo.svg" />
+      <Footer logoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Generative%E2%80%A8Typography-dyzvCOYSNgHYNnx5ifuVTHLzXLUIAb.svg" />
     </div>
   )
 }

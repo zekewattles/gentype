@@ -5,16 +5,13 @@
 :root {
   --section-spacing: 5rem;
   --content-spacing: 1rem;
-  --content-spacing-double: calc(var(--content-spacing) * 2);
+  --content-spacing-double: 2rem;
 }
 
 html,
 body {
   @apply bg-stone-900 text-stone-100;
   font-size: 0.8rem;
-}
-
-body {
   font-family: "Fragment Mono", monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -26,12 +23,7 @@ p {
 }
 
 a {
-  @apply text-stone-400 underline uppercase hover:text-stone-100;
-}
-
-/* Remove underline from menu links */
-.menu-link {
-  @apply no-underline;
+  @apply text-stone-400 underline uppercase hover:text-stone-100 no-underline;
 }
 
 video::-webkit-media-controls-fullscreen-button {
@@ -46,14 +38,13 @@ video:fullscreen {
 
 hr {
   @apply border-stone-400;
-  margin-top: var(--section-spacing) 0;
 }
 
 section[id] {
   scroll-margin-top: var(--section-spacing);
 }
 
-/* Utility classes for common patterns */
+/* Simplified utility classes */
 @layer components {
   .title-text {
     @apply text-xl font-normal text-stone-100;
@@ -80,11 +71,11 @@ section[id] {
   }
 
   .menu-button {
-    @apply text-xl px-4 py-2 transition-all duration-200 rounded backdrop-filter backdrop-blur-md bg-white/10 text-stone-100;
+    @apply text-xl px-4 py-2 transition-all duration-200 rounded backdrop-blur-md bg-white/10 text-stone-100 no-underline;
   }
 
   .menu-button-active {
-    @apply rounded-none bg-stone-100 text-stone-900;
+    @apply rounded-none bg-stone-100 text-stone-900 hover:bg-stone-200 hover:text-stone-900;
   }
 }
 

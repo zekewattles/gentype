@@ -1,7 +1,7 @@
+import type React from "react"
 import "./globals.css"
 import { Menu } from "./components/Menu"
 import type { Metadata } from "next"
-import type React from "react"
 
 export const metadata: Metadata = {
   title: "Generative Typography",
@@ -14,13 +14,7 @@ export const metadata: Metadata = {
     description: "Generative Typography course at ArtCenter College of Design",
     url: "/gentype/",
     siteName: "Generative Typography",
-    images: [
-      {
-        url: "/gentype/semesters/fa22/posters/kenny-zhang.jpg",
-        width: 1200,
-        height: 630,
-      },
-    ],
+    images: [{ url: "/gentype/semesters/fa22/posters/kenny-zhang.jpg", width: 1200, height: 630 }],
     locale: "en_US",
     type: "website",
   },
@@ -41,11 +35,7 @@ export const metadata: Metadata = {
   manifest: "/gentype/manifest.json",
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="fragment-mono">
       <head>

@@ -5,45 +5,75 @@ import { unified } from "unified"
 import remarkParse from "remark-parse"
 import remarkRehype from "remark-rehype"
 import rehypeStringify from "rehype-stringify"
-import { VFile } from "vfile"
+import type { ProjectData } from "@/app/types"
 
 const semestersDirectory = path.join(process.cwd(), "content/semesters")
 
-export async function getProjectsBySemester(semester: string) {
-  const semesterDirectory = path.join(semestersDirectory, semester.toLowerCase())
-  const fileNames = await fs.promises.readdir(semesterDirectory)
+// Cache for processed markdown to avoid redundant processing
+const markdownCache = new Map<string, string>()
+
+// Simplified markdown processing with caching
+async function processMarkdown(content: string, cacheKey: string) {
+  if (markdownCache.has(cacheKey)) {
+    return markdownCache.get(cacheKey)!
+  }
+
+  const result = await unified().use(remarkParse).use(remarkRehype).use(rehypeStringify).process(content)
+  const html = result.toString()
+
+  markdownCache.set(cacheKey, html)
+  return html
+}
+
+// Simplified path handling
+function formatAssetPath(assetPath: string | null) {
+  if (!assetPath) return null
+  return `/gentype/${assetPath.replace(/^\//, "")}`
+}
+
+// Project data cache
+const projectCache = new Map<string, ProjectData[]>()
+
+export async function getProjectsBySemester(semester: string): Promise<ProjectData[]> {
+  // Check cache first
+  const cacheKey = semester.toLowerCase()
+  if (projectCache.has(cacheKey)) {
+    return projectCache.get(cacheKey)!
+  }
+
+  const semesterDir = path.join(semestersDirectory, cacheKey)
+  const fileNames = await fs.promises.readdir(semesterDir)
 
   const projects = await Promise.all(
     fileNames
       .filter((fileName) => fileName.endsWith(".md"))
       .map(async (fileName) => {
-        const fullPath = path.join(semesterDirectory, fileName)
+        const fullPath = path.join(semesterDir, fileName)
         const fileContents = await fs.promises.readFile(fullPath, "utf8")
         const { data, content } = matter(fileContents)
-
-        const processedContent = await unified()
-          .use(remarkParse)
-          .use(remarkRehype)
-          .use(rehypeStringify)
-          .process(new VFile(content))
-        const contentHtml = processedContent.toString()
+        const contentHtml = await processMarkdown(content, `${cacheKey}-${fileName}`)
 
         return {
           id: data.id || fileName.replace(/\.md$/, ""),
           author: data.author,
           title: data.title,
           description: contentHtml,
-          videoSrc: data.videoSrc ? `/gentype/${data.videoSrc.replace(/^\//, "")}` : null,
-          posterSrc: data.posterSrc ? `/gentype/${data.posterSrc.replace(/^\//, "")}` : null,
+          videoSrc: formatAssetPath(data.videoSrc),
+          posterSrc: formatAssetPath(data.posterSrc),
           links: data.links || [],
         }
       }),
   )
 
-  return projects.sort((a, b) => {
-    const aNumber = a.id ? Number.parseInt(a.id.split("-").pop() || "0", 10) : 0
-    const bNumber = b.id ? Number.parseInt(b.id.split("-").pop() || "0", 10) : 0
-    return aNumber - bNumber
+  // Sort projects
+  const sortedProjects = projects.sort((a, b) => {
+    const aNum = Number.parseInt(a.id.split("-").pop() || "0", 10)
+    const bNum = Number.parseInt(b.id.split("-").pop() || "0", 10)
+    return aNum - bNum
   })
-}
 
+  // Cache the result
+  projectCache.set(cacheKey, sortedProjects)
+
+  return sortedProjects
+}

@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useEffect, useState } from "react"
 
 interface ProjectProps {
   author: string
@@ -12,15 +12,31 @@ interface ProjectProps {
   isLast?: boolean
 }
 
-export function Project({ author, title, description, videoSrc, posterSrc, links, isLast = false }: ProjectProps) {
-  const videoRef = useRef<HTMLVideoElement>(null)
+export function Project({ author, title, description, videoSrc, posterSrc, links = [], isLast = false }: ProjectProps) {
+  const [isVisible, setIsVisible] = useState(false)
+  const videoRef = useRef<HTMLDivElement>(null)
 
-  if (!title || !author) {
-    return null
-  }
+  useEffect(() => {
+    if (!videoRef.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1 },
+    )
+
+    observer.observe(videoRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  if (!title || !author) return null
 
   return (
-    <article className={`w-full ${!isLast ? "section-spacing" : ""}`}>
+    <article className={!isLast ? "section-spacing" : ""}>
       <hr className="border-stone-400" />
       <div className="content-spacing">
         <div className="pt-[var(--content-spacing)]">
@@ -31,24 +47,26 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
           </h2>
         </div>
 
-        <div className="w-full aspect-video bg-stone-800 relative flex items-center justify-center">
-          {/* Removed the text overlay that was here */}
-          <video
-            ref={videoRef}
-            src={videoSrc || undefined}
-            poster={posterSrc || undefined}
-            className="w-full h-full object-cover"
-            playsInline
-            controls
-          />
+        <div ref={videoRef} className="w-full aspect-video bg-stone-800">
+          {isVisible && (
+            <video
+              src={videoSrc || undefined}
+              poster={posterSrc || undefined}
+              className="w-full h-full object-cover"
+              playsInline
+              controls
+              preload="none"
+              loading="lazy"
+            />
+          )}
         </div>
 
         <div className="text-base leading-relaxed content-spacing" dangerouslySetInnerHTML={{ __html: description }} />
 
-        {links && links.length > 0 && (
+        {links.length > 0 && (
           <div className="content-spacing">
-            {links.map((link, index) => (
-              <a key={index} href={link.url} className="block text-base" target="_blank" rel="noopener noreferrer">
+            {links.map((link, i) => (
+              <a key={i} href={link.url} className="block text-base" target="_blank" rel="noopener noreferrer">
                 {link.text.toUpperCase()}
               </a>
             ))}
