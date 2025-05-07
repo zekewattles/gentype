@@ -71,11 +71,11 @@ section[id] {
   }
 
   .menu-button {
-    @apply text-xl px-4 py-2 transition-all duration-200 rounded backdrop-blur-md bg-white/10 text-stone-100 no-underline;
+    @apply text-lg px-4 py-1.5 transition-all duration-200 rounded-full backdrop-blur-md bg-white/10 text-stone-100 no-underline text-center;
   }
 
   .menu-button-active {
-    @apply rounded-none bg-stone-100 text-stone-900 hover:bg-stone-200 hover:text-stone-900;
+    @apply bg-stone-100 text-stone-900 hover:bg-stone-200 hover:text-stone-900;
   }
 }
 

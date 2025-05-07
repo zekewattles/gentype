@@ -54,7 +54,7 @@ export function Menu() {
       <button
         ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
-        className={`menu-button ${isOpen ? "menu-button-active" : "hover:rounded-none hover:bg-stone-100 hover:text-stone-900"}`}
+        className={`menu-button ${isOpen ? "menu-button-active" : "hover:bg-stone-100 hover:text-stone-900"}`}
       >
         MENU
       </button>
@@ -65,7 +65,7 @@ export function Menu() {
             <a
               key={item}
               href={`#${item}`}
-              className={`menu-button ${activeSection === item ? "menu-button-active" : "hover:rounded-none hover:bg-stone-100 hover:text-stone-900"}`}
+              className={`menu-button ${activeSection === item ? "menu-button-active" : "hover:bg-stone-100 hover:text-stone-900"}`}
               onClick={() => {
                 setActiveSection(item)
                 setIsOpen(false)

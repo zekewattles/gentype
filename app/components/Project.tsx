@@ -56,7 +56,6 @@ export function Project({ author, title, description, videoSrc, posterSrc, links
               playsInline
               controls
               preload="none"
-              loading="lazy"
             />
           )}
         </div>
