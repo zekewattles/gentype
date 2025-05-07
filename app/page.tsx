@@ -38,8 +38,7 @@ export default async function Home() {
           <a href="https://editor.p5js.org/zekewattles/sketches" target="_blank" rel="noopener noreferrer">
             P5.JS DEMOS
           </a>
-          , students learn to build custom code-based tools for graphic design and use them to build generative identity
-          systems, microsites, installations, and more.
+          , students learn to build custom code-based graphic design tools for generative identity systems, microsites, installations, and more.
         </p>
       </section>
 
